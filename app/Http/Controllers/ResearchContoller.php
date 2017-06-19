@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\FundtypeModel;
+use App\JournalModel;
 use Illuminate\Http\Request;
 
 class ResearchContoller extends Controller
@@ -21,7 +22,13 @@ class ResearchContoller extends Controller
 
     public function index(){
 
-        return view('research.reserach-list');
+        $journals = JournalModel::all();
+
+        $data = array(
+            'journals' => $journals
+        );
+
+        return view('research.research-list',$data);
     }
 
     public function create(Request $request)

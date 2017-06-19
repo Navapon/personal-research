@@ -127,15 +127,15 @@
                         <div class="bs-callout bs-callout-danger">
                             <h4>ผู้เขียน ( Authors )</h4>
                             <p>
-                                <ul>
+                            <ul>
                                 @if(!empty($journal->team))
                                     @foreach($journal->team as $key => $team)
                                         <li>
                                             {{ $team->rt_name }}
                                         </li>
-                                     @endforeach
-                                 @endIf
-                                </ul>
+                                    @endforeach
+                                    @endIf
+                            </ul>
                             </p>
 
                         </div>
@@ -166,13 +166,15 @@
                                         {{ $journal->journal->rj_owner or ' - ' }}
                                     </p>
                                 </a>
-                                <a class="list-group-item inactive-link" href="#">
+                                <a class="list-group-item active-link" href="{{ $journal->journal->rj_source_url }}">
                                     <h4 class="list-group-item-heading">
                                         ลิงค์ฐานข้อมูลวารสารที่เผยแพร่
                                     </h4>
-                                    <p class="list-group-item-text">
-                                        {{ $journal->journal->rj_source_url or ' - ' }}
+                                    <p class="list-group-item-text" style="color:#3498db">
+                                        {{ $journal->journal->rj_source_url }}
                                     </p>
+
+
                                 </a>
 
                                 <a class="list-group-item inactive-link" href="#">

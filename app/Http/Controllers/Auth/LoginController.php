@@ -55,7 +55,6 @@ class LoginController extends Controller
 
             if (!empty($user) && Auth::loginUsingId($user->u_id)) {
 
-
                 return redirect()->route('profile.edit', $user->u_id);
 
             } else {
@@ -66,7 +65,7 @@ class LoginController extends Controller
 
         } else if (Auth::attempt([ 'u_username' => $username, 'password' => $password ])) {
 
-            return back();
+            return redirect()->route('profile.edit', Auth::id());
 
         }
 

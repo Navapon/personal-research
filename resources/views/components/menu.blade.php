@@ -29,7 +29,7 @@
             <div class="panel-body">
                 <h4>ข้อมูลงานวิจัย</h4>
                 <p>โครงการงานวิจัยของบุคลากรภายในคณะวิทยาศาสตร์และเทคโนโลยี</p>
-                <a href="/researchs" class="btn btn-primary">Learn More</a>
+                <a href="/research" class="btn btn-primary">Learn More</a>
             </div>
         </div>
     </div>

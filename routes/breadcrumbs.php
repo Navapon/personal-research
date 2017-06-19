@@ -41,7 +41,7 @@ Breadcrumbs::register('profile.edit', function($breadcrumbs, $id) {
 Breadcrumbs::register('research.index', function($breadcrumbs)
 {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push('รายการโครงงานวิจัย', route('research.index'));
+    $breadcrumbs->push('ผลงานวิชาการ', route('research.index'));
 });
 
 Breadcrumbs::register('research.create', function($breadcrumbs)

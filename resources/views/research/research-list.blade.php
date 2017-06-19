@@ -3,7 +3,7 @@
 @section('page-header')
 
     @include('components.page-header', [
-            'header' => 'โครงการวิจัย',
+            'header' => 'ผลงานวิชาการ',
             'sub_header' => 'ของคณะวิทยาศาสตร์และเทคโนโลยี'
             ] )
 
@@ -11,6 +11,6 @@
 
 @section('content')
 
-    @include('components.research.project-list')
+    @include('research.journal.journal-list',['journals'=> $journals])
 
 @endsection

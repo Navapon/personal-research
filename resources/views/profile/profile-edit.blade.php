@@ -11,6 +11,8 @@
 
 @section('content')
 
+    <script src="{{ mix('js/date-picker-th.js') }}"></script>
+
     <script type="text/javascript">
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -102,7 +104,8 @@
                             @endif
                             @if ($user->u_line)
                                 <div class="col md-4">
-                                    <a href="http://line.me/ti/p/~{{ $user->u_line }}" title="{{ $user->u_line  }}" target="_blank"
+                                    <a href="http://line.me/ti/p/~{{ $user->u_line }}" title="{{ $user->u_line  }}"
+                                       target="_blank"
                                        class="button-line">
                                         <i class="social-icon fa  fa-2x">Line</i>
                                     </a>
@@ -111,7 +114,8 @@
 
                             @if ($user->u_instragram)
                                 <div class="col md-4">
-                                    <a href="http://instagram.com/_u/{{ $user->u_instragram }}" title="{{ $user->u_instragram  }}"
+                                    <a href="http://instagram.com/_u/{{ $user->u_instragram }}"
+                                       title="{{ $user->u_instragram  }}"
                                        target="_blank"
                                        class="button-instagram">
                                         <i class="social-icon fa fa-instagram fa-2x"></i>
@@ -227,16 +231,17 @@
                                             <div class="{{ $errors->has('u_birthdate') ? ' has-error' : '' }}">
                                                 <label class="col-sm-2 control-label"
                                                        for="textinput">วันเดือนปีเกิด</label>
+
+
                                                 <div class="col-sm-4">
-                                                    <div class='input-group date' id='datepicker'>
+                                                    <div class='input-group date' id='birthdate-picker'>
                                                         <input type="text" id="u_birthdate" class="form-control"
                                                                name="u_birthdate"
                                                                placeholder="เลือกวันเดือนปีเกิด"
-                                                               value="{{ old('u_birthdate',$user->u_birthdate ) }}"/>
-                                                        <span class="input-group-addon">
-                                                            <span>
-                                                                <span class="glyphicon glyphicon-calendar"> </span>
-                                                            </span>
+                                                               value="{{ old('u_birthdate',$user->u_birthdate ) }}" readonly/>
+                                                        <span class="input-group-addon" data-toggle="tooltip"
+                                                              title="คลิกเพื่อเลือกวันที่">
+                                                                <i class="glyphicon glyphicon-calendar"></i>
                                                         </span>
                                                     </div>
                                                     @if ($errors->has('u_birthdate'))
@@ -471,18 +476,17 @@
                                 @endif
 
                                 <h2 class="boxHeadline"><i class="fa fa-file" aria-hidden="true"></i>
-                                        ผลงานด้านวารสารวิชาการ </h2>
+                                    ผลงานด้านวารสารวิชาการ </h2>
 
                                 @include('research.journal.journal-profile-list',['journals' => $journals,'task' => 'edit'])
                                 {{--<ul class="simpleListings">--}}
-                                    {{--<li>--}}
-                                        {{--<div class="title">Sr. UX designer <span>(3 years)</span></div>--}}
-                                        {{--<div class="info">6th Sep 2012 - 24th Oct 2015 at <a href="#" title="#"--}}
-                                                                                             {{--class="text-orange">eFabrica.com</a>--}}
-                                        {{--</div>--}}
-                                    {{--</li>--}}
+                                {{--<li>--}}
+                                {{--<div class="title">Sr. UX designer <span>(3 years)</span></div>--}}
+                                {{--<div class="info">6th Sep 2012 - 24th Oct 2015 at <a href="#" title="#"--}}
+                                {{--class="text-orange">eFabrica.com</a>--}}
+                                {{--</div>--}}
+                                {{--</li>--}}
                                 {{--</ul>--}}
-
 
 
                             </div>
@@ -538,9 +542,8 @@
             text-align: center;
         }
 
-        .social-buttons .button-facebook , .button-instagram , .button-line{
+        .social-buttons .button-facebook, .button-instagram, .button-line {
             float: left;
-
 
             border-radius: 50%;
             width: 45px;
@@ -549,7 +552,7 @@
 
         }
 
-        .button-facebook{
+        .button-facebook {
             border: 2px solid #3b5998;
             background-color: #3b5998;
             color: white;
@@ -573,8 +576,7 @@
             color: white;
         }
 
-
-        .social-buttons .button-facebook i , .button-instagram i  {
+        .social-buttons .button-facebook i, .button-instagram i {
             font-size: 22px;
             line-height: 50px;
         }
@@ -963,4 +965,16 @@
         }
     </style>
 
+    <script>
+        $(function () {
+            $('#birthdate-picker').datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                language: 'th',             //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
+                thaiyear: true              //Set เป็นปี พ.ศ.
+            })
+
+            $('[data-toggle="tooltip"]').tooltip();
+        })
+    </script>
 @endsection

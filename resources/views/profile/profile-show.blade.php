@@ -126,7 +126,7 @@
                         </li>
                         <li role="presentation" class=""><a href="#tab-item-2" aria-controls="tab-item-2"
                                                             role="tab" data-toggle="tab"
-                                                            aria-expanded="true">งานวิจัย</a>
+                                                            aria-expanded="true">ผลงานวิชาการ</a>
                         </li>
 
                     </ul>
