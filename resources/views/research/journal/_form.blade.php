@@ -453,19 +453,49 @@
                     <!-- Text input-->
 
 
-                        @if($type != 'edit')
-                        <div class="form-group">
-                            <label class="col-md-offset-1 col-md-2 control-label" for="textinput">
-                                ชื่อผู้ร่วมวิจัย</label>
-                            <div class="col-md-8">
-                                <input id="" name="rt_name[]" type="text"
-                                       value="{{ $user->u_name_th .' ' . $user->u_surname_th  }}"
+                    @if($type != 'edit')
 
-                                       placeholder="กรุณาระบุจำนวนผู้ร่วมวิจัย"
-                                       class="form-control input-md">
-                                <span class="help-block">ระบุชื่อ นามสกุล</span>
+                        @if(!old('rt_name') )
+                            <div class="form-group">
+                                <label class="col-md-offset-1 col-md-2 control-label" for="textinput">
+                                    ชื่อผู้ร่วมวิจัย</label>
+                                <div class="col-md-8">
+                                    <input id="" name="rt_name[]" type="text"
+                                           value="{{ $user->u_name_th .' ' . $user->u_surname_th  }}"
+
+                                           placeholder="กรุณาระบุจำนวนผู้ร่วมวิจัย"
+                                           class="form-control input-md">
+                                    <span class="help-block">ระบุชื่อ นามสกุล</span>
+                                </div>
+
                             </div>
-                        </div>
+                        @else
+
+                            @foreach(old('rt_name') as $key => $team)
+                                <div class="row" id="team-list{{$key}}">
+                                    <label class="col-md-offset-1 col-md-2 control-label" for="textinput">
+                                        ชื่อผู้ร่วมวิจัย </label>
+                                    <div class="col-md-7">
+                                        <input type="hidden" name="rt_id[]">
+                                        <input id="" name="rt_name[]" type="text"
+                                               value="{{ $team }}"
+
+                                               placeholder="กรุณาระบุจำนวนผู้ร่วมวิจัย"
+                                               class="form-control input-md">
+                                        <span class="help-block">ระบุชื่อ นามสกุล</span>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button class="btn btn-danger" type="button" onclick="deleteRow({{$key}})">
+                                            <i class="fa fa-trash"></i>
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+
+                            @endforeach
+
+                        @endif
+
                         @endIf
                         @if(!empty($journal->team))
                             @foreach($journal->team as $key => $team)
@@ -804,7 +834,7 @@
         $('#add-team').on('click', function () {
 
             var team = '';
-            team += ' <div id="team-list'+number+'">'
+            team += ' <div id="team-list' + number + '">'
             team += ' <div class="form-group" >'
             team += '       <label class="col-md-offset-1 col-md-2 control-label" for="textinput"> ชื่อนามสกุล </label>';
             team += '       <div class="col-md-7">';
@@ -812,7 +842,7 @@
             team += '              <span class="help-block">ระบุ ชื่อ นามสกุล</span>';
             team += '       </div>';
             team += '       <div class="col-md-2">';
-            team += '           <button class="btn btn-danger" onclick="deleteRow('+number+')"><i class="fa fa-trash"></i> Delete</button>';
+            team += '           <button class="btn btn-danger" onclick="deleteRow(' + number + ')"><i class="fa fa-trash"></i> Delete</button>';
             team += '       </div>';
             team += ' </div>';
             team += ' </div>';
@@ -842,7 +872,7 @@
 
     function deleteRow(id) {
 
-        $('#team-list'+id).remove()
+        $('#team-list' + id).remove()
     }
 
 </script>
