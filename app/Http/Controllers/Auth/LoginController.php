@@ -44,7 +44,6 @@ class LoginController extends Controller
     public function authenticate (Request $request)
     {
 
-
         $username = $request->u_username;
         $password = $request->password;
 

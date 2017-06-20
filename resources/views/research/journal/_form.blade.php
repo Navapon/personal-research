@@ -51,9 +51,11 @@
         @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <ul>
+                    <li style="color: blue">กรณีใส่ข้อมูลไม่ครบตามเงื่อนไข กรุณาทำการอัพโหลดไฟล์ใหม่อีกครั้ง </li>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
+
                 </ul>
             </div>
         @endif

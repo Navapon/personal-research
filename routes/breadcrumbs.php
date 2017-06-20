@@ -27,10 +27,19 @@ Breadcrumbs::register('profile.show', function($breadcrumbs, $id) {
 
 Breadcrumbs::register('profile.edit', function($breadcrumbs, $id) {
 
+    $name = "";
+    $sur_name = "";
+    $u_id = "my";
     $user = \App\User::find($id);
 
+    if(!empty($user)){
+
+        $name = $user->u_name_th;
+        $sur_name = $user->sur_name_th;
+        $u_id = $user->u_id;
+    }
     $breadcrumbs->parent('profile.index');
-    $breadcrumbs->push($user->u_name_th .' ' . $user->u_surname_th, route('profile.edit', $user->u_id));
+    $breadcrumbs->push($name .' ' . $sur_name, route('profile.edit', $u_id));
 });
 
 

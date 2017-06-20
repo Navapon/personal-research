@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -27,7 +28,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+
+    protected $redirectTo = '/profile/my/edit';
 
     protected $password = 'password';
     /**
@@ -49,8 +51,6 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-
-
         return Validator::make($data, [
             'u_username' => 'required|string|max:255',
             'u_email' => 'required|string|email|max:255|unique:users',

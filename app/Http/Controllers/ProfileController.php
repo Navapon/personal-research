@@ -65,6 +65,10 @@ class ProfileController extends Controller
             return redirect()->route('home');
         }
 
+        // that's mean to edit my profile
+        if($id == "my"){
+            $id = Auth::id();
+        }
         $current_user = Auth::user();
         $majors = MajorModel::all();
         $academics = AcademicModel::all();
