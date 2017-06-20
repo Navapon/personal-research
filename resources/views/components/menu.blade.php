@@ -1,7 +1,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h2 class="page-header">Services Panels</h2>
+        <h2 class="page-header">ข้อมูลด้านงานวิจัย</h2>
     </div>
     <div class="col-md-3 col-sm-6">
         <div class="panel panel-default text-center">

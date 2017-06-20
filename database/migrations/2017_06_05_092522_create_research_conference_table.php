@@ -28,7 +28,6 @@ class CreateResearchConferenceTable extends Migration
             $table->string('rc_page')->nullable();
             $table->string('rc_abstract',1000)->nullable();
             $table->string('rc_evaluate_article')->nullable();
-            $table->string('rc_publish_status')->nullable();
             $table->integer('rc_publish_level');
             $table->integer('rc_proceeding_type');
             $table->integer('rc_present_type');

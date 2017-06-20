@@ -18,6 +18,10 @@ Route::resource('research', 'ResearchContoller');
 
 Route::resource('journal', 'JournalController');
 
+Route::resource('conference', 'ConferenceController');
+
+
+
 Route::post('profile/uploadProfileImage', 'ProfileController@uploadProfileImage');
 Route::post('authen', 'Auth\LoginController@authenticate')->name('authen');
 

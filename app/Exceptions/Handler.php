@@ -80,8 +80,7 @@ class Handler extends ExceptionHandler
             return response()->json([ 'error' => 'Unauthenticated.' ], 401);
         }
 
-        Session::flash('needlogin', '');
-
+        alert()->warning('เพื่อที่จะทำรายการต่างๆได้', 'กรุณาเข้าสู่ระบบ');
         return redirect()->guest(route('home'));
     }
 }

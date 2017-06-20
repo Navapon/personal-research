@@ -23,7 +23,7 @@ class AlterUserResearch extends Migration
 
             $table->foreign('u_id')->references('u_id')->on('users');
             $table->foreign('rj_id')->references('rj_id')->on('research_journal');
-//            $table->foreign('rc_id')->references('rc_id')->on('research_conference');
+            $table->foreign('rc_id')->references('rc_id')->on('research_conference');
 
         });
     }
