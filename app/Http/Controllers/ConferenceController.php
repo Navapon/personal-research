@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\ResearchPresentTypeModel;
+use App\ResearchProceedingTypeModel;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use App\ResearchlevelModel;
 class ConferenceController extends Controller
 {
     /**
@@ -23,7 +26,19 @@ class ConferenceController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        $research_level = ResearchlevelModel::all();
+        $proceeding = ResearchProceedingTypeModel::all();
+        $present = ResearchPresentTypeModel::all();
+        $data = array(
+
+            'research_level' => $research_level,
+            'proceeding' => $proceeding,
+            'present' => $present,
+            'user' => $user
+        );
+
+        return view('research.conference.conference-create', $data);
     }
 
     /**

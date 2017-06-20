@@ -35,8 +35,6 @@ class JournalController extends Controller
 
     public function create ()
     {
-        $redirectTo = 'adasdasdads';
-
         $user = Auth::user();
         $funds = FundtypeModel::all();
         $researchStatus = ResearchstatusModel::all();
