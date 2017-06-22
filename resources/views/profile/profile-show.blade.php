@@ -193,10 +193,21 @@
                         <div role="tabpanel" class="tab-pane fade " id="tab-item-2">
                             <div class="i form-group">
 
-                                <h2 class="boxHeadline"><i class="fa fa-files" aria-hidden="true"></i>
-                                    ผลงานด้านวารสารวิชาการ </h2>
+                                <br>
+                                <div class="well">
+                                    <h2 class="boxHeadline"><i class="fa fa-file" aria-hidden="true"></i>
+                                        ด้านวารสารวิชาการ ( Journal ) </h2>
 
-                                @include('research.journal.journal-profile-list',['journals' => $journals,'task' => 'show'])
+                                    @include('research.journal.journal-profile-list',['journals' => $journals,'task' => 'show'])
+                                </div>
+                                <br>
+                                <div class="well">
+                                    <h2 class="boxHeadline"><i class="fa fa-building-o" aria-hidden="true"></i>
+                                        ด้านการประชุมวิชาการ ( Conference ) </h2>
+
+                                    @include('research.conference.conference-profile-list',['conferences' => $conferences,'task' => 'show'])
+                                </div>
+
                             </div>
                         </div>
 

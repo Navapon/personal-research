@@ -27,6 +27,14 @@ class UserresearchModel extends Model
 
     }
 
+
+    public function conference ()
+    {
+
+        return $this->belongsTo(ConferenceModel::class, 'rc_id', 'rc_id');
+
+    }
+
     public function user ()
     {
 
@@ -37,6 +45,11 @@ class UserresearchModel extends Model
     public function team ()
     {
         return $this->hasMany(ResearhteamModel::class,'rj_id','rj_id');
+    }
+
+    public function teamConference ()
+    {
+        return $this->hasMany(ResearhteamModel::class,'rc_id','rc_id');
     }
 
 

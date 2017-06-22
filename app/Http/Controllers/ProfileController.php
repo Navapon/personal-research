@@ -47,10 +47,12 @@ class ProfileController extends Controller
 
         $user = ProfileModel::find($id);
         $journals = UserresearchModel::with('journal')->has('journal')->where('u_id', $id)->get();;
+        $conferences = UserresearchModel::with('conference')->has('conference')->where('u_id', $id)->get();
 
         $data = array(
             'user' => $user,
-            'journals' => $journals
+            'journals' => $journals,
+            'conferences' => $conferences
         );
         if (!empty($user))
             return view('profile.profile-show')->with($data);
@@ -72,7 +74,8 @@ class ProfileController extends Controller
         $current_user = Auth::user();
         $majors = MajorModel::all();
         $academics = AcademicModel::all();
-        $journals = UserresearchModel::with('journal')->has('journal')->where('u_id', $id)->get();;
+        $journals = UserresearchModel::with('journal')->has('journal')->where('u_id', $id)->get();
+        $conferences = UserresearchModel::with('conference')->has('conference')->where('u_id', $id)->get();
 
         if ($current_user->u_id == $id) {
             $user = ProfileModel::find($id);
@@ -81,7 +84,8 @@ class ProfileController extends Controller
                 'user' => $user,
                 'majors' => $majors,
                 'academics' => $academics,
-                'journals' => $journals
+                'journals' => $journals,
+                'conferences' => $conferences
             );
 
         } else {

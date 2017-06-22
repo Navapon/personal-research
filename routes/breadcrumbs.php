@@ -90,6 +90,39 @@ Breadcrumbs::register('journal.show', function($breadcrumbs,$id)
     $breadcrumbs->push('ข้อมูลวารสารวิชาการ', route('journal.show',$journal->journal->rj_id ));
 });
 
+/*
+ * Conference
+ * */
+
+
+Breadcrumbs::register('conference.create', function($breadcrumbs)
+{
+
+    $breadcrumbs->parent('profile.show',Auth::id());
+    $breadcrumbs->push('เพิ่มการประชุมวิชาการ', route('conference.create'));
+});
+
+Breadcrumbs::register('conference.edit', function($breadcrumbs,$id)
+{
+    $breadcrumbs->parent('profile.show',Auth::id());
+    $breadcrumbs->push('แก้ไขการประชุมวิชาการ', route('conference.edit',$id));
+});
+
+Breadcrumbs::register('conference.show', function($breadcrumbs,$id)
+{
+    $conference = \App\UserresearchModel::with(['conference','user'])->where('rc_id',$id)->first();
+
+    $breadcrumbs->parent('profile.show',$conference->user->u_id);
+    $breadcrumbs->push('ข้อมูลวารสารวิชาการ', route('conference.show',$conference->conference->rc_id ));
+});
+
+//Breadcrumbs::register('conference.show', function($breadcrumbs,$id)
+//{
+////    $journal = \App\UserresearchModel::with(['journal','user'])->where('rj_id',$id)->first();
+//
+//    $breadcrumbs->parent('profile.show',$journal->user->u_id);
+//    $breadcrumbs->push('ข้อมูลวารสารวิชาการ', route('conference.show',$journal->journal->rj_id ));
+//});
 
 
 

@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\FundtypeModel;
 use App\Http\Requests\JournalFormRequest;
+
 use App\JournalModel;
+use App\FundtypeModel;
 use App\ResearchlevelModel;
 use App\ResearchstatusModel;
 use App\ProfileModel;
 use App\UserresearchModel;
 use App\ResearhteamModel;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -23,6 +25,7 @@ class JournalController extends Controller
     {
         if (!$this->middleware('auth', [ 'except' => [ 'index', 'show' ] ])) {
 
+            alert()->warning('','กรุณาเข้าสู่ระบบเพื่อทำรายการ');
             return redirect()->route('home');
         }
     }

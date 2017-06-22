@@ -47,7 +47,7 @@
         @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <ul>
-                    <li style="color: blue">กรณีใส่ข้อมูลไม่ครบตามเงื่อนไข กรุณาทำการอัพโหลดไฟล์ใหม่อีกครั้ง </li>
+                    <li style="color: blue">กรณีใส่ข้อมูลไม่ครบตามเงื่อนไข กรุณาทำการอัพโหลดไฟล์ใหม่อีกครั้ง</li>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
@@ -235,7 +235,6 @@
                                             {{  old('rj_publish_level') == $level->rl_id  ? 'selected' : '' }}
                                             {{  old('rj_publish_level',isset($journal) ? $journal->rj_publish_level == $level->rl_id  ? 'selected' : '' : '' )}}
                                     >
-
                                         {{ $level->rl_name }}
                                     </option>
                                 @endforeach
@@ -281,9 +280,8 @@
                             >
                             <span class="help-block">ปีที่ของวารสาร </span>
                         </div>
-
-
                     </div>
+                    <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-offset-1 col-md-2 control-label" for="rj_no">ฉบับที่ <span
                                     style="color:red"> * </span>
@@ -310,7 +308,7 @@
                         </div>
                     </div>
 
-
+                    {{-- Button --}}
                     <div class="form-group">
 
                         <div class="col-md-10 col-md-pull-2">
@@ -356,7 +354,7 @@
                                     <textarea class="form-control" name="rj_abstract" id="rj_abstract" cols="30"
                                               rows="13"
                                               placeholder="บทคัดย่อของวารสาร">{{ old('rj_abstract',isset($journal->rj_abstract) ? $journal->rj_abstract : '') }}</textarea>
-                            <span class="help-block">ชื่อของวารสาร ที่ท่านได้รับเผยแพร่</span>
+                            <span class="help-block">ระบุบทคัดย่อของงานของท่าน</span>
                         </div>
                     </div>
 
@@ -400,9 +398,8 @@
                         </div>
 
                     </div>
-                    {{--<input type="files" name="" id="">--}}
 
-
+                    {{-- Button --}}
                     <div class="form-group">
 
                         <div class="col-md-6 col-md-pull-2">
@@ -430,6 +427,13 @@
                 <div class="tab-pane" role="tabpanel" id="step3">
 
                     <legend>ผู้ร่วมวิจัย</legend>
+
+                    @include('research.components.research-team',[
+                        'obj' =>   isset($journal) ? $journal : ''
+                    ])
+
+
+                    {{-- Button --}}
                     <div class="form-group">
 
                         <div class="col-md-6 col-md-pull-2">
@@ -437,115 +441,20 @@
 
                         <div class="col-md-6 col-md-pull-1">
                             <ul class="list-inline pull-right">
-
                                 <li>
-                                    <button type="button" class="btn btn-success next-step" id="add-team">
-                                        <i class="fa fa-plus-circle"></i> เพิ่มผู้ร่วมวิจัย
+                                    <button type="button" class="btn btn-warning prev-step"><i
+                                                class="fa fa-arrow-left"></i> Previous
                                     </button>
+                                </li>
+                                <li>
+                                    <button type="submit" class="btn btn-success next-step"> Save <i
+                                                class="fa fa-save"></i></button>
                                 </li>
 
                             </ul>
                         </div>
 
                     </div>
-                    <!-- Text input-->
-
-
-                    @if($type != 'edit')
-
-                        @if(!old('rt_name') )
-                            <div class="form-group">
-                                <label class="col-md-offset-1 col-md-2 control-label" for="textinput">
-                                    ชื่อผู้ร่วมวิจัย</label>
-                                <div class="col-md-8">
-                                    <input id="" name="rt_name[]" type="text"
-                                           value="{{ $user->u_name_th .' ' . $user->u_surname_th  }}"
-
-                                           placeholder="กรุณาระบุจำนวนผู้ร่วมวิจัย"
-                                           class="form-control input-md">
-                                    <span class="help-block">ระบุชื่อ นามสกุล</span>
-                                </div>
-
-                            </div>
-                        @else
-
-                            @foreach(old('rt_name') as $key => $team)
-                                <div class="row" id="team-list{{$key}}">
-                                    <label class="col-md-offset-1 col-md-2 control-label" for="textinput">
-                                        ชื่อผู้ร่วมวิจัย </label>
-                                    <div class="col-md-7">
-                                        <input type="hidden" name="rt_id[]">
-                                        <input id="" name="rt_name[]" type="text"
-                                               value="{{ $team }}"
-
-                                               placeholder="กรุณาระบุจำนวนผู้ร่วมวิจัย"
-                                               class="form-control input-md">
-                                        <span class="help-block">ระบุชื่อ นามสกุล</span>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button class="btn btn-danger" type="button" onclick="deleteRow({{$key}})">
-                                            <i class="fa fa-trash"></i>
-                                            Delete
-                                        </button>
-                                    </div>
-                                </div>
-
-                            @endforeach
-
-                        @endif
-
-                        @endIf
-                        @if(!empty($journal->team))
-                            @foreach($journal->team as $key => $team)
-                                <div class="row" id="team-list{{$key}}">
-                                    <label class="col-md-offset-1 col-md-2 control-label" for="textinput">
-                                        ชื่อผู้ร่วมวิจัย </label>
-                                    <div class="col-md-7">
-                                        <input type="hidden" name="rt_id[]">
-                                        <input id="" name="rt_name[]" type="text"
-                                               value="{{ $team->rt_name }}"
-
-                                               placeholder="กรุณาระบุจำนวนผู้ร่วมวิจัย"
-                                               class="form-control input-md">
-                                        <span class="help-block">ระบุชื่อ นามสกุล</span>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button class="btn btn-danger" type="button" onclick="deleteRow({{$key}})">
-                                            <i class="fa fa-trash"></i>
-                                            Delete
-                                        </button>
-                                    </div>
-                                </div>
-                            @endforeach
-                            @endIf
-
-                            <div class="team-list">
-
-                            </div>
-
-
-
-                            <div class="form-group">
-
-                                <div class="col-md-6 col-md-pull-2">
-                                </div>
-
-                                <div class="col-md-6 col-md-pull-1">
-                                    <ul class="list-inline pull-right">
-                                        <li>
-                                            <button type="button" class="btn btn-warning prev-step"><i
-                                                        class="fa fa-arrow-left"></i> Previous
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button type="submit" class="btn btn-success next-step"> Save <i
-                                                        class="fa fa-save"></i></button>
-                                        </li>
-
-                                    </ul>
-                                </div>
-
-                            </div>
                 </div>
                 {{-- TAB 4--}}
                 {{--     <div class="tab-pane" role="tabpanel" id="complete">
@@ -828,28 +737,6 @@
             reader.readAsDataURL(file);
         });
 
-        var number = 50;
-        $('#add-team').on('click', function () {
-
-            var team = '';
-            team += ' <div id="team-list' + number + '">'
-            team += ' <div class="form-group" >'
-            team += '       <label class="col-md-offset-1 col-md-2 control-label" for="textinput"> ชื่อนามสกุล </label>';
-            team += '       <div class="col-md-7">';
-            team += '           <input id="" name="rt_name[]" type="text" value="" class="form-control input-md"  placeholder="กรุณากรอกชื่อนามสกุล" >';
-            team += '              <span class="help-block">ระบุ ชื่อ นามสกุล</span>';
-            team += '       </div>';
-            team += '       <div class="col-md-2">';
-            team += '           <button class="btn btn-danger" onclick="deleteRow(' + number + ')"><i class="fa fa-trash"></i> Delete</button>';
-            team += '       </div>';
-            team += ' </div>';
-            team += ' </div>';
-
-            number++;
-            $('.team-list').append(team);
-
-        })
-
         $('#accept-picker').datepicker({
             format: 'yyyy-mm-dd',
             autoclose: true,
@@ -865,12 +752,7 @@
             thaiyear: false              //Set เป็นปี พ.ศ.
         })
 
-        $('[data-toggle="tooltip"]').tooltip();
     });
 
-    function deleteRow(id) {
-
-        $('#team-list' + id).remove()
-    }
 
 </script>

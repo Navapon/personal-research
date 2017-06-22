@@ -238,7 +238,8 @@
                                                         <input type="text" id="u_birthdate" class="form-control"
                                                                name="u_birthdate"
                                                                placeholder="เลือกวันเดือนปีเกิด"
-                                                               value="{{ old('u_birthdate',$user->u_birthdate ) }}" readonly/>
+                                                               value="{{ old('u_birthdate',$user->u_birthdate ) }}"
+                                                               readonly/>
                                                         <span class="input-group-addon" data-toggle="tooltip"
                                                               title="คลิกเพื่อเลือกวันที่">
                                                                 <i class="glyphicon glyphicon-calendar"></i>
@@ -462,7 +463,7 @@
 
                                         <a href="{{ route('research.create',['type' => 'conference']) }}"
                                            class="btn btn-default">
-                                            <i class="fa fa-plus-circle"></i>
+                                            <i class="fa fa-plus-circle"></i>@
                                             Add Conference
                                         </a>
 
@@ -475,10 +476,20 @@
                                     </div>
                                 @endif
 
-                                <h2 class="boxHeadline"><i class="fa fa-file" aria-hidden="true"></i>
-                                    ผลงานด้านวารสารวิชาการ </h2>
+                                <br>
+                                <div class="well">
+                                    <h2 class="boxHeadline"><i class="fa fa-file" aria-hidden="true"></i>
+                                        ด้านวารสารวิชาการ ( Journal ) </h2>
 
-                                @include('research.journal.journal-profile-list',['journals' => $journals,'task' => 'edit'])
+                                    @include('research.journal.journal-profile-list',['journals' => $journals,'task' => 'edit'])
+                                </div>
+                                <br>
+                                <div class="well">
+                                    <h2 class="boxHeadline"><i class="fa fa-building-o" aria-hidden="true"></i>
+                                        ด้านการประชุมวิชาการ ( Conference ) </h2>
+
+                                    @include('research.conference.conference-profile-list',['conferences' => $conferences,'task' => 'edit'])
+                                </div>
                                 {{--<ul class="simpleListings">--}}
                                 {{--<li>--}}
                                 {{--<div class="title">Sr. UX designer <span>(3 years)</span></div>--}}
