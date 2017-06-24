@@ -14,8 +14,9 @@ class ResearchStatusSeeder extends Seeder
         DB::table('research_status')->insert(
             array(
 
-                array('rst_name' => 'ตีพิมพ์แล้ว'),
                 array('rst_name' => 'อยู่ในระหว่างการดำเนินการ'),
+                array('rst_name' => 'โครงการเสร็จสิ้น'),
+                array('rst_name' => 'ตีพิมพ์แล้ว'),
 
             ));
     }

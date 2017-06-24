@@ -14,9 +14,16 @@ class FundtypeSeeder extends Seeder
         DB::table('fund_type')->insert(
             array(
                 array( 'fund_name' => 'เงินงบประมาณแผ่นดิน' ),
-                array( 'fund_name' => 'เงินรายได้' ),
-                array( 'fund_name' => 'เงินจากนอก' ),
-                array( 'fund_name' => 'เงินอื่นๆ' ),
+                array( 'fund_name' => 'เงินรายได้มหาวิทยาลัย' ),
+                array( 'fund_name' => 'เงินรายได้คณะ สถาบัน สำนัก' ),
+                array( 'fund_name' => 'เงินจากแหล่งทุนภายนอก' ),
+                array( 'fund_name' => 'เงินอื่น ๆ' ),
+                array( 'fund_name' => 'วช.' ),
+                array( 'fund_name' => 'สกว.' ),
+                array( 'fund_name' => 'สวทช.' ),
+                array( 'fund_name' => 'สวรส.' ),
+                array( 'fund_name' => 'สกอ.' ),
+                array( 'fund_name' => 'สสวท.' ),
             )
         );
     }

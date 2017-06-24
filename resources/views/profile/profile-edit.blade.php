@@ -140,21 +140,26 @@
                     <h1 class="boxTitle">ข้อมูลส่วนตัว</h1>
                     <!-- Tabs -->
                     <ul class="nav nav-tabs userProfileTabs" role="tablist">
-                        <li role="presentation" class=""><a href="#tab-item-1" aria-controls="tab-item-1"
+                        <li role="presentation" class="active"><a href="#tab-item-1" aria-controls="tab-item-1"
                                                             role="tab"
                                                             data-toggle="tab"
                                                             aria-expanded="false">เกี่ยวกับเรา</a>
                         </li>
-                        <li role="presentation" class="active"><a href="#tab-item-2" aria-controls="tab-item-2"
+                        <li role="presentation" class=""><a href="#tab-item-2" aria-controls="tab-item-2"
                                                                   role="tab" data-toggle="tab"
                                                                   aria-expanded="true">ผลงานวิชาการ</a>
+                        </li>
+
+                        <li role="presentation" class=""><a href="#tab-item-3" aria-controls="tab-item-3"
+                                                                  role="tab" data-toggle="tab"
+                                                                  aria-expanded="true">โครงการวิจัย</a>
                         </li>
 
                     </ul>
 
                     <div class="tab-content">
                         <!-- About -->
-                        <div role="tabpanel" class="tab-pane fade " id="tab-item-1">
+                        <div role="tabpanel" class="tab-pane fade active in" id="tab-item-1">
                             <hr>
                             <div class="userProfileContent">
                                 <div class="i form-group">
@@ -448,7 +453,7 @@
                         </div>
 
                         <!-- Research -->
-                        <div role="tabpanel" class="tab-pane fade  active in" id="tab-item-2">
+                        <div role="tabpanel" class="tab-pane fade" id="tab-item-2">
                             <hr>
                             <div class="i form-group">
 
@@ -458,19 +463,19 @@
                                         <a href="{{ route('research.create',['type' => 'journal']) }}"
                                            class="btn btn-default">
                                             <i class="fa fa-plus-circle"></i>
-                                            Add Journal
+                                            เพิ่มวารสาร ( Journal )
                                         </a>
 
                                         <a href="{{ route('research.create',['type' => 'conference']) }}"
                                            class="btn btn-default">
-                                            <i class="fa fa-plus-circle"></i>@
-                                            Add Conference
+                                            <i class="fa fa-plus-circle"></i>
+                                            เพิ่มบทความ ( Conference )
                                         </a>
 
                                         <a href="{{ route('research.create',['type' => 'book']) }}"
                                            class="btn btn-default">
                                             <i class="fa fa-plus-circle"></i>
-                                            Add Book
+                                            เพิ่มสิทธิบัตร
                                         </a>
 
                                     </div>
@@ -486,10 +491,33 @@
                                 <br>
                                 <div class="well">
                                     <h2 class="boxHeadline"><i class="fa fa-building-o" aria-hidden="true"></i>
-                                        ด้านการประชุมวิชาการ ( Conference ) </h2>
+                                        ด้านบทความประชุมวิชาการ ( Conference ) </h2>
 
                                     @include('research.conference.conference-profile-list',['conferences' => $conferences,'task' => 'edit'])
                                 </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Project  -->
+                        <div role="tabpanel" class="tab-pane fade" id="tab-item-3">
+                            <hr>
+                            <div class="i form-group">
+
+                                @if(Auth::id() == $user->u_id)
+                                    <div class="btn-group form-group">
+
+                                        <a href="{{ route('research.create',['type' => 'book']) }}"
+                                           class="btn btn-default">
+                                            <i class="fa fa-plus-circle"></i>
+                                            เพิ่มโครงการวิจัยที่กำลังดำเนินงาน
+                                        </a>
+
+                                    </div>
+                                @endif
+
+                                <br>
+
                                 {{--<ul class="simpleListings">--}}
                                 {{--<li>--}}
                                 {{--<div class="title">Sr. UX designer <span>(3 years)</span></div>--}}
@@ -502,7 +530,6 @@
 
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

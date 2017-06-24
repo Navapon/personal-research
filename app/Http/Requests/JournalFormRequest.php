@@ -31,6 +31,7 @@ class JournalFormRequest extends FormRequest
             'rj_source_url' => 'required|min:10',
             'fund_id' => 'required',
             'rj_accept_date' => 'required',
+
             'rj_publish_date' => 'required',
             'rj_publish_level' => 'required',
             'rj_volume' => 'required|numeric',

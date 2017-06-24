@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
          $this->call(ResearchProceedingTypeSeeder::class);
          $this->call(FundtypeSeeder::class);
          $this->call(ResearchStatusSeeder::class);
+         $this->call(PatentTypeSeeder::class);
     }
 }
