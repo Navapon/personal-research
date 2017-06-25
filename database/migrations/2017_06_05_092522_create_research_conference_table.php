@@ -16,7 +16,7 @@ class CreateResearchConferenceTable extends Migration
         Schema::create('research_conference', function (Blueprint $table) {
             $table->increments('rc_id');
             $table->string('rc_article_name',400);
-            $table->string('rc_abstract',1000);
+            $table->string('rc_abstract',1500);
             $table->string('rc_meta_tag',500);
             $table->date('rc_publish_date');
             $table->string('rc_evaluate_article')->nullable();

@@ -128,7 +128,10 @@
                                                             role="tab" data-toggle="tab"
                                                             aria-expanded="true">ผลงานวิชาการ</a>
                         </li>
-
+                        <li role="presentation" class=""><a href="#tab-item-3" aria-controls="tab-item-3"
+                                                            role="tab" data-toggle="tab"
+                                                            aria-expanded="true">โครงการวิจัย</a>
+                        </li>
                     </ul>
 
                     <div class="tab-content">
@@ -210,7 +213,20 @@
 
                             </div>
                         </div>
+                        {{-- Project --}}
+                        <div role="tabpanel" class="tab-pane fade" id="tab-item-3">
+                            <hr>
+                            <div class="i form-group">
 
+                                <br>
+
+                                <h2 class="boxHeadline"><i class="fa fa-building-o" aria-hidden="true"></i>
+                                    โครงการวิจัย </h2>
+
+                                @include('research.project.project-profile-list',['projects' => $projects,'task' => 'show'])
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

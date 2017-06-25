@@ -35,6 +35,17 @@ class UserresearchModel extends Model
 
     }
 
+    public function project ()
+    {
+
+        return $this->belongsTo(ProjectModel::class, 'rp_id', 'rp_id');
+
+    }
+
+
+
+
+
     public function user ()
     {
 

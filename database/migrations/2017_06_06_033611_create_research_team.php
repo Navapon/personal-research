@@ -17,6 +17,8 @@ class CreateResearchTeam extends Migration
             $table->increments('rt_id');
             $table->integer('rj_id')->nullable();
             $table->integer('rc_id')->nullable();
+            $table->integer('rp_id')->nullable();
+            $table->integer('patent_id')->nullable();
             $table->string('rt_name',250);
             $table->timestamps();
         });

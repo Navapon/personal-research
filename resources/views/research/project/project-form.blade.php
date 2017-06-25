@@ -74,7 +74,7 @@
                                     style="color:red"> * </span></label>
                         <div class="col-md-8">
                                     <textarea class="form-control" name="rp_abstract" id="rp_abstract" cols="30"
-                                              rows="10"
+                                              rows="10" maxlength="1500"
                                               placeholder="บาคัดย่อโครงการวิจัย">{{ old('rp_abstract',isset($project->rp_abstract) ? $project->rp_abstract : '') }}</textarea>
                             <span class="help-block">ระบุบทคัดย่อของงานของท่าน</span>
                         </div>
@@ -103,7 +103,7 @@
                                     style="color:red"> * </span>
                         </label>
                         <div class="col-md-3">
-                            <select name="ืfund_id" id="ืfund_id" class="form-control">
+                            <select name="fund_id" id="ืfund_id" class="form-control">
                                 <option value="">กรุณาระบุประเภทแหล่งทุน</option>
                                 @foreach($funds as $fund)
                                     <option value="{{ $fund->fund_id }}"
@@ -144,7 +144,7 @@
                                 @foreach($years as $year)
                                     <option value="{{ $year->year_id }}"
                                             {{  old('rp_year') == $year->year_id  ? 'selected' : '' }}
-                                            {{  old('rp_year',isset($project) ? $project->year_id == $year->year_id  ? 'selected' : '' : '' )}}
+                                            {{  old('rp_year',isset($project) ? $project->rp_year == $year->year_id  ? 'selected' : '' : '' )}}
                                     >
 
                                         {{ $year->year_name }}
@@ -180,7 +180,7 @@
                                 @foreach($status as $item)
                                     <option value="{{ $item->rst_id }}"
                                             {{  old('rp_status') == $item->rst_id  ? 'selected' : '' }}
-                                            {{  old('rp_status',isset($project) ? $project->rp_status == $item->rsp_id  ? 'selected' : '' : '' )}}
+                                            {{  old('rp_status',isset($project) ? $project->rp_status == $item->rst_id  ? 'selected' : '' : '' )}}
                                     >
 
                                         {{ $item->rst_name }}
@@ -264,7 +264,8 @@
                             <span class="help-block">หมายเหตุ กรุณาอัพโหลดไฟล์</span>
 
 
-                            @if( $type == 'edit')
+                            @if( $type == 'edit' && (isset($project) && !empty($project->rp_file)))
+
                                 <a href="{{ asset('files').'/users/'. $project->user->u_id . '/project/'.$project->rp_file}}"
                                    class="btn btn-success">Uploaded file</a>
 
@@ -299,7 +300,8 @@
 
 
                     @include('research.components.research-team',[
-                        'obj' =>   isset($project) ? $project : ''
+                        'obj' =>   isset($project) ? $project : '',
+                        'user' => $user
                     ])
 
                     <div class="form-group">

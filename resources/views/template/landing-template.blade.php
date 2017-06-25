@@ -106,16 +106,16 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">ข้อมูลวิจัย <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="blog-home-1.html">ข้อมูลนักวิจัย</a>
+                            <a href="{{ route('profile.index') }}">ข้อมูลนักวิจัย</a>
                         </li>
                         <li>
-                            <a href="blog-home-2.html">ข้อมูลงานวิจัย</a>
+                            <a href="{{ route('research.index') }}">ข้อมูลงานวิจัย</a>
                         </li>
                         <li>
                             <a href="blog-post.html">ครุภัณฑ์สำหรับงานวิจัย</a>
                         </li>
                         <li>
-                            <a href="blog-post.html">ถิติงานวิจัย</a>
+                            <a href="blog-post.html">สถิติงานวิจัย</a>
                         </li>
                     </ul>
                 </li>
@@ -201,17 +201,11 @@
             $('#myModal').modal('show');
         </script>
     @endif
-    <footer>
-        <div class="row">
-            <div class="col-lg-12">
-                <p>Copyright &copy; scir.rmutk.ac.th <b> คณะวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยราชมงคลกรุงเทพ</b></p>
-            </div>
-        </div>
-    </footer>
+
+
+
 </div>
+
 </body>
+@include('components.footer')
 </html>
-
-<script>
-
-</script>

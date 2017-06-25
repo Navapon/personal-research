@@ -116,13 +116,29 @@ Breadcrumbs::register('conference.show', function($breadcrumbs,$id)
     $breadcrumbs->push('ข้อมูลวารสารวิชาการ', route('conference.show',$conference->conference->rc_id ));
 });
 
-//Breadcrumbs::register('conference.show', function($breadcrumbs,$id)
-//{
-////    $journal = \App\UserresearchModel::with(['journal','user'])->where('rj_id',$id)->first();
-//
-//    $breadcrumbs->parent('profile.show',$journal->user->u_id);
-//    $breadcrumbs->push('ข้อมูลวารสารวิชาการ', route('conference.show',$journal->journal->rj_id ));
-//});
+/*
+ * Project
+ * */
 
+Breadcrumbs::register('project.create', function($breadcrumbs)
+{
+
+    $breadcrumbs->parent('profile.show',Auth::id());
+    $breadcrumbs->push('เพิ่มข้อมูลโครงการวิจัย', route('project.create'));
+});
+
+Breadcrumbs::register('project.edit', function($breadcrumbs,$id)
+{
+    $breadcrumbs->parent('profile.show',Auth::id());
+    $breadcrumbs->push('แก้ไขโครงการวิจัย', route('project.edit',$id));
+});
+
+Breadcrumbs::register('project.show', function($breadcrumbs,$id)
+{
+    $project = \App\UserresearchModel::with(['project','user'])->where('rp_id',$id)->first();
+
+    $breadcrumbs->parent('profile.show',$project->user->u_id);
+    $breadcrumbs->push('ข้อมูลโครงการวิจัย', route('project.show',$project->project->rp_id ));
+});
 
 

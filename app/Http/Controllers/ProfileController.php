@@ -44,15 +44,16 @@ class ProfileController extends Controller
 
     public function show ($id)
     {
-
         $user = ProfileModel::find($id);
         $journals = UserresearchModel::with('journal')->has('journal')->where('u_id', $id)->get();;
         $conferences = UserresearchModel::with('conference')->has('conference')->where('u_id', $id)->get();
+        $projects = UserresearchModel::with('project')->has('project')->where('u_id', $id)->get();
 
         $data = array(
             'user' => $user,
             'journals' => $journals,
-            'conferences' => $conferences
+            'conferences' => $conferences,
+            'projects' => $projects
         );
         if (!empty($user))
             return view('profile.profile-show')->with($data);
@@ -76,6 +77,7 @@ class ProfileController extends Controller
         $academics = AcademicModel::all();
         $journals = UserresearchModel::with('journal')->has('journal')->where('u_id', $id)->get();
         $conferences = UserresearchModel::with('conference')->has('conference')->where('u_id', $id)->get();
+        $projects = UserresearchModel::with('project')->has('project')->where('u_id', $id)->get();
 
         if ($current_user->u_id == $id) {
             $user = ProfileModel::find($id);
@@ -85,7 +87,8 @@ class ProfileController extends Controller
                 'majors' => $majors,
                 'academics' => $academics,
                 'journals' => $journals,
-                'conferences' => $conferences
+                'conferences' => $conferences,
+                'projects' => $projects
             );
 
         } else {
@@ -105,7 +108,7 @@ class ProfileController extends Controller
             'u_email' => 'required|string|email',
             'u_surname_th' => 'required|string',
             'u_birthdate' => 'required|string',
-            'u_major_id' => 'required',
+            'u_major_id' => 'required'
         ]);
 
         $profile = ProfileModel::find($id);;

@@ -35,6 +35,7 @@
             </div>
 
         </div>
+
     @else
 
         @foreach(old('rt_name') as $key => $team)
@@ -63,6 +64,7 @@
     @endif
 
     @endIf
+
     @if(!empty($obj->team))
         @foreach($obj->team as $key => $team)
             <div class="row" id="team-list{{$key}}">

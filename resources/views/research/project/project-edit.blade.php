@@ -15,17 +15,17 @@
     {{ Form::open(
         ['route' =>
             [
-                'conference.update', $conference->rc_id
+                'project.update', $project->rp_id
              ],
                 'method' => 'PUT',
                 'class' => 'form-horizontal',
                 'enctype' => "multipart/form-data",
-                'id' => 'conference-form'
+                'id' => 'project-form'
          ])
     }}
 
 
-    @include('research.conference.conference-form',['type' => 'edit'])
+     @include('research.project.project-form',['type' => 'edit'])
 
     {!! Form::close() !!}
 

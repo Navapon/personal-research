@@ -28,7 +28,7 @@ class CreateResearchJournalTable extends Migration
             $table->integer('rj_volume');
             $table->integer('rj_no');
             $table->string('rj_page');
-            $table->string('rj_abstract','1000');
+            $table->string('rj_abstract','1500');
             $table->string('rj_meta_tag');
             $table->string('rj_evaluate_article')->nullable();
             $table->integer('rj_publish_level');

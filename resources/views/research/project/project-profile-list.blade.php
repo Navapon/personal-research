@@ -1,83 +1,138 @@
-<ul class="simpleListings">
-    @if ( count($conferences) > 0  )
+<div class="col-md-12 col-lg-12 col-xs-12">
+    <table class="table table-border table-responsive" id="project-list" width="100%">
+        <thead>
+        <tr>
+            <th>ลำดับ</th>
+            <th>ชื่อโครงการ</th>
+            <th>สถานะ</th>
+            <th>แหล่งทุน</th>
+            <th>ปี</th>
+            <th></th>
+            @if($task == 'edit')
+                <th></th>
+                <th></th>
+            @endif
+        </tr>
+        </thead>
+        <tbody>
+
+        @if(!empty($projects))
+            @foreach($projects as $project)
+
+                <tr>
+                    <td>{{ $loop->iteration  }}</td>
+                    <td>{{ $project->project->rp_name }}</td>
+                    <td>{{ $project->project->status->rst_name }}</td>
+                    <td>{{ $project->project->fund->fund_name}}</td>
+                    <td>{{ $project->project->rp_year}}</td>
+                    <td><a href="{{ route('project.show',$project->project->rp_id) }}" title="ดูข้อมูลโครงการ"><i
+                                    class="fa fa-search "></i></a></td>
+                    @if($task == 'edit')
+                        <td><a href="{{ route('project.edit',$project->project->rp_id) }}" title="แก้ไขข้อมูลโครงการ"><i
+                                        class="fa fa-edit "></i></a></td>
+                        <td>
+                            <form id="rp_delete{{$project->project->rp_id}}"
+                                  action="{{ route('project.destroy',$project->project->rp_id) }}"
+                                  method="post">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+
+                                <i id="del-btn" onclick="formconfirm({{ $project->project->rp_id }})"
+                                   class="fa fa-trash" title="แก้ไขข้อมูลโครงการ"></i>
+
+                            </form>
+                        </td>
+                    @endif
 
 
-        @foreach($conferences as $conference)
-            <li>
-                <a href="{{ route('conference.show',$conference->rc_id) }}">
-                    <div class="title">{{ $conference->conference->rc_article_name }}
-                        <span>
-                            ปีที่ {{ $conference->conference->rc_volume }}
-                            ฉบับที่ {{ $conference->conference->rc_issue or '-' }}
-                        </span>
-                    </div>
-                </a>
-                <div class="info">
-                    ชื่อการประชุม :{{ $conference->conference->rc_meeting_name }} <br>
-                    ผู้จัด :{{ $conference->conference->rc_meeting_name }} <br>
-                    วันที่ : {{ $conference->conference->rc_meeting_start }}
-                    ถึง {{ $conference->conference->rc_meeting_end }}<br>
+                </tr>
 
-                    <div class="row">
-                        @if($task == 'edit')
-                            <div class="pull-right ">
-                                <form id="rc_delete{{$conference->conference->rc_id}}"
-                                      action="{{ route('conference.destroy',$conference->conference->rc_id) }}"
-                                      method="post">
-                                    <a href="{{ route('conference.edit',$conference->conference->rc_id) }}"
-                                       class="btn btn-warning"><i class="fa fa-edit"></i> Edit</a>
+            @endforeach
+        @endif
+        </tbody>
+        <tfoot>
 
-                                    {{ method_field('DELETE') }}
-                                    {{ csrf_field() }}
-                                    <button class="btn btn-danger pull-right"    id="del-btn" onclick="formconfirm({{ $conference->conference->rc_id }})"
-                                            style="margin-left: 5px" type="button"><i
-                                             class="fa fa-trash"></i> Delete
-                                    </button>
-                                </form>
-                            </div>
-                        @endif
+        </tfoot>
+    </table>
+</div>
 
-                        <div class="pull-right " style="margin-right: 5px">
-                            <a href="{{ route('conference.show',$conference->conference->rc_id) }}"
-                               class="btn btn-info"><i class="fa fa-file-archive-o"></i> View </a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        @endforeach
-    @else
+<style>
+    .fa-trash {
+        color: red;
+        cursor: pointer;
+    }
 
-        <div class="alert alert-info" role="alert">ไม่มีข้อมูลวารสารวิชาการ</div>
+    #project-list th{
+        text-align: center;
+    }
 
-    @endif
+    #project-list tr td:nth-child(1){
+        width: 5%;
+        text-align: center;
+    }
+
+    #project-list tr td:nth-child(2){
+        width: 55%;
+        text-align: left;
+    }
+
+    #project-list tr td:nth-child(3){
+        width: 10%;
+        text-align: left;
+    }
+
+    #project-list tr td:nth-child(4){
+        width: 10%;
+        text-align: left;
+    }
+
+    #project-list tr td:nth-child(5){
+        width: 5%;
+        text-align: center;
+    }
+
+    #project-list tr td:nth-child(6){
+        width: 5%;
+        text-align: center;
+    }
+
+    #project-list tr td:nth-child(7){
+        width: 5%;
+        text-align: center;
+    }
+
+    #project-list tr td:nth-child(8){
+        width: 5%;
+        text-align: center;
+    }
+</style>
+
+<script>
+
+    $(function () {
+        $('#project-list').DataTable({
+            responsive: true
+        });
+    })
+
+    function formconfirm(id) {
 
 
-    <script>
+        swal({
+            title: 'ท่านแน่ใจว่าต้องการ ลบ ?',
+            text: "",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ใช่ ฉันแน่ใจ',
+            cancelButtonText: 'ขอฉันคิดดูอีกที'
+        }).then(function () {
 
-        $(function(){
-
+            $('form#rp_delete' + id).submit()
         })
 
-        function formconfirm(id) {
 
+    }
 
-
-                swal({
-                    title: 'ท่านแน่ใจว่าต้องการ ลบ ?',
-                    text: "",
-                    type: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'ใช่ ฉันแน่ใจ',
-                    cancelButtonText: 'ขอฉันคิดดูอีกที'
-                }).then(function () {
-
-                    $('form#rc_delete'+id).submit()
-                })
-
-
-        }
-
-    </script>
-</ul>
+</script>

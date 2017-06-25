@@ -83,7 +83,7 @@
                                     style="color:red"> * </span></label>
                         <div class="col-md-8">
                                     <textarea class="form-control" name="rc_abstract" id="rc_abstract" cols="30"
-                                              rows="10"
+                                              rows="10" maxlength="1500"
                                               placeholder="บทคัดย่อของวารสาร">{{ old('rc_abstract',isset($conference->rc_abstract) ? $conference->rc_abstract : '') }}</textarea>
                             <span class="help-block">ระบุบทคัดย่อของงานของท่าน</span>
                         </div>

@@ -141,18 +141,18 @@
                     <!-- Tabs -->
                     <ul class="nav nav-tabs userProfileTabs" role="tablist">
                         <li role="presentation" class="active"><a href="#tab-item-1" aria-controls="tab-item-1"
-                                                            role="tab"
-                                                            data-toggle="tab"
-                                                            aria-expanded="false">เกี่ยวกับเรา</a>
+                                                                  role="tab"
+                                                                  data-toggle="tab"
+                                                                  aria-expanded="false">เกี่ยวกับเรา</a>
                         </li>
                         <li role="presentation" class=""><a href="#tab-item-2" aria-controls="tab-item-2"
-                                                                  role="tab" data-toggle="tab"
-                                                                  aria-expanded="true">ผลงานวิชาการ</a>
+                                                            role="tab" data-toggle="tab"
+                                                            aria-expanded="true">ผลงานวิชาการ</a>
                         </li>
 
                         <li role="presentation" class=""><a href="#tab-item-3" aria-controls="tab-item-3"
-                                                                  role="tab" data-toggle="tab"
-                                                                  aria-expanded="true">โครงการวิจัย</a>
+                                                            role="tab" data-toggle="tab"
+                                                            aria-expanded="true">โครงการวิจัย</a>
                         </li>
 
                     </ul>
@@ -518,15 +518,11 @@
 
                                 <br>
 
-                                {{--<ul class="simpleListings">--}}
-                                {{--<li>--}}
-                                {{--<div class="title">Sr. UX designer <span>(3 years)</span></div>--}}
-                                {{--<div class="info">6th Sep 2012 - 24th Oct 2015 at <a href="#" title="#"--}}
-                                {{--class="text-orange">eFabrica.com</a>--}}
-                                {{--</div>--}}
-                                {{--</li>--}}
-                                {{--</ul>--}}
 
+                                <h2 class="boxHeadline"><i class="fa fa-building-o" aria-hidden="true"></i>
+                                    โครงการวิจัย </h2>
+
+                                @include('research.project.project-profile-list',['projects' => $projects,'task' => 'edit'])
 
                             </div>
                         </div>
