@@ -17,9 +17,11 @@ class AlterReserchProject extends Migration
             //
             $table->unsignedInteger('fund_id')->change();
             $table->unsignedInteger('rp_status')->change();
+            $table->unsignedInteger('rp_year')->change();
 
             $table->foreign('fund_id')->references('fund_id')->on('fund_type');
             $table->foreign('rp_status')->references('rst_id')->on('research_status');
+            $table->foreign('rp_year')->references('year_id')->on('year');
         });
     }
 

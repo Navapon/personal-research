@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
          $this->call(FundtypeSeeder::class);
          $this->call(ResearchStatusSeeder::class);
          $this->call(PatentTypeSeeder::class);
+         $this->call(YearSeeder::class);
     }
 }

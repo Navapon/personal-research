@@ -20,6 +20,10 @@ Route::resource('journal', 'JournalController');
 
 Route::resource('conference', 'ConferenceController');
 
+Route::resource('project', 'ProjectController');
+
+//Route::resource('patent', 'PatentController');
+
 
 
 Route::post('profile/uploadProfileImage', 'ProfileController@uploadProfileImage');

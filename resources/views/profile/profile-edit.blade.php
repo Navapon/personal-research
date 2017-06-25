@@ -507,10 +507,10 @@
                                 @if(Auth::id() == $user->u_id)
                                     <div class="btn-group form-group">
 
-                                        <a href="{{ route('research.create',['type' => 'book']) }}"
+                                        <a href="{{ route('research.create',['type' => 'project']) }}"
                                            class="btn btn-default">
                                             <i class="fa fa-plus-circle"></i>
-                                            เพิ่มโครงการวิจัยที่กำลังดำเนินงาน
+                                            เพิ่มโครงการวิจัย
                                         </a>
 
                                     </div>

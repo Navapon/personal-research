@@ -34,8 +34,6 @@ class ResearchContoller extends Controller
     public function create (Request $request)
     {
         $type = $request->type;
-        $funds = FundtypeModel::all();
-
 
         switch ($type) {
             case 'journal' :
@@ -45,9 +43,13 @@ class ResearchContoller extends Controller
 
                 return redirect()->route('conference.create');
                 break;
-            case 'book' :
+            case 'project' :
 
-                return redirect()->route('journal.create');
+                return redirect()->route('project.create');
+                break;
+            case 'patent' :
+
+                return redirect()->route('patent.create');
                 break;
             default:
                 alert()->warning('','ไม่พบประเภทผลงานวิชาการที่ระบุ');

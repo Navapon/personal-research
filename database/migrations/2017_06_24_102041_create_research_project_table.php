@@ -17,6 +17,7 @@ class CreateResearchProjectTable extends Migration
             $table->increments('rp_id');
             $table->string('rp_name',500);
             $table->string('rp_abstract',1000);
+            $table->string('rp_meta_tag',500);
             $table->decimal('rp_amount',12,2);
             $table->integer('fund_id');
             $table->string('rp_fund_name',250)->nullable();
