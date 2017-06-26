@@ -63,5 +63,10 @@ class UserresearchModel extends Model
         return $this->hasMany(ResearhteamModel::class,'rc_id','rc_id');
     }
 
+    public function teamProject ()
+    {
+        return $this->hasMany(ResearhteamModel::class,'rp_id','rp_id');
+    }
+
 
 }

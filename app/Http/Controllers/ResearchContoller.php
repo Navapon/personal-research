@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\FundtypeModel;
+use App\ConferenceModel;
 use App\JournalModel;
+use App\UserresearchModel;
 use Illuminate\Http\Request;
 
 class ResearchContoller extends Controller
@@ -21,11 +22,15 @@ class ResearchContoller extends Controller
 
     public function index ()
     {
+        $journals = UserresearchModel::with('journal')->has('journal')->get();
+        $projects = UserresearchModel::with('project')->has('project')->get();
+        $conferences = UserresearchModel::with('conference')->has('conference')->get();
 
-        $journals = JournalModel::all();
 
         $data = array(
-            'journals' => $journals
+            'journals' => $journals,
+            'projects' => $projects,
+            'conferences' => $conferences,
         );
 
         return view('research.research-list', $data);

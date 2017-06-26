@@ -3,14 +3,14 @@
 @section('meta_tag')
 
     <meta name="description"
-          content="{{ $conference->user->u_name_th }} {{$conference->user->u_surname_th }},{{ $conference->conference->rc_meta_tag }}">
+          content="{{ $project->project->rc_meta_tag }},{{ $project->user->u_name_th }} {{$project->user->u_surname_th }}">
 
 @endsection
 
 @section('page-header')
 
     @include('components.page-header',[
-        'header' => 'รายละเอียดการประชุมวิชาการ'
+        'header' => 'รายละเอียดโครงการวิจัย'
     ])
 
 @endsection
@@ -19,7 +19,7 @@
 @section('content')
 
     <!-- nav bar -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -32,35 +32,35 @@
                                 <div class="col-xs-12 col-sm-2">
                                     <figure>
                                         <img class="img-circle img-responsive" alt=""
-                                             src="{{ $conference->user->u_image ? asset('images').'/' .$conference->user->u_image: '/images/user-img.png' }}"
+                                             src="{{ $project->user->u_image ? asset('images').'/' .$project->user->u_image: '/images/user-img.png' }}"
                                         >
                                     </figure>
                                     <div class="row">
                                         <div class="col-xs-12 social-btns">
-                                            @if ( $conference->user->u_facebook)
+                                            @if ( $project->user->u_facebook)
                                                 <div class="col-xs-3 col-md-2 col-lg-1 social-btn-holder">
-                                                    <a href="{{ $conference->user->u_facebook }}"
-                                                       title="{{ $conference->user->u_facebook  }}" target="_blank"
+                                                    <a href="{{ $project->user->u_facebook }}"
+                                                       title="{{ $project->user->u_facebook  }}" target="_blank"
                                                        class="btn btn-social btn-block btn-facebook">
                                                         <i class="fa fa-facebook"></i> </a>
                                                 </div>
                                             @endif
 
-                                            @if($conference->user->u_line)
+                                            @if($project->user->u_line)
 
                                                 <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
-                                                    <a href="http://line.me/ti/p/~{{ $conference->user->u_line }}"
-                                                       title="{{ $conference->user->u_line  }}"
+                                                    <a href="http://line.me/ti/p/~{{ $project->user->u_line }}"
+                                                       title="{{ $project->user->u_line  }}"
                                                        target="_blank"
                                                        class="btn btn-social btn-block btn-line">
                                                         <i class="fa">L</i> </a>
                                                 </div>
                                             @endif
 
-                                            @if ($conference->user->u_instragram)
+                                            @if ($project->user->u_instragram)
                                                 <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
-                                                    <a href="http://instagram.com/_u/{{ $conference->user->u_line }}"
-                                                       title="{{ $conference->user->u_line  }}"
+                                                    <a href="http://instagram.com/_u/{{ $project->user->u_line }}"
+                                                       title="{{ $project->user->u_line  }}"
                                                        target="_blank"
                                                        class="btn
                                                        +btn-social btn-block btn-instagram">
@@ -75,23 +75,25 @@
                                     <ul class="list-group">
                                         <li class="list-group-item">
 
-                                            {{ $conference->user->academic->academic_name ? $conference->user->academic->academic_name : '' }}
-                                            {{ $conference->user->u_name_th . ' ' . $conference->user->u_surname_th }}
+                                            {{ $project->user->academic->academic_name ? $project->user->academic->academic_name : '' }}
+                                            {{ $project->user->u_name_th . ' ' . $project->user->u_surname_th }}
 
                                         </li>
-                                        <li class="list-group-item">
-                                            {{  $conference->user->u_name_en or '' }}
+                                        @if(!empty($project->user->u_name_en))
+                                            <li class="list-group-item">
+                                                {{  $project->user->u_name_en or '' }}
 
-                                            {{  $conference->user->u_surname_en or ''}}
-                                        </li>
-                                        <li class="list-group-item">
-                                            สาขา {{ $conference->user->major->major_name or ' - ' }}</li>
-                                        <li class="list-group-item"><i
-                                                    class="fa fa-phone"></i> {{ $conference->user->u_phone or ' - '}}
-                                        </li>
-                                        <li class="list-group-item"><i
-                                                    class="fa fa-envelope"></i> {{ $conference->user->u_email or ' - ' }}
-                                        </li>
+                                                {{  $project->user->u_surname_en or ''}}
+                                            </li>
+                                            @endIf
+                                            <li class="list-group-item">
+                                                สาขา {{ $project->user->major->major_name or ' - ' }}</li>
+                                            <li class="list-group-item"><i
+                                                        class="fa fa-phone"></i> {{ $project->user->u_phone or ' - '}}
+                                            </li>
+                                            <li class="list-group-item"><i
+                                                        class="fa fa-envelope"></i> {{ $project->user->u_email or ' - ' }}
+                                            </li>
                                     </ul>
                                 </div>
                             </div>
@@ -99,36 +101,29 @@
                     </div>
 
                     <div class="content">
-                        <div class="bs-callout bs-callout-danger">
-                            <h4>เอกสารวิจัย( Paper )</h4>
-                            <p>
-                                <a href="{{ asset('files').'/users/'. $conference->user->u_id . '/conference/'.$conference->conference->rc_file}}"
-                                   class="btn btn-success">คลิกเพื่อดาวโหลด</a>
 
-                            </p>
-
-                        </div>
 
                         <div class="bs-callout bs-callout-danger">
-                            <h4>ชื่องานวิจัย ( Article Name)</h4>
+                            <h4>ชื่อโครงการ </h4>
                             <p>
-                                {{ $conference->conference->rc_article_name }}
+                                {{ $project->project->rp_name }}
                             </p>
 
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4>บทคัดย่อ ( Abstract )</h4>
                             <p>
-                                {{ $conference->conference->rc_abstract}}
+                                {{ $project->project->rp_abstract}}
                             </p>
 
                         </div>
+
                         <div class="bs-callout bs-callout-danger">
                             <h4>ผู้เขียน ( Authors )</h4>
                             <p>
                             <ul>
-                                @if(!empty($conference->teamConference))
-                                    @foreach($conference->teamConference as $key => $team)
+                                @if(!empty($project->teamProject))
+                                    @foreach($project->teamProject as $key => $team)
                                         <li>
                                             {{ $team->rt_name }}
                                         </li>
@@ -139,252 +134,93 @@
 
                         </div>
                         <div class="bs-callout bs-callout-danger">
-                            <h4>ข้อมูลวารสาร ( Proceeding Infomation )</h4>
-                            <ul class="list-group">
+                            <h4>เอกสารโครงการ( Paper )</h4>
+                            <p>
+                                @if(!empty($project->project->rp_file))
+                                    <a href="{{ asset('files').'/users/'. $project->user->u_id . '/project/'.$project->project->rp_file}}"
+                                       class="btn btn-success">คลิกเพื่อดาวโหลด</a>
+                                @else
+                                    ไม่มีเอกสารอัพโหลด
+                                @endif
+                            </p>
 
-                                <a class="list-group-item inactive-link" href="#">
-                                    <h4 class="list-group-item-heading">
-                                        วันที่เผยแพร่
-                                    </h4>
-                                    <p class="list-group-item-text">
-                                        {{ $conference->conference->rc_publish_date or ' - ' }}
-                                    </p>
-                                </a>
-
-
-                                <a class="list-group-item inactive-link" href="#">
-                                    <h4 class="list-group-item-heading">
-                                        ประเมินบทความโดย
-                                    </h4>
-                                    <p class="list-group-item-text">
-                                        {{ $conference->conference->rc_evaluate_article or ' - ' }}
-                                    </p>
-                                </a>
-
-
-                                <a class="list-group-item inactive-link" href="#">
-                                    <h4 class="list-group-item-heading">
-                                        เผยแพร่ระดับ
-                                    </h4>
-                                    <p class="list-group-item-text">
-                                        {{ $conference->conference->publishlevel->rl_name or ' - ' }}
-                                    </p>
-                                </a>
-
-                                <a class="list-group-item inactive-link" href="#">
-                                    <h4 class="list-group-item-heading">
-                                        รูปแบบ Proceeding
-                                    </h4>
-                                    <p class="list-group-item-text">
-                                        {{ $conference->conference->proseedingType->rpt_name or ' - ' }}
-                                    </p>
-                                </a>
-
-                                <a class="list-group-item inactive-link" href="#">
-                                    <h4 class="list-group-item-heading">
-                                        รูปแบบการนำเสนอ
-                                    </h4>
-                                    <p class="list-group-item-text">
-                                        {{ $conference->conference->presentType->rsp_name or ' - ' }}
-                                    </p>
-                                </a>
-
-
-                                <a class="list-group-item inactive-link" href="#">
-                                    <h4 class="list-group-item-heading">
-                                        ปีที่ - ฉบับที่ - หน้าที่ ( Volume - Issue - Page )
-                                    </h4>
-                                    <p class="list-group-item-text">
-                                        ปี {{ $conference->conference->rc_volume or ' - ' }}
-                                        ฉบับที่ {{ $conference->conference->rc_issue or ' - ' }}
-                                        หน้าที่ {{ $conference->conference->rc_page or ' - ' }}
-                                    </p>
-                                </a>
-
-
-                                <a class="list-group-item inactive-link" href="#">
-                                    <h4 class="list-group-item-heading">
-                                        รางวัลที่ได้รับ
-                                    </h4>
-                                    <p class="list-group-item-text">
-                                        {{ $conference->conference->rc_award or ' - '}}
-                                    </p>
-                                </a>
-
-
-                            </ul>
                         </div>
 
                         <div class="bs-callout bs-callout-danger">
-                            <h4>ข้อมูลการประชุม</h4>
+                            <h4>ข้อมูลโครงการวิจัย</h4>
                             <ul class="list-group">
 
                                 <a class="list-group-item inactive-link" href="#">
                                     <h4 class="list-group-item-heading">
-                                        ชื่อการประชุม
+                                        แหล่งทุน
                                     </h4>
                                     <p class="list-group-item-text">
-                                        {{ $conference->conference->rc_meeting_name or ' - '}}
-                                    </p>
-                                </a>
-
-                                <a class="list-group-item inactive-link" href="#">
-                                    <h4 class="list-group-item-heading">
-                                        หน่วยงาน / องค์กรที่จัดประชุม
-                                    </h4>
-                                    <p class="list-group-item-text">
-                                        {{ $conference->conference->rc_meeting_owner or ' - '}}
+                                        {{ $project->project->fund->fund_name or ' - ' }}
                                     </p>
                                 </a>
 
 
                                 <a class="list-group-item inactive-link" href="#">
                                     <h4 class="list-group-item-heading">
-                                        สถานที่จัดการประชุม
+                                        ชื่อของทุน
                                     </h4>
                                     <p class="list-group-item-text">
-                                        {{ $conference->conference->rc_meeting_place or ' - '}}
+                                        {{ $project->project->rp_fund_name or ' - ' }}
                                     </p>
                                 </a>
 
 
                                 <a class="list-group-item inactive-link" href="#">
                                     <h4 class="list-group-item-heading">
-                                        จังหวัด / รัฐ
+                                        ปีทีได้รับทุน
                                     </h4>
                                     <p class="list-group-item-text">
-                                        {{ $conference->conference->rc_meeting_province or ' - '}}
+                                        {{ $project->project->rp_year or ' - ' }}
                                     </p>
                                 </a>
 
                                 <a class="list-group-item inactive-link" href="#">
                                     <h4 class="list-group-item-heading">
-                                        ช่วงวันจัดงาน
+                                        จำนวนเงินที่ได้รับ
                                     </h4>
                                     <p class="list-group-item-text">
-                                        ตั้งแต่วันที่ {{ $conference->conference->rc_meeting_start or ' - '}}
-                                        ถึงวันที่ {{ $conference->conference->rc_meeting_end or ' - '}}
+                                        {{ $project->project->rp_amount or ' - ' }}
+                                    </p>
+                                </a>
 
+                                <a class="list-group-item inactive-link" href="#">
+                                    <h4 class="list-group-item-heading">
+                                        สถานะปัจจุบันของโครงการ
+                                    </h4>
+                                    <p class="list-group-item-text">
+                                        {{ $project->project->status->rst_name or ' - ' }}
                                     </p>
                                 </a>
 
 
-                                {{--   <a class="list-group-item inactive-link" href="#">
-                                       <h4 class="list-group-item-heading">
-                                           วันที่อัพเดตข้อมูลล่าสุด
-                                       </h4>
-                                       <p class="list-group-item-text">
-                                           {{ $conference->conference->updated_at or ' - '}}
-                                       </p>
-                                   </a>--}}
+                                <a class="list-group-item inactive-link" href="#">
+                                    <h4 class="list-group-item-heading">
+                                        ระยะเวลาทำโครงการวิจัย
+                                    </h4>
+                                    <p class="list-group-item-text">
+                                        ตั้งแต่ {{ $project->project->rp_start or ' - ' }}
+                                        ถึงวันที่ {{ $project->project->rp_end or ' - ' }}
+                                    </p>
+                                </a>
 
                             </ul>
-
                         </div>
+
+
                         <div class="bs-callout bs-callout-danger">
                             <h4>วันที่อัพเดตข้อมูลล่าสุด</h4>
 
                             <p class="list-group-item-text">
-                                {{ $conference->conference->updated_at or ' - '}}
+                                {{ $project->project->updated_at or ' - '}}
                             </p>
 
                         </div>
                     </div>
-
-                    {{--  <div class="bs-callout bs-callout-danger">
-                          <h4>Language and Platform Skills</h4>
-                          <ul class="list-group">
-                              <a class="list-group-item inactive-link" href="#">
-                                  <div class="progress">
-                                      <div data-placement="top" style="width: 80%;"
-                                           aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" role="progressbar"
-                                           class="progress-bar progress-bar-success">
-                                          <span class="sr-only">80%</span>
-                                          <span class="progress-type">Java/ JavaEE/ Spring Framework </span>
-                                      </div>
-                                  </div>
-                                  <div class="progress">
-                                      <div data-placement="top" style="width: 70%;" aria-valuemax="100" aria-valuemin="0"
-                                           aria-valuenow="1" role="progressbar" class="progress-bar progress-bar-success">
-                                          <span class="sr-only">70%</span>
-                                          <span class="progress-type">PHP/ Lamp Stack</span>
-                                      </div>
-                                  </div>
-                                  <div class="progress">
-                                      <div data-placement="top" style="width: 70%;" aria-valuemax="100" aria-valuemin="0"
-                                           aria-valuenow="1" role="progressbar" class="progress-bar progress-bar-success">
-                                          <span class="sr-only">70%</span>
-                                          <span class="progress-type">JavaScript/ NodeJS/ MEAN stack </span>
-                                      </div>
-                                  </div>
-                                  <div class="progress">
-                                      <div data-placement="top" style="width: 65%;" aria-valuemax="100" aria-valuemin="0"
-                                           aria-valuenow="1" role="progressbar" class="progress-bar progress-bar-warning">
-                                          <span class="sr-only">65%</span>
-                                          <span class="progress-type">Python/ Numpy/ Scipy</span>
-                                      </div>
-                                  </div>
-                                  <div class="progress">
-                                      <div data-placement="top" style="width: 60%;" aria-valuemax="100" aria-valuemin="0"
-                                           aria-valuenow="60" role="progressbar"
-                                           class="progress-bar progress-bar-warning">
-                                          <span class="sr-only">60%</span>
-                                          <span class="progress-type">C</span>
-                                      </div>
-                                  </div>
-                                  <div class="progress">
-                                      <div data-placement="top" style="width: 50%;" aria-valuemax="100" aria-valuemin="0"
-                                           aria-valuenow="50" role="progressbar"
-                                           class="progress-bar progress-bar-warning">
-                                          <span class="sr-only">50%</span>
-                                          <span class="progress-type">C++</span>
-                                      </div>
-                                  </div>
-                                  <div class="progress">
-                                      <div data-placement="top" style="width: 10%;" aria-valuemax="100" aria-valuemin="0"
-                                           aria-valuenow="50" role="progressbar" class="progress-bar progress-bar-danger">
-                                          <span class="sr-only">10%</span>
-                                          <span class="progress-type">Go</span>
-                                      </div>
-                                  </div>
-                                  <div class="progress-meter">
-                                      <div style="width: 25%;" class="meter meter-left"><span
-                                                  class="meter-text">I suck</span></div>
-                                      <div style="width: 25%;" class="meter meter-left"><span class="meter-text">I know little</span>
-                                      </div>
-                                      <div style="width: 30%;" class="meter meter-right"><span class="meter-text">I'm a guru</span>
-                                      </div>
-                                      <div style="width: 20%;" class="meter meter-right"><span class="meter-text">I''m good</span>
-                                      </div>
-                                  </div>
-                              </a>
-                          </ul>
-                      </div>
-
-                      <div class="bs-callout bs-callout-danger">
-                          <h4>Education</h4>
-                          <table class="table table-striped table-responsive ">
-                              <thead>
-                              <tr>
-                                  <th>Degree</th>
-                                  <th>Graduation Year</th>
-                                  <th>CGPA</th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                              <tr>
-                                  <td>Masters in Computer Science and Engineering</td>
-                                  <td>2014</td>
-                                  <td> 3.50</td>
-                              </tr>
-                              <tr>
-                                  <td>BSc. in Computer Science and Engineering</td>
-                                  <td>2011</td>
-                                  <td> 3.25</td>
-                              </tr>
-                              </tbody>
-                          </table>
-                      </div>--}}
                 </div>
             </div>
             <!-- resume -->

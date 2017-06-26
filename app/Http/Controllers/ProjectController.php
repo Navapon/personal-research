@@ -147,7 +147,14 @@ class ProjectController extends Controller
     public function show($id)
     {
         //
+        $project = UserresearchModel::with(['project','user','teamProject'])->where('users_research.rp_id',$id)->first();
 
+
+        $data = array(
+            'project' => $project
+        );
+
+        return view('research.project.project-show')->with($data);
     }
 
     /**

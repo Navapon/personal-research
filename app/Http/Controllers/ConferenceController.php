@@ -73,7 +73,7 @@ class ConferenceController extends Controller
     {
         //
 
-        $conference = new ConferenceModel();
+        $project = new ConferenceModel();
 
         if ($request->file('rc_file')) {
 
@@ -86,40 +86,40 @@ class ConferenceController extends Controller
 
             $file_name = time() . $request->file('rc_file')->getClientOriginalExtension();
             $request->file('rc_file')->move(public_path($path), $file_name);
-            $conference->rc_file = $file_name;
+            $project->rc_file = $file_name;
         }
 
-        $conference->rc_article_name = $request->rc_article_name;
-        $conference->rc_abstract = $request->rc_abstract;
-        $conference->rc_meta_tag = $request->rc_article_name;
-        $conference->rc_publish_date = $request->rc_publish_date;
-        $conference->rc_evaluate_article = $request->rc_evaluate_article;
-        $conference->rc_proceeding_type = $request->rc_proceeding_type;
-        $conference->rc_present_type = $request->rc_present_type;
-        $conference->rc_publish_level = $request->rc_publish_level;
-        $conference->rc_volume = $request->rc_volume;
-        $conference->rc_issue = $request->rc_issue;
-        $conference->rc_page = $request->rc_page;
-        $conference->rc_award = $request->rc_award;
-        $conference->rc_file = $request->rc_file;
-        $conference->rc_meeting_name = $request->rc_meeting_name;
-        $conference->rc_meeting_owner = $request->rc_meeting_owner;
-        $conference->rc_meeting_place = $request->rc_meeting_place;
-        $conference->rc_meeting_province = $request->rc_meeting_province;
-        $conference->rc_meeting_start = $request->rc_meeting_start;
-        $conference->rc_meeting_end = $request->rc_meeting_end;
+        $project->rc_article_name = $request->rc_article_name;
+        $project->rc_abstract = $request->rc_abstract;
+        $project->rc_meta_tag = $request->rc_article_name;
+        $project->rc_publish_date = $request->rc_publish_date;
+        $project->rc_evaluate_article = $request->rc_evaluate_article;
+        $project->rc_proceeding_type = $request->rc_proceeding_type;
+        $project->rc_present_type = $request->rc_present_type;
+        $project->rc_publish_level = $request->rc_publish_level;
+        $project->rc_volume = $request->rc_volume;
+        $project->rc_issue = $request->rc_issue;
+        $project->rc_page = $request->rc_page;
+        $project->rc_award = $request->rc_award;
+        $project->rc_file = $request->rc_file;
+        $project->rc_meeting_name = $request->rc_meeting_name;
+        $project->rc_meeting_owner = $request->rc_meeting_owner;
+        $project->rc_meeting_place = $request->rc_meeting_place;
+        $project->rc_meeting_province = $request->rc_meeting_province;
+        $project->rc_meeting_start = $request->rc_meeting_start;
+        $project->rc_meeting_end = $request->rc_meeting_end;
 
 
         try {
             DB::beginTransaction();
 
             // Save journal to db
-            $conference->save();
+            $project->save();
 
             // Save who is owner this research
             $user_research = new UserresearchModel();
             $user_research->u_id = Auth::id();
-            $user_research->rc_id = $conference->rc_id;
+            $user_research->rc_id = $project->rc_id;
             $user_research->save();
 
             // Save team of this research
@@ -127,7 +127,7 @@ class ConferenceController extends Controller
 
                 $user_team = new  ResearhteamModel();
                 $user_team->rt_name = $item;
-                $user_team->rc_id = $conference->rc_id;
+                $user_team->rc_id = $project->rc_id;
                 $user_team->save();
 
             }
@@ -156,11 +156,11 @@ class ConferenceController extends Controller
      */
     public function show ($id)
     {
-        $conference = UserresearchModel::with(['conference','user','teamConference'])->where('users_research.rc_id',$id)->first();
+        $project = UserresearchModel::with(['conference','user','teamConference'])->where('users_research.rc_id',$id)->first();
 
 
         $data = array(
-            'conference' => $conference
+            'conference' => $project
         );
 
         return view('research.conference.conference-show')->with($data);
@@ -175,7 +175,7 @@ class ConferenceController extends Controller
     public function edit ($id)
     {
         $user_research = UserresearchModel::where('rc_id', $id)->get([ 'ur_id', 'u_id' ]);
-        $conference = ConferenceModel::with([ 'team' ])->where('research_conference.rc_id', $id)->first();
+        $project = ConferenceModel::with([ 'team' ])->where('research_conference.rc_id', $id)->first();
         $research_level = ResearchlevelModel::all();
         $proceeding = ResearchProceedingTypeModel::all();
         $present = ResearchPresentTypeModel::all();
@@ -185,7 +185,7 @@ class ConferenceController extends Controller
             $user = ProfileModel::find(Auth::id());
 
             $data = array(
-                'conference' => $conference,
+                'conference' => $project,
                 'research_level' => $research_level,
                 'proceedings' => $proceeding,
                 'presents' => $present,
@@ -211,7 +211,7 @@ class ConferenceController extends Controller
      */
     public function update (ConferenceFormRequest $request, $id)
     {
-        $conference = ConferenceModel::find($id);
+        $project = ConferenceModel::find($id);
 
         if ($request->file('rc_file')) {
 
@@ -223,42 +223,42 @@ class ConferenceController extends Controller
             }
             $file_name = time() . $request->file('rc_file')->getClientOriginalExtension();
             $request->file('rc_file')->move(public_path($path), $file_name);
-            $conference->rc_file = $file_name;
+            $project->rc_file = $file_name;
         }
 
-        $conference->rc_article_name = $request->rc_article_name;
-        $conference->rc_abstract = $request->rc_abstract;
-        $conference->rc_meta_tag = $request->rc_article_name;
-        $conference->rc_publish_date = $request->rc_publish_date;
-        $conference->rc_evaluate_article = $request->rc_evaluate_article;
-        $conference->rc_proceeding_type = $request->rc_proceeding_type;
-        $conference->rc_present_type = $request->rc_present_type;
-        $conference->rc_publish_level = $request->rc_publish_level;
-        $conference->rc_volume = $request->rc_volume;
-        $conference->rc_issue = $request->rc_issue;
-        $conference->rc_page = $request->rc_page;
-        $conference->rc_award = $request->rc_award;
-        $conference->rc_file = $request->rc_file;
-        $conference->rc_meeting_name = $request->rc_meeting_name;
-        $conference->rc_meeting_owner = $request->rc_meeting_owner;
-        $conference->rc_meeting_place = $request->rc_meeting_place;
-        $conference->rc_meeting_province = $request->rc_meeting_province;
-        $conference->rc_meeting_start = $request->rc_meeting_start;
-        $conference->rc_meeting_end = $request->rc_meeting_end;
+        $project->rc_article_name = $request->rc_article_name;
+        $project->rc_abstract = $request->rc_abstract;
+        $project->rc_meta_tag = $request->rc_article_name;
+        $project->rc_publish_date = $request->rc_publish_date;
+        $project->rc_evaluate_article = $request->rc_evaluate_article;
+        $project->rc_proceeding_type = $request->rc_proceeding_type;
+        $project->rc_present_type = $request->rc_present_type;
+        $project->rc_publish_level = $request->rc_publish_level;
+        $project->rc_volume = $request->rc_volume;
+        $project->rc_issue = $request->rc_issue;
+        $project->rc_page = $request->rc_page;
+        $project->rc_award = $request->rc_award;
+        $project->rc_file = $request->rc_file;
+        $project->rc_meeting_name = $request->rc_meeting_name;
+        $project->rc_meeting_owner = $request->rc_meeting_owner;
+        $project->rc_meeting_place = $request->rc_meeting_place;
+        $project->rc_meeting_province = $request->rc_meeting_province;
+        $project->rc_meeting_start = $request->rc_meeting_start;
+        $project->rc_meeting_end = $request->rc_meeting_end;
 
 
         try {
 
             DB::beginTransaction();
-            $conference->save();
+            $project->save();
             // Delete row
-            ResearhteamModel::where('rc_id', $conference->rc_id)->delete();
+            ResearhteamModel::where('rc_id', $project->rc_id)->delete();
             // Save team of this research
             foreach ($request->rt_name as $key => $item) {
 
                 $user_team = new ResearhteamModel();
                 $user_team->rt_name = $item;
-                $user_team->rc_id = $conference->rc_id;
+                $user_team->rc_id = $project->rc_id;
                 $user_team->save();
             }
 
@@ -296,8 +296,8 @@ class ConferenceController extends Controller
 
                 UserresearchModel::destroy($user_research->toArray());
 
-                $conference = ConferenceModel::find($id);
-                $conference->delete();
+                $project = ConferenceModel::find($id);
+                $project->delete();
 
                 DB::commit();
             } else {
