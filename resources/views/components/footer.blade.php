@@ -33,7 +33,7 @@
         margin-bottom: 0px !important;
     }
     .footer-distributed{
-        background-color: #292c2f;
+        background-color: #ffff5a;
         box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
         box-sizing: border-box;
         width: 100%;
@@ -55,7 +55,7 @@
     .footer-distributed p.footer-links{
         font-size:18px;
         font-weight: bold;
-        color:  #ffffff;
+        color:  #c7cc00;
         margin: 0 0 10px;
         padding: 0;
     }
