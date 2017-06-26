@@ -28,89 +28,15 @@
                 <div class="panel panel-default">
                     <div class="panel-heading resume-heading">
                         <div class="row">
-                            <div class="col-lg-12 col-md-12">
-                                <div class="col-xs-12 col-sm-2">
-                                    <figure>
-                                        <img class="img-circle img-responsive" alt=""
-                                             src="{{ $conference->user->u_image ? asset('images').'/' .$conference->user->u_image: '/images/user-img.png' }}"
-                                        >
-                                    </figure>
-                                    <div class="row">
-                                        <div class="col-xs-12 social-btns">
-                                            @if ( $conference->user->u_facebook)
-                                                <div class="col-xs-3 col-md-2 col-lg-1 social-btn-holder">
-                                                    <a href="{{ $conference->user->u_facebook }}"
-                                                       title="{{ $conference->user->u_facebook  }}" target="_blank"
-                                                       class="btn btn-social btn-block btn-facebook">
-                                                        <i class="fa fa-facebook"></i> </a>
-                                                </div>
-                                            @endif
-
-                                            @if($conference->user->u_line)
-
-                                                <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
-                                                    <a href="http://line.me/ti/p/~{{ $conference->user->u_line }}"
-                                                       title="{{ $conference->user->u_line  }}"
-                                                       target="_blank"
-                                                       class="btn btn-social btn-block btn-line">
-                                                        <i class="fa">L</i> </a>
-                                                </div>
-                                            @endif
-
-                                            @if ($conference->user->u_instragram)
-                                                <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
-                                                    <a href="http://instagram.com/_u/{{ $conference->user->u_line }}"
-                                                       title="{{ $conference->user->u_line  }}"
-                                                       target="_blank"
-                                                       class="btn
-                                                       +btn-social btn-block btn-instagram">
-                                                        <i class="fa fa-instagram"></i> </a>
-                                                </div>
-                                            @endif
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-10">
-                                    <ul class="list-group">
-                                        <li class="list-group-item">
-
-                                            {{ $conference->user->academic->academic_name ? $conference->user->academic->academic_name : '' }}
-                                            {{ $conference->user->u_name_th . ' ' . $conference->user->u_surname_th }}
-
-                                        </li>
-                                        <li class="list-group-item">
-                                            {{  $conference->user->u_name_en or '' }}
-
-                                            {{  $conference->user->u_surname_en or ''}}
-                                        </li>
-                                        <li class="list-group-item">
-                                            สาขา {{ $conference->user->major->major_name or ' - ' }}</li>
-                                        <li class="list-group-item"><i
-                                                    class="fa fa-phone"></i> {{ $conference->user->u_phone or ' - '}}
-                                        </li>
-                                        <li class="list-group-item"><i
-                                                    class="fa fa-envelope"></i> {{ $conference->user->u_email or ' - ' }}
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            @include('research.components.user-card',['obj' => $conference])
                         </div>
                     </div>
 
                     <div class="content">
-                        <div class="bs-callout bs-callout-danger">
-                            <h4>เอกสารวิจัย( Paper )</h4>
-                            <p>
-                                <a href="{{ asset('files').'/users/'. $conference->user->u_id . '/conference/'.$conference->conference->rc_file}}"
-                                   class="btn btn-success">คลิกเพื่อดาวโหลด</a>
 
-                            </p>
-
-                        </div>
 
                         <div class="bs-callout bs-callout-danger">
-                            <h4>ชื่องานวิจัย ( Article Name)</h4>
+                            <h4>ชื่องานวิจัย ( Article Name )</h4>
                             <p>
                                 {{ $conference->conference->rc_article_name }}
                             </p>
@@ -120,6 +46,15 @@
                             <h4>บทคัดย่อ ( Abstract )</h4>
                             <p>
                                 {{ $conference->conference->rc_abstract}}
+                            </p>
+
+                        </div>
+                        <div class="bs-callout bs-callout-danger">
+                            <h4>เเอกสารบทความวิจัย ( Paper )</h4>
+                            <p>
+                                <a href="{{ asset('files').'/users/'. $conference->user->u_id . '/conference/'.$conference->conference->rc_file}}"
+                                   class="btn btn-success">คลิกเพื่อดาวโหลด</a>
+
                             </p>
 
                         </div>

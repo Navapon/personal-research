@@ -6,15 +6,13 @@ namespace App\Http\Controllers;
 
 use App\FundtypeModel;
 use App\Http\Requests\ProjectRequest;
-use App\ProfileModel;;
+use App\ProfileModel;
 use App\ProjectModel;
 use App\ResearchstatusModel;
 use App\UserresearchModel;
 use App\ResearhteamModel;
-use App\ResearchlevelModel;
 
 use App\YearModel;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;

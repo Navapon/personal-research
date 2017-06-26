@@ -30,85 +30,11 @@
                 <div class="panel panel-default">
                     <div class="panel-heading resume-heading">
                         <div class="row">
-                            <div class="col-lg-12 col-md-12">
-                                <div class="col-xs-12 col-sm-2">
-                                    <figure>
-                                        <img class="img-circle img-responsive" alt=""
-                                             src="{{ $journal->user->u_image ? asset('images').'/' .$journal->user->u_image: '/images/user-img.png' }}"
-                                        >
-                                    </figure>
-                                    <div class="row">
-                                        <div class="col-xs-12 social-btns">
-                                            @if ( $journal->user->u_facebook)
-                                                <div class="col-xs-3 col-md-2 col-lg-1 social-btn-holder">
-                                                    <a href="{{ $journal->user->u_facebook }}"
-                                                       title="{{ $journal->user->u_facebook  }}" target="_blank"
-                                                       class="btn btn-social btn-block btn-facebook">
-                                                        <i class="fa fa-facebook"></i> </a>
-                                                </div>
-                                            @endif
-
-                                            @if($journal->user->u_line)
-
-                                                <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
-                                                    <a href="http://line.me/ti/p/~{{ $journal->user->u_line }}"
-                                                       title="{{ $journal->user->u_line  }}"
-                                                       target="_blank"
-                                                       class="btn btn-social btn-block btn-line">
-                                                        <i class="fa">L</i> </a>
-                                                </div>
-                                            @endif
-
-                                            @if ($journal->user->u_instragram)
-                                                <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
-                                                    <a href="http://instagram.com/_u/{{ $journal->user->u_line }}"
-                                                       title="{{ $journal->user->u_line  }}"
-                                                       target="_blank"
-                                                       class="btn
-                                                       +btn-social btn-block btn-instagram">
-                                                        <i class="fa fa-instagram"></i> </a>
-                                                </div>
-                                            @endif
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-10">
-                                    <ul class="list-group">
-                                        <li class="list-group-item">
-
-                                            {{ $journal->user->academic->academic_name ? $journal->user->academic->academic_name : '' }}
-                                            {{ $journal->user->u_name_th . ' ' . $journal->user->u_surname_th }}
-
-                                        </li>
-                                        <li class="list-group-item">
-                                            {{  $journal->user->u_name_en or '' }}
-
-                                            {{  $journal->user->u_surname_en or ''}}
-                                        </li>
-                                        <li class="list-group-item">
-                                            สาขา {{ $journal->user->major->major_name or ' - ' }}</li>
-                                        <li class="list-group-item"><i
-                                                    class="fa fa-phone"></i> {{ $journal->user->u_phone or ' - '}}</li>
-                                        <li class="list-group-item"><i
-                                                    class="fa fa-envelope"></i> {{ $journal->user->u_email or ' - ' }}
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            @include('research.components.user-card',['obj' => $journal])
                         </div>
                     </div>
 
                     <div class="content">
-                        <div class="bs-callout bs-callout-danger">
-                            <h4>เอกสารวิจัย ( Paper )</h4>
-                            <p>
-                                <a href="{{ asset('files').'/users/'. $journal->user->u_id . '/journal/'.$journal->journal->rj_file}}"
-                                   class="btn btn-success">คลิกเพื่อดาวโหลด</a>
-
-                            </p>
-
-                        </div>
 
                         <div class="bs-callout bs-callout-danger">
                             <h4>ชื่องานวิจัย ( Article Name)</h4>
@@ -124,6 +50,16 @@
                             </p>
 
                         </div>
+                        <div class="bs-callout bs-callout-danger">
+                            <h4>เอกสารวิจัย ( Paper )</h4>
+                            <p>
+                                <a href="{{ asset('files').'/users/'. $journal->user->u_id . '/journal/'.$journal->journal->rj_file}}"
+                                   class="btn btn-success">คลิกเพื่อดาวโหลด</a>
+
+                            </p>
+
+                        </div>
+
                         <div class="bs-callout bs-callout-danger">
                             <h4>ผู้เขียน ( Authors )</h4>
                             <p>

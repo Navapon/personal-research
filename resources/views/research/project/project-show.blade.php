@@ -28,75 +28,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading resume-heading">
                         <div class="row">
-                            <div class="col-lg-12 col-md-12">
-                                <div class="col-xs-12 col-sm-2">
-                                    <figure>
-                                        <img class="img-circle img-responsive" alt=""
-                                             src="{{ $project->user->u_image ? asset('images').'/' .$project->user->u_image: '/images/user-img.png' }}"
-                                        >
-                                    </figure>
-                                    <div class="row">
-                                        <div class="col-xs-12 social-btns">
-                                            @if ( $project->user->u_facebook)
-                                                <div class="col-xs-3 col-md-2 col-lg-1 social-btn-holder">
-                                                    <a href="{{ $project->user->u_facebook }}"
-                                                       title="{{ $project->user->u_facebook  }}" target="_blank"
-                                                       class="btn btn-social btn-block btn-facebook">
-                                                        <i class="fa fa-facebook"></i> </a>
-                                                </div>
-                                            @endif
-
-                                            @if($project->user->u_line)
-
-                                                <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
-                                                    <a href="http://line.me/ti/p/~{{ $project->user->u_line }}"
-                                                       title="{{ $project->user->u_line  }}"
-                                                       target="_blank"
-                                                       class="btn btn-social btn-block btn-line">
-                                                        <i class="fa">L</i> </a>
-                                                </div>
-                                            @endif
-
-                                            @if ($project->user->u_instragram)
-                                                <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
-                                                    <a href="http://instagram.com/_u/{{ $project->user->u_line }}"
-                                                       title="{{ $project->user->u_line  }}"
-                                                       target="_blank"
-                                                       class="btn
-                                                       +btn-social btn-block btn-instagram">
-                                                        <i class="fa fa-instagram"></i> </a>
-                                                </div>
-                                            @endif
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 col-sm-10">
-                                    <ul class="list-group">
-                                        <li class="list-group-item">
-
-                                            {{ $project->user->academic->academic_name ? $project->user->academic->academic_name : '' }}
-                                            {{ $project->user->u_name_th . ' ' . $project->user->u_surname_th }}
-
-                                        </li>
-                                        @if(!empty($project->user->u_name_en))
-                                            <li class="list-group-item">
-                                                {{  $project->user->u_name_en or '' }}
-
-                                                {{  $project->user->u_surname_en or ''}}
-                                            </li>
-                                            @endIf
-                                            <li class="list-group-item">
-                                                สาขา {{ $project->user->major->major_name or ' - ' }}</li>
-                                            <li class="list-group-item"><i
-                                                        class="fa fa-phone"></i> {{ $project->user->u_phone or ' - '}}
-                                            </li>
-                                            <li class="list-group-item"><i
-                                                        class="fa fa-envelope"></i> {{ $project->user->u_email or ' - ' }}
-                                            </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            @include('research.components.user-card',['obj' => $project])
                         </div>
                     </div>
 
@@ -117,7 +49,18 @@
                             </p>
 
                         </div>
+                        <div class="bs-callout bs-callout-danger">
+                            <h4>เอกสารโครงการ( Paper )</h4>
+                            <p>
+                                @if(!empty($project->project->rp_file))
+                                    <a href="{{ asset('files').'/users/'. $project->user->u_id . '/project/'.$project->project->rp_file}}"
+                                       class="btn btn-success">คลิกเพื่อดาวโหลด</a>
+                                @else
+                                    ไม่มีเอกสารอัพโหลด
+                                @endif
+                            </p>
 
+                        </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4>ผู้เขียน ( Authors )</h4>
                             <p>
@@ -130,18 +73,6 @@
                                     @endforeach
                                     @endIf
                             </ul>
-                            </p>
-
-                        </div>
-                        <div class="bs-callout bs-callout-danger">
-                            <h4>เอกสารโครงการ( Paper )</h4>
-                            <p>
-                                @if(!empty($project->project->rp_file))
-                                    <a href="{{ asset('files').'/users/'. $project->user->u_id . '/project/'.$project->project->rp_file}}"
-                                       class="btn btn-success">คลิกเพื่อดาวโหลด</a>
-                                @else
-                                    ไม่มีเอกสารอัพโหลด
-                                @endif
                             </p>
 
                         </div>
