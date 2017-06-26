@@ -25,7 +25,7 @@ class JournalController extends Controller
     {
         if (!$this->middleware('auth', [ 'except' => [ 'index', 'show' ] ])) {
 
-            alert()->warning('','กรุณาเข้าสู่ระบบเพื่อทำรายการ');
+            alert()->warning('', 'กรุณาเข้าสู่ระบบเพื่อทำรายการ');
             return redirect()->route('home');
         }
     }
@@ -65,7 +65,7 @@ class JournalController extends Controller
             // check directory exist
             if (!File::exists($path)) {
                 // path does not exist
-                File::makeDirectory($path, 0775, true);
+                File::makeDirectory($path, 0777, true, true);
             }
             //check file exist
 //            if (File::exists($path. $request->rj_file)) {
@@ -108,7 +108,7 @@ class JournalController extends Controller
 
 
             // Save team of this research
-            foreach ($request->rt_name as $key => $item){
+            foreach ($request->rt_name as $key => $item) {
 
                 $user_team = new ResearhteamModel();
                 $user_team->rt_name = $item;
@@ -138,7 +138,7 @@ class JournalController extends Controller
 
     public function show ($id)
     {
-        $journal = UserresearchModel::with(['journal','user','team'])->where('users_research.rj_id',$id)->first();
+        $journal = UserresearchModel::with([ 'journal', 'user', 'team' ])->where('users_research.rj_id', $id)->first();
 
 
         $data = array(
@@ -151,12 +151,12 @@ class JournalController extends Controller
     public function edit ($id)
     {
         $user_research = UserresearchModel::where('rj_id', $id)->get([ 'ur_id', 'u_id' ]);
-        $journal = JournalModel::with(['team'])->where('research_journal.rj_id',$id)->first();
+        $journal = JournalModel::with([ 'team' ])->where('research_journal.rj_id', $id)->first();
         $funds = FundtypeModel::all();
         $researchStatus = ResearchstatusModel::all();
         $research_level = ResearchlevelModel::all();
 
-        if (Auth::id() == $user_research[ 0 ][ 'u_id' ] ) {
+        if (Auth::id() == $user_research[ 0 ][ 'u_id' ]) {
 
             $user = ProfileModel::find(Auth::id());
 
@@ -220,7 +220,7 @@ class JournalController extends Controller
             // Delete row
             ResearhteamModel::where('rj_id', $journal->rj_id)->delete();
             // Save team of this research
-            foreach ($request->rt_name as $key => $item){
+            foreach ($request->rt_name as $key => $item) {
 
                 $user_team = new ResearhteamModel();
                 $user_team->rt_name = $item;
