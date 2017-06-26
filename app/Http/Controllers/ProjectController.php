@@ -82,7 +82,7 @@ class ProjectController extends Controller
             // check directory exist
             if (!File::exists($path)) {
                 // path does not exist
-                File::makeDirectory($path, 0775, true);
+                File::makeDirectory($path, 0775, true,true);
             }
 
             $file_name = time().'.' . $request->file('rp_file')->getClientOriginalExtension();
