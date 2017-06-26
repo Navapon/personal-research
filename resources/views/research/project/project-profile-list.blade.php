@@ -25,7 +25,7 @@
                         <td>{{ $loop->iteration  }}</td>
                         <td>{{ $project->project->rp_name }}</td>
 
-                        <td>{{ $project->project->user->user->academic->academic_name }} {{ $project->project->user->user->u_name_th }} {{ $project->project->user->user->u_surname_th }}</td>
+                        <td>{{ $project->project->user->user->academic->academic_name or ''}} {{ $project->project->user->user->u_name_th }} {{ $project->project->user->user->u_surname_th }}</td>
                         <td>{{ $project->project->status->rst_name }}</td>
                         <td>{{ $project->project->fund->fund_name}}</td>
                         <td>{{ $project->project->rp_year}}</td>

@@ -65,7 +65,7 @@ class JournalController extends Controller
             // check directory exist
             if (!File::exists($path)) {
                 // path does not exist
-                File::makeDirectory($path, 0777, true, true);
+                File::makeDirectory($path, 0775, true, true);
             }
             //check file exist
 //            if (File::exists($path. $request->rj_file)) {

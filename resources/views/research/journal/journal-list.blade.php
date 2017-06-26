@@ -17,7 +17,7 @@
             <tr>
                 <td style="text-align: center">{{ $loop->iteration }}</td>
                 <td>{{ $journal->journal->rj_article_name }}</td>
-                <td>{{ $journal->journal->user->user->academic->academic_name }} {{ $journal->journal->user->user->u_name_th }} {{ $journal->journal->user->user->u_surname_th }}</td>
+                <td>{{ $journal->journal->user->user->academic->academic_name or ''}} {{ $journal->journal->user->user->u_name_th }} {{ $journal->journal->user->user->u_surname_th }}</td>
                 <td>{{ $journal->journal->publishlevel->rl_name }}</td>
                 <td style="text-align: center"><a
                             href="{{ asset('files').'/users/'. $journal->journal->user->user->u_id . '/journal/'.$journal->journal->rj_file}}"

@@ -16,7 +16,7 @@
             <tr>
                 <td style="text-align: center">{{ $loop->iteration }}</td>
                 <td>{{ $conference->conference->rc_article_name }}</td>
-                <td>{{ $conference->conference->user->user->academic->academic_name }} {{ $conference->conference->user->user->u_name_th }} {{ $conference->conference->user->user->u_surname_th }}</td>
+                <td>{{ $conference->conference->user->user->academic->academic_name or ''}} {{ $conference->conference->user->user->u_name_th }} {{ $conference->conference->user->user->u_surname_th }}</td>
                 <td>{{ $conference->conference->rc_meeting_name }}</td>
                 <td>{{ $conference->conference->proseedingType->rpt_name }} ( {{ $conference->conference->presentType->rsp_name }} )</td>
                 <td style="text-align: center"><a href="{{ route('conference.show',$conference->conference->rc_id) }}"><i
