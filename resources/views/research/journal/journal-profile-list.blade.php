@@ -6,20 +6,20 @@
             <li>
                 <a href="{{ route('journal.show',$journal->rj_id) }}">
                     <div class="title">{{ $journal->journal->rj_article_name }}
-                        <span>{{ $journal->journal->rj_publish_date }}</span>
+                        <span> เผยแพร่ {{ \Carbon\Carbon::createFromFormat('Y-m-d',$journal->journal->rj_publish_date )->addYears(543)->toFormattedDateString() }}</span>
                     </div>
                 </a>
                 <div class="info">
                     {{ $journal->journal->rj_name }}
-                    <a href="{{ $journal->journal->rj_source_url }}" title="#" target="_blank"
+                    <a href="{{ $journal->journal->rj_source_url }}" title="คลิกเพื่อไปยังฐานข้อมูล Journal" target="_blank"
                        class="text-orange">{{ $journal->journal->rj_name }}</a>
-
 
 
                     <div class="row">
                         @if($task == 'edit')
                             <div class="pull-right ">
-                                <form id="rj_delete" action="{{ route('journal.destroy',$journal->journal->rj_id) }}"
+                                <form id="rj_delete{{$journal->journal->rj_id}}"
+                                      action="{{ route('journal.destroy',$journal->journal->rj_id) }}"
                                       method="post">
 
 
@@ -28,7 +28,8 @@
 
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
-                                    <button onclick="formconfirm()" class="btn btn-danger pull-right"
+                                    <button onclick="journalconfirm({{$journal->journal->rj_id}})"
+                                            class="btn btn-danger pull-right"
                                             style="margin-left: 5px" type="button"><i
                                                 id="del-btn" class="fa fa-trash"></i> Delete
                                     </button>
@@ -52,7 +53,7 @@
 
     <script>
 
-        function formconfirm() {
+        function journalconfirm(id) {
 
             swal({
                 title: 'ท่านแน่ใจว่าต้องการ ลบ ?',
@@ -65,7 +66,7 @@
                 cancelButtonText: 'ขอฉันคิดดูอีกที'
             }).then(function () {
 
-                $('form#rj_delete').submit();
+                $('form#rj_delete'+id).submit();
 
             })
         }

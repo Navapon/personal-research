@@ -92,12 +92,12 @@ class ProjectController extends Controller
         $project->rp_abstract = $request->rp_abstract;
         $project->rp_meta_tag = $request->rp_meta_tag;
         $project->fund_id = $request->fund_id;
-        $project->rp_fund_name = $request->fund_name;
+        $project->rp_fund_name = $request->rp_fund_name;
         $project->rp_year = $request->rp_year;
         $project->rp_amount = $request->rp_amount;
         $project->rp_status = $request->rp_status;
-        $project->rp_start = $request->rp_start;
-        $project->rp_end = $request->rp_end;
+        $project->rp_start = $request->date_rp_start_submit;
+        $project->rp_end = $request->date_rp_end_submit;
 
         try {
             DB::beginTransaction();
@@ -198,7 +198,7 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProjectRequest $request, $id)
+    public function update(ProjectRequest $reque]st, $id)
     {
         //
         $project =  ProjectModel::find($id);
@@ -221,12 +221,12 @@ class ProjectController extends Controller
         $project->rp_abstract = $request->rp_abstract;
         $project->rp_meta_tag = $request->rp_meta_tag;
         $project->fund_id = $request->fund_id;
-        $project->rp_fund_name = $request->fund_name;
+        $project->rp_fund_name = $request->rp_fund_name;
         $project->rp_year = $request->rp_year;
         $project->rp_amount = $request->rp_amount;
         $project->rp_status = $request->rp_status;
-        $project->rp_start = $request->rp_start;
-        $project->rp_end = $request->rp_end;
+        $project->rp_start = $request->date_rp_start_submit;
+        $project->rp_end = $request->date_rp_end_submit;
 
         try {
 

@@ -200,10 +200,10 @@
                                     style="color:red"> * </span>
                         </label>
                         <div class="col-md-3">
-                            <div class='input-group date' id='start-picker'>
-                                <input type="text" id="rp_start" class="form-control"
+                            <div class='input-group date' id=''>
+                                <input type="text" id="start-picker" class="form-control"
                                        name="rp_start"
-                                       value="{{ old('rp_start',isset($project->rp_start) ? $project->rp_start : '') }}"
+                                       value="{{ old('rp_start',isset($project->rp_start) ? \Carbon\Carbon::createFromFormat('Y-m-d',$project->rp_start)->toDateString(): '') }}"
                                        placeholder="คลิกเพื่อเลือกวันที่เริ่มต้นโครงการ" onkeydown="return false" readonly/>
                                 <span class="input-group-addon" data-toggle="tooltip" title="คลิกเพื่อเลือกวันที่">
                                     <span class="glyphicon glyphicon-calendar"> </span>
@@ -218,11 +218,12 @@
                         </label>
                         <div class="col-md-3">
 
-                            <div class='input-group date' id='end-picker'>
+                            <div class='input-group date' id=''>
                                 <input type="text" class="form-control" readonly
-                                       name="rp_end"
+                                       name="rp_end" id="end-picker"
                                        placeholder="คลิกเพื่อเลือกวันสิ้นสุดโครงการ" onkeydown="return false;"
-                                       value="{{ old('rp_end',isset($project->rp_end) ? $project->rp_end : '') }}"
+                                       value="{{ old('rp_end',
+                                       isset($project->rp_end) ?  \Carbon\Carbon::createFromFormat('Y-m-d',$project->rp_end)->toDateString()  : '') }}"
                                 />
                                 <span class="input-group-addon" data-toggle="tooltip" title="คลิกเพื่อเลือกวันที่">
                                         <i class="glyphicon glyphicon-calendar"></i>
@@ -604,13 +605,18 @@
         });
 
 
-        $('#start-picker,#end-picker,#publish-picker').datepicker({
-            format: 'yyyy-mm-dd',
-            autoclose: true,
-            language: 'th',             //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
-            thaiyear: true              //Set เป็นปี พ.ศ.
+        $('#start-picker,#end-picker').pickadate({
+            today: '',
+            labelMonthNext: 'กดเพื่อไปยังเดือนถัดไป',
+            labelMonthPrev: 'กดเพื่อย้อนไปยังเดือนก่อนหน้านี้',
+            labelMonthSelect: 'กดเพื่อเลือกเดือน',
+            labelYearSelect: 'กดเพื่อเลือกปี',
+            selectMonths: true,
+            selectYears: 50,
+            format: ' dddd, dd mmm, yyyy',
+            formatSubmit: 'yyyy-mm-dd',
+            hiddenPrefix: 'date_',
         })
-//            .datepicker("setDate", "0");//กำหนดเป็นวันปัจุบัน
 
 
     });

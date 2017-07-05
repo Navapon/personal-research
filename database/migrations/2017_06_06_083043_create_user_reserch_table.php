@@ -19,7 +19,7 @@ class CreateUserReserchTable extends Migration
             $table->integer('rj_id')->nullable();
             $table->integer('rc_id')->nullable();
             $table->integer('rp_id')->nullable();
-            $table->integer('patent_id')->nullable();
+            $table->integer('pt_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

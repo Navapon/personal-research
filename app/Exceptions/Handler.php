@@ -45,24 +45,30 @@ class Handler extends ExceptionHandler
      */
     public function render ($request, Exception $exception)
     {
+
         if ($this->isHttpException($exception)) {
             switch ($exception->getStatusCode()) {
                 // not found
                 case 404:
+                    alert()->info('','ไม่พบหน้าดังกล่าว');
                     return redirect()->guest('home');
                     break;
 
                 // internal error
                 case '500':
+                    alert()->info('','เกิดข้อผิดพลาดในการแสดงผล');
                     return redirect()->guest('home');
                     break;
 
                 default:
-                    return $this->renderHttpException($exception);
+                    return redirect()->guest('home');
                     break;
             }
         } else {
-            return parent::render($request, $exception);
+
+//            return parent::render($request, $exception);
+            alert()->info('','ไม่พบข้อมูล');
+            return redirect()->guest('home');
         }
 
     }

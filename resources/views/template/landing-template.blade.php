@@ -16,6 +16,7 @@
 
     <script src="{{ mix('js/app.js') }}"></script>
     <script src="{{ mix('js/all.js') }}"></script>
+
     <link rel="stylesheet" href="{{ mix ('css/app.css') }}">
     <link rel="stylesheet" href="{{ mix ('css/all.css') }}">
 
@@ -77,8 +78,10 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" style="color: white;font-family: 'Playfair Display', serif;font-size: 1.2em">
-                <label id="brand-font " style="color: #00CC00;">UTK </label> <label
-                        style="color:#575757">ราชมงคลกรุงเทพ</label>
+                <label id="brand-font " style="font-size: 1.7em">
+                    <label style="color: #00CC00;">UTK</label>
+                </label>
+                <label style="color:#575757">ราชมงคลกรุงเทพ</label>
             </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -134,7 +137,7 @@
                 @if (Auth::guest())
                     <li>
 
-                        <a data-toggle="modal" data-target="#myModal">Login</a>
+                        <a href="#" data-toggle="modal" data-target="#myModal">Login</a>
                     </li>
                 @else
                     <li class="dropdown">

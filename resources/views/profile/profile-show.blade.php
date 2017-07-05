@@ -10,7 +10,8 @@
 
 @section('meta_tag')
 
-    <meta name="description" content="{{ $user->u_name_th . ' ' . $user->u_surname_th }},{{$user->u_name_th}},คณะวิทยาศาสตร์,ราชมงคลกรุงเทพ,utk">
+    <meta name="description"
+          content="{{ $user->u_name_th . ' ' . $user->u_surname_th }},{{$user->u_name_th}},คณะวิทยาศาสตร์,ราชมงคลกรุงเทพ,utk">
 
 @endsection
 
@@ -202,6 +203,13 @@
                                         ด้านวารสารวิชาการ ( Journal ) </h2>
 
                                     @include('research.journal.journal-profile-list',['journals' => $journals,'task' => 'show'])
+                                </div>
+                                <br>
+                                <div class="well">
+                                    <h2 class="boxHeadline"><i class="fa fa-building-o" aria-hidden="true"></i>
+                                        สิทธิบัตร ( Patent ) </h2>
+                                    @includeIf('research.patent.patent-profile-list',['patents' => $patents,'task' => 'show'])
+
                                 </div>
                                 <br>
                                 <div class="well">

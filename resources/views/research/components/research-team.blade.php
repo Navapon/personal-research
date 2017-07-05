@@ -31,7 +31,7 @@
 
                        placeholder="กรุณาระบุจำนวนผู้ร่วมวิจัย"
                        class="form-control input-md">
-                <span class="help-block">ระบุชื่อ นามสกุล</span>
+                <span class="help-block">หากต้องการเพิ่มจำนวนผู้ร่วมวิจัย กดปุ่ม เพิ่มผู้ร่วมวิจัย ด้านขวามือ</span>
             </div>
 
         </div>
@@ -49,7 +49,7 @@
 
                            placeholder="กรุณาระบุจำนวนผู้ร่วมวิจัย"
                            class="form-control input-md">
-                    <span class="help-block">ระบุชื่อ นามสกุล</span>
+                    <span class="help-block">หากต้องการเพิ่มจำนวนผู้ร่วมวิจัย กดปุ่ม เพิ่มผู้ร่วมวิจัย ด้านขวามือ</span>
                 </div>
                 <div class="col-md-2">
                     <button class="btn btn-danger" type="button" onclick="deleteRow( {{$key}} )">
@@ -77,7 +77,7 @@
 
                            placeholder="กรุณาระบุจำนวนผู้ร่วมวิจัย"
                            class="form-control input-md">
-                    <span class="help-block">ระบุชื่อ นามสกุล</span>
+                    <span class="help-block">หากต้องการเพิ่มจำนวนผู้ร่วมวิจัย กดปุ่ม เพิ่มผู้ร่วมวิจัย ด้านขวามือ</span>
                 </div>
                 <div class="col-md-2">
                     <button class="btn btn-danger" type="button" onclick="deleteRow( {{$key}} )">

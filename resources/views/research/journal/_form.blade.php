@@ -142,7 +142,7 @@
                                     <span class="glyphicon glyphicon-link"> </span>
                                 </span>
                                 <input id="rj_source_url" name="rj_source_url" type="text"
-                                       placeholder="URL ฐานข้อมูลวารสารท่าน"
+                                       placeholder="URL ฐานข้อมูลวารสารท่าน เช่น https://www.scopus.com/"
                                        class="form-control input-md"
                                        value="{{ old('rj_source_url',isset($journal->rj_source_url) ? $journal->rj_source_url : '') }}"
                                 >
@@ -188,12 +188,15 @@
                                     style="color:red"> * </span>
                         </label>
                         <div class="col-md-3">
-                            <div class='input-group date' id='accept-picker'>
-                                <input type="text" id="rj_accept_date" class="form-control"
+                            <div class='input-group date' id=''>
+                                <input type="text" id="accept-picker" class="form-control"
                                        name="rj_accept_date"
-                                       value="{{ old('rj_accept_date',isset($journal->rj_accept_date) ? $journal->rj_accept_date : '') }}"
-                                       placeholder="คลิกเพื่อเลือกวันที่เอกสารตอบรับ" readonly/>
-                                <span class="input-group-addon" data-toggle="tooltip" title="คลิกเพื่อเลือกวันที่">
+                                       value="{{ old('rj_accept_date',isset($journal->rj_accept_date) ? \Carbon\Carbon::createFromFormat('Y-m-d',$journal->rj_accept_date)->toDateString() : '') }}"
+                                       placeholder="คลิกเพื่อเลือกวันที่เอกสารตอบรับ"/>
+
+                                <input type="hidden" name="accept-picker" >
+                                <span class="input-group-addon" data-toggle="tooltip"
+                                      title="คลิกที่กล่องด้านซ้ายเพื่อเลือกวันที่">
                                     <span class="glyphicon glyphicon-calendar"> </span>
                                 </span>
                             </div>
@@ -205,15 +208,16 @@
                                     style="color:red"> * </span>
                         </label>
                         <div class="col-md-3">
-
-                            <div class='input-group date' id='publish-picker'>
-                                <input type="text" class="form-control" readonly
+                            <div class='input-group date' id=''>
+                                <input type="text" id="publish-picker" class="form-control"
                                        name="rj_publish_date"
-                                       placeholder="คลิกเพื่อเลือกวันเดือนปีเกิด" onkeydown="return false;"
-                                       value="{{ old('rj_publish_date',isset($journal->rj_publish_date) ? $journal->rj_publish_date : '') }}"
-                                />
-                                <span class="input-group-addon" data-toggle="tooltip" title="คลิกเพื่อเลือกวันที่">
-                                        <i class="glyphicon glyphicon-calendar"></i>
+                                       value="{{ old('rj_publish_date',isset($journal->rj_publish_date) ? \Carbon\Carbon::createFromFormat('Y-m-d',$journal->rj_publish_date)->toDateString() : '') }}"
+                                       placeholder="คลิกเพื่อเลือกวันที่เอกสารตอบรับ"/>
+
+                                <input type="hidden" name="publish-picker" >
+                                <span class="input-group-addon" data-toggle="tooltip"
+                                      title="คลิกที่กล่องด้านซ้ายเพื่อเลือกวันที่">
+                                    <span class="glyphicon glyphicon-calendar"> </span>
                                 </span>
                             </div>
                             <span class="help-block">หากต้องการเปลี่ยนปีคลิก เดือน-ปี -> ปี</span>
@@ -367,6 +371,7 @@
                             <div class="input-group image-preview-input">
                                 <input type="text" class="form-control image-preview-filename"
                                        value="{{ old('rj_file',isset($journal->rj_file) ? $journal->rj_file : '') }}"
+                                       readonlyr
                                 >
 
                                 <!-- don't give a name === doesn't send on POST/GET -->
@@ -737,20 +742,20 @@
             reader.readAsDataURL(file);
         });
 
-        $('#accept-picker').datepicker({
-            format: 'yyyy-mm-dd',
-            autoclose: true,
-            language: 'th',             //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
-            thaiyear: false              //Set เป็นปี พ.ศ.
+        $('#accept-picker,#publish-picker').pickadate({
+            today: '',
+            labelMonthNext: 'กดเพื่อไปยังเดือนถัดไป',
+            labelMonthPrev: 'กดเพื่อย้อนไปยังเดือนก่อนหน้านี้',
+            labelMonthSelect: 'กดเพื่อเลือกเดือน',
+            labelYearSelect: 'กดเพื่อเลือกปี',
+            selectMonths: true,
+            selectYears: 50,
+            format: ' dddd, dd mmm, yyyy',
+            formatSubmit: 'yyyy-mm-dd',
+            hiddenPrefix: 'date_',
         })
-//            .datepicker("setDate", "0");//กำหนดเป็นวันปัจุบัน
 
-        $('#publish-picker').datepicker({
-            format: 'yyyy-mm-dd',
-            autoclose: true,
-            language: 'th',             //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
-            thaiyear: false              //Set เป็นปี พ.ศ.
-        })
+
 
     });
 

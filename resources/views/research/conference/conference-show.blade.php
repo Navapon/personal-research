@@ -53,7 +53,7 @@
                             <h4>เเอกสารบทความวิจัย ( Paper )</h4>
                             <p>
                                 <a href="{{ asset('files').'/users/'. $conference->user->u_id . '/conference/'.$conference->conference->rc_file}}"
-                                   class="btn btn-success">คลิกเพื่อดาวโหลด</a>
+                                   class="btn btn-success" target="_blank">คลิกเพื่อดาวโหลด</a>
 
                             </p>
 
@@ -82,7 +82,9 @@
                                         วันที่เผยแพร่
                                     </h4>
                                     <p class="list-group-item-text">
-                                        {{ $conference->conference->rc_publish_date or ' - ' }}
+
+                                        {{ \Carbon\Carbon::createFromFormat('Y-m-d',$conference->conference->rc_publish_date )->addYears(543)->toFormattedDateString() }}
+
                                     </p>
                                 </a>
 
@@ -92,6 +94,8 @@
                                         ประเมินบทความโดย
                                     </h4>
                                     <p class="list-group-item-text">
+
+
                                         {{ $conference->conference->rc_evaluate_article or ' - ' }}
                                     </p>
                                 </a>
@@ -197,8 +201,9 @@
                                         ช่วงวันจัดงาน
                                     </h4>
                                     <p class="list-group-item-text">
-                                        ตั้งแต่วันที่ {{ $conference->conference->rc_meeting_start or ' - '}}
-                                        ถึงวันที่ {{ $conference->conference->rc_meeting_end or ' - '}}
+
+                                        ตั้งแต่วันที่    {{ \Carbon\Carbon::createFromFormat('Y-m-d',$conference->conference->rc_meeting_start )->addYears(543)->toFormattedDateString() }}
+                                        ถึงวันที่    {{ \Carbon\Carbon::createFromFormat('Y-m-d',$conference->conference->rc_meeting_end )->addYears(543)->toFormattedDateString() }}
 
                                     </p>
                                 </a>

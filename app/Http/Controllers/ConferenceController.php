@@ -32,6 +32,7 @@ class ConferenceController extends Controller
             alert()->warning('', 'กรุณาเข้าสู่ระบบเพื่อทำรายการ');
             return redirect()->route('home');
         }
+
     }
 
 
@@ -92,7 +93,7 @@ class ConferenceController extends Controller
         $project->rc_article_name = $request->rc_article_name;
         $project->rc_abstract = $request->rc_abstract;
         $project->rc_meta_tag = $request->rc_article_name;
-        $project->rc_publish_date = $request->rc_publish_date;
+        $project->rc_publish_date = $request->date_rc_publish_date_submit;
         $project->rc_evaluate_article = $request->rc_evaluate_article;
         $project->rc_proceeding_type = $request->rc_proceeding_type;
         $project->rc_present_type = $request->rc_present_type;
@@ -106,8 +107,9 @@ class ConferenceController extends Controller
         $project->rc_meeting_owner = $request->rc_meeting_owner;
         $project->rc_meeting_place = $request->rc_meeting_place;
         $project->rc_meeting_province = $request->rc_meeting_province;
-        $project->rc_meeting_start = $request->rc_meeting_start;
-        $project->rc_meeting_end = $request->rc_meeting_end;
+        $project->rc_meeting_start = $request->date_rc_meeting_start_submit;
+        $project->rc_meeting_end = $request->date_rc_meeting_end_submit;
+
 
 
         try {
@@ -198,6 +200,7 @@ class ConferenceController extends Controller
             alert()->warning('เนื่องจากท่านไม่ใช่เจ้าของการประชุมครั้งนี้', 'ไม่สามารถแก้ไขได้');
             return redirect()->route('home');
         }
+
         return view('research.conference.conference-edit')->with($data);
 
     }
@@ -209,8 +212,9 @@ class ConferenceController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update (ConferenceFormRequest $request, $id)
+    public function update (Request $request, $id)
     {
+
         $project = ConferenceModel::find($id);
 
         if ($request->file('rc_file')) {
@@ -229,7 +233,7 @@ class ConferenceController extends Controller
         $project->rc_article_name = $request->rc_article_name;
         $project->rc_abstract = $request->rc_abstract;
         $project->rc_meta_tag = $request->rc_article_name;
-        $project->rc_publish_date = $request->rc_publish_date;
+        $project->rc_publish_date = $request->date_rc_publish_date_submit;
         $project->rc_evaluate_article = $request->rc_evaluate_article;
         $project->rc_proceeding_type = $request->rc_proceeding_type;
         $project->rc_present_type = $request->rc_present_type;
@@ -243,8 +247,8 @@ class ConferenceController extends Controller
         $project->rc_meeting_owner = $request->rc_meeting_owner;
         $project->rc_meeting_place = $request->rc_meeting_place;
         $project->rc_meeting_province = $request->rc_meeting_province;
-        $project->rc_meeting_start = $request->rc_meeting_start;
-        $project->rc_meeting_end = $request->rc_meeting_end;
+        $project->rc_meeting_start = $request->date_rc_meeting_start_submit;
+        $project->rc_meeting_end = $request->date_rc_meeting_end_submit;
 
 
         try {

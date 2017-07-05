@@ -113,11 +113,13 @@
                                     style="color:red"> * </span>
                         </label>
                         <div class="col-md-3">
-                            <div class='input-group date' id='publish-picker'>
-                                <input type="text" id="rc_publish_date" class="form-control"
+                            <div class='input-group date' id=''>
+                                <input type="text" id="publish-picker" class="form-control"
                                        name="rc_publish_date"
-                                       value="{{ old('rc_publish_date',isset($conference->rc_publish_date) ? $conference->rc_publish_date : '') }}"
+                                       value="{{ old('rc_publish_date',isset($conference->rc_publish_date) ? \Carbon\Carbon::createFromFormat('Y-m-d',$conference->rc_publish_date)->toDateString() : '') }}"
                                        placeholder="คลิกเพื่อเลือกวันที่เผยแพร่" readonly/>
+
+                                <input type="hidden" name="publish-picker" >
                                 <span class="input-group-addon" data-toggle="tooltip" title="คลิกเพื่อเลือกวันที่">
                                     <span class="glyphicon glyphicon-calendar"> </span>
                                 </span>
@@ -394,11 +396,12 @@
                                     style="color:red"> * </span>
                         </label>
                         <div class="col-md-3">
-                            <div class='input-group date' id='start-picker'>
-                                <input type="text" id="rc_meeting_start" class="form-control"
+                            <div class='input-group date' id=''>
+                                <input type="text" id="start-picker" class="form-control"
                                        name="rc_meeting_start"
                                        value="{{ old('rc_meeting_start',isset($conference->rc_meeting_start) ? $conference->rc_meeting_start : '') }}"
                                        placeholder="คลิกเพื่อเลือกวันที่การประชุม" onkeydown="return false" readonly/>
+                                <input type="hidden" name="start-picker">
                                 <span class="input-group-addon" data-toggle="tooltip" title="คลิกเพื่อเลือกวันที่">
                                     <span class="glyphicon glyphicon-calendar"> </span>
                                 </span>
@@ -412,12 +415,13 @@
                         </label>
                         <div class="col-md-3">
 
-                            <div class='input-group date' id='end-picker'>
+                            <div class='input-group date' id=''>
                                 <input type="text" class="form-control" readonly
-                                       name="rc_meeting_end"
+                                       name="rc_meeting_end" id="end-picker"
                                        placeholder="คลิกเพื่อเลือกวันที่การประชุม" onkeydown="return false;"
                                        value="{{ old('rc_meeting_end',isset($conference->rc_meeting_end) ? $conference->rc_meeting_end : '') }}"
                                 />
+                                <input type="hidden" name="end-picker">
                                 <span class="input-group-addon" data-toggle="tooltip" title="คลิกเพื่อเลือกวันที่">
                                         <i class="glyphicon glyphicon-calendar"></i>
                                 </span>
@@ -768,13 +772,19 @@
         });
 
 
-        $('#start-picker,#end-picker,#publish-picker').datepicker({
-            format: 'yyyy-mm-dd',
-            autoclose: true,
-            language: 'th',             //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
-            thaiyear: false              //Set เป็นปี พ.ศ.
+        $('#start-picker,#end-picker,#publish-picker').pickadate({
+            today: '',
+            labelMonthNext: 'กดเพื่อไปยังเดือนถัดไป',
+            labelMonthPrev: 'กดเพื่อย้อนไปยังเดือนก่อนหน้านี้',
+            labelMonthSelect: 'กดเพื่อเลือกเดือน',
+            labelYearSelect: 'กดเพื่อเลือกปี',
+            selectMonths: true,
+            selectYears: 50,
+            format: ' dddd, dd mmm, yyyy',
+            formatSubmit: 'yyyy-mm-dd',
+            hiddenPrefix: 'date_',
         })
-//            .datepicker("setDate", "0");//กำหนดเป็นวันปัจุบัน
+
 
 
     });

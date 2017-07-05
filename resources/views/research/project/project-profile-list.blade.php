@@ -42,7 +42,7 @@
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
 
-                                    <i id="del-btn" onclick="formconfirm({{ $project->project->rp_id }})"
+                                    <i id="del-btn" onclick="projectconfirm({{ $project->project->rp_id }})"
                                        class="fa fa-trash fa-2x bin" title="แก้ไขข้อมูลโครงการ"></i>
 
                                 </form>
@@ -121,7 +121,7 @@
         });
     })
 
-    function formconfirm(id) {
+    function projectconfirm(id) {
 
 
         swal({

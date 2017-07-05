@@ -42,9 +42,12 @@ class UserresearchModel extends Model
 
     }
 
+    public function patent()
+    {
 
+        return $this->belongsTo(PatentModel::class,'pt_id','pt_id');
 
-
+    }
 
     public function user ()
     {

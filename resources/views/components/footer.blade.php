@@ -3,9 +3,11 @@
     <div class="footer-right">
 
         <a href="#"><i class="fa fa-facebook"></i></a>
+{{--
         <a href="#"><i class="fa fa-twitter"></i></a>
         <a href="#"><i class="fa fa-linkedin"></i></a>
         <a href="#"><i class="fa fa-github"></i></a>
+--}}
 
     </div>
 
@@ -23,12 +25,16 @@
             <a href="#">ติดต่อเรา</a>
         </p>
 
-        <p>Copy Right สำนักวิทยบริการและเทคโนโลยีสารสนเทศ มหาวิทยาลัยราชมงคลกรุงเทพ</p>
+        <b><p><i>Copy Right สำนักวิทยบริการและเทคโนโลยีสารสนเทศ มหาวิทยาลัยราชมงคลกรุงเทพ <sup>2017</sup></i></p></b>
     </div>
 
 </footer>
 
 <style>
+
+    .footer-distributed .footer-left .footer-links a:hover{
+        color: #00aced;
+    }
     footer {
         margin-bottom: 0px !important;
     }
@@ -47,7 +53,7 @@
     .footer-distributed .footer-left p{
         color:  #8f9296;
         font-size: 14px;
-        margin: 0;
+
     }
 
     /* Footer links */
@@ -55,7 +61,7 @@
     .footer-distributed p.footer-links{
         font-size:18px;
         font-weight: bold;
-        color:  #c7cc00;
+        color:  black;
         margin: 0 0 10px;
         padding: 0;
     }
@@ -73,11 +79,13 @@
         max-width: 180px;
     }
 
-    .footer-distributed .footer-right a{
+    .footer-distributed .footer-right a .fa-facebook{
+
+        background-color:  #3b5998;
         display: inline-block;
         width: 35px;
         height: 35px;
-        background-color:  #33383b;
+
         border-radius: 2px;
 
         font-size: 20px;
@@ -111,10 +119,7 @@
         position: fixed;
         bottom: 0;
     }
-    *{
-        padding:0;
-        margin:0;
-    }
+
 
     @media (max-height:800px){
         footer { position: static; }

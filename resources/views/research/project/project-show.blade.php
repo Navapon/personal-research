@@ -134,8 +134,8 @@
                                         ระยะเวลาทำโครงการวิจัย
                                     </h4>
                                     <p class="list-group-item-text">
-                                        ตั้งแต่ {{ $project->project->rp_start or ' - ' }}
-                                        ถึงวันที่ {{ $project->project->rp_end or ' - ' }}
+                                        ตั้งแต่  {{ \Carbon\Carbon::createFromFormat('Y-m-d',$project->project->rp_start)->addYears(543)->toFormattedDateString() }}
+                                        ถึงวันที่ {{ \Carbon\Carbon::createFromFormat('Y-m-d',$project->project->rp_end)->addYears(543)->toFormattedDateString() }}
                                     </p>
                                 </a>
 

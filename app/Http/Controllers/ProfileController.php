@@ -48,12 +48,14 @@ class ProfileController extends Controller
         $journals = UserresearchModel::with('journal')->has('journal')->where('u_id', $id)->get();;
         $conferences = UserresearchModel::with('conference')->has('conference')->where('u_id', $id)->get();
         $projects = UserresearchModel::with('project')->has('project')->where('u_id', $id)->get();
+        $patents = UserresearchModel::with('patent')->has('patent')->where('u_id', $id)->get();
 
         $data = array(
             'user' => $user,
             'journals' => $journals,
             'conferences' => $conferences,
-            'projects' => $projects
+            'projects' => $projects,
+            'patents' => $patents
         );
         if (!empty($user))
             return view('profile.profile-show')->with($data);
@@ -78,6 +80,7 @@ class ProfileController extends Controller
         $journals = UserresearchModel::with('journal')->has('journal')->where('u_id', $id)->get();
         $conferences = UserresearchModel::with('conference')->has('conference')->where('u_id', $id)->get();
         $projects = UserresearchModel::with('project')->has('project')->where('u_id', $id)->get();
+        $patents = UserresearchModel::with('patent')->has('patent')->where('u_id', $id)->get();
 
         if ($current_user->u_id == $id) {
             $user = ProfileModel::find($id);
@@ -88,7 +91,8 @@ class ProfileController extends Controller
                 'academics' => $academics,
                 'journals' => $journals,
                 'conferences' => $conferences,
-                'projects' => $projects
+                'projects' => $projects,
+                'patents' => $patents
             );
 
         } else {
@@ -108,7 +112,8 @@ class ProfileController extends Controller
             'u_email' => 'required|string|email',
             'u_surname_th' => 'required|string',
             'u_birthdate' => 'required|string',
-            'u_major_id' => 'required'
+            'u_major_id' => 'required',
+            'u_identity' => 'required|min:13'
         ]);
 
         $profile = ProfileModel::find($id);;
@@ -116,12 +121,11 @@ class ProfileController extends Controller
         $profile->u_identity = $request->u_identity;
         $profile->u_academic_id = $request->u_academic_id;
         $profile->u_sex = $request->u_sex;
-
         $profile->u_name_th = $request->u_name_th;
         $profile->u_surname_th = $request->u_surname_th;
         $profile->u_name_en = $request->u_name_en;
         $profile->u_surname_en = $request->u_surname_en;
-        $profile->u_birthdate = $request->u_birthdate;
+        $profile->u_birthdate = $request->date_u_birthdate_submit;
         $profile->u_major_id = $request->u_major_id;
         $profile->u_phone = $request->u_phone;
         $profile->u_facebook = $request->u_facebook;

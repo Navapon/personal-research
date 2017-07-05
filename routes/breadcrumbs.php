@@ -142,3 +142,30 @@ Breadcrumbs::register('project.show', function($breadcrumbs,$id)
 });
 
 
+
+/*
+ * Patent
+ * */
+
+Breadcrumbs::register('patent.create', function($breadcrumbs)
+{
+
+    $breadcrumbs->parent('profile.show',Auth::id());
+    $breadcrumbs->push('เพิ่มข้อมูลสิทธิบัตร', route('patent.create'));
+});
+
+Breadcrumbs::register('patent.edit', function($breadcrumbs,$id)
+{
+    $breadcrumbs->parent('profile.show',Auth::id());
+    $breadcrumbs->push('แก้ไขข้อมูลสิทธิบัตร', route('patent.edit',$id));
+});
+
+Breadcrumbs::register('patent.show', function($breadcrumbs,$id)
+{
+    $patent = \App\UserresearchModel::with(['patent','user'])->where('pt_id',$id)->first();
+
+    $breadcrumbs->parent('profile.show',$patent->user->u_id);
+    $breadcrumbs->push('ข้อมูลสิทธิบัตร', route('patent.show',$patent->patent->pt_id ));
+});
+
+

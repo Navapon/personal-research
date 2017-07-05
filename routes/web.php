@@ -22,6 +22,8 @@ Route::resource('conference', 'ConferenceController');
 
 Route::resource('project', 'ProjectController');
 
+Route::resource('patent', 'PatentController');
+
 //Route::resource('patent', 'PatentController');
 
 

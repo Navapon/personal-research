@@ -57,6 +57,7 @@ class JournalController extends Controller
 
     public function store (JournalFormRequest $request)
     {
+
         $journal = new JournalModel();
 
         if ($request->file('rj_file')) {
@@ -82,8 +83,8 @@ class JournalController extends Controller
         $journal->rj_standard = $request->rj_standard;
         $journal->rj_owner = $request->rj_owner;
         $journal->rj_isbn = $request->rj_isbn;
-        $journal->rj_accept_date = $request->rj_accept_date;
-        $journal->rj_publish_date = $request->rj_publish_date;
+        $journal->rj_accept_date = $request->date_rj_accept_date_submit;
+        $journal->rj_publish_date = $request->date_rj_publish_date_submit;
         $journal->fund_id = $request->fund_id;
         $journal->rj_no = $request->rj_no;
         $journal->rj_page = $request->rj_page;
@@ -201,8 +202,8 @@ class JournalController extends Controller
         $journal->rj_standard = $request->rj_standard;
         $journal->rj_owner = $request->rj_owner;
         $journal->rj_isbn = $request->rj_isbn;
-        $journal->rj_accept_date = $request->rj_accept_date;
-        $journal->rj_publish_date = $request->rj_publish_date;
+        $journal->rj_accept_date = $request->date_rj_accept_date_submit;
+        $journal->rj_publish_date = $request->date_rj_publish_date_submit;
         $journal->fund_id = $request->fund_id;
         $journal->rj_no = $request->rj_no;
         $journal->rj_page = $request->rj_page;

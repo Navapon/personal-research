@@ -10,8 +10,8 @@
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
-        <div class="item active">
-            <div class="fill img-responsive"  style="background-image:url({{ asset('images/banners/home-banner.png') }});"></div>
+        <div class="item active img img-responsive">
+            <div class="fill" style="background-image:url({{ asset('images/banners/home-banner.png') }});"></div>
             <div class="carousel-caption">
                 <h2></h2>
             </div>

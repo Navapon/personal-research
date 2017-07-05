@@ -13,10 +13,10 @@
                     </div>
                 </a>
                 <div class="info">
-                    ชื่อการประชุม :{{ $conference->conference->rc_meeting_name }} <br>
-                    ผู้จัด :{{ $conference->conference->rc_meeting_name }} <br>
-                    วันที่ : {{ $conference->conference->rc_meeting_start }}
-                    ถึง {{ $conference->conference->rc_meeting_end }}<br>
+                    ชื่อการประชุม : {{ $conference->conference->rc_meeting_name }} <br>
+                    ผู้จัด : {{ $conference->conference->rc_meeting_name }} <br>
+                    วันที่ : {{ \Carbon\Carbon::createFromFormat('Y-m-d',$conference->conference->rc_meeting_start)->addYears(543)->toFormattedDateString() }}
+                    ถึง {{ \Carbon\Carbon::createFromFormat('Y-m-d',$conference->conference->rc_meeting_end)->addYears(543)->toFormattedDateString() }}<br>
 
                     <div class="row">
                         @if($task == 'edit')
@@ -29,7 +29,7 @@
 
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
-                                    <button class="btn btn-danger pull-right"    id="del-btn" onclick="formconfirm({{ $conference->conference->rc_id }})"
+                                    <button class="btn btn-danger pull-right"    id="del-btn" onclick="conferenceconfirm({{ $conference->conference->rc_id }})"
                                             style="margin-left: 5px" type="button"><i
                                              class="fa fa-trash"></i> Delete
                                     </button>
@@ -47,7 +47,7 @@
         @endforeach
     @else
 
-        <div class="alert alert-info" role="alert">ไม่มีข้อมูลวารสารวิชาการ</div>
+        <div class="alert alert-info" role="alert">ไม่มีข้อมูลการประชุมบทความวิชาการ</div>
 
     @endif
 
@@ -58,9 +58,7 @@
 
         })
 
-        function formconfirm(id) {
-
-
+        function conferenceconfirm(id) {
 
                 swal({
                     title: 'ท่านแน่ใจว่าต้องการ ลบ ?',

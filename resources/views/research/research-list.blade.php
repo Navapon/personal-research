@@ -63,6 +63,14 @@
 
 
             </div>
+
+            <div role="tabpanel" class="tab-pane fade" id="tab-item-4">
+                <hr>
+
+                @includeIf('research.patent.patent-list',['patents'=> $patents])
+
+
+            </div>
         </div>
     </div>
 

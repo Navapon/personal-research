@@ -102,7 +102,8 @@
                                         {{ $journal->journal->rj_owner or ' - ' }}
                                     </p>
                                 </a>
-                                <a class="list-group-item active-link" href="{{ $journal->journal->rj_source_url }}">
+                                <a class="list-group-item active-link" href="{{ $journal->journal->rj_source_url }}"
+                                   target="_blank">
                                     <h4 class="list-group-item-heading">
                                         ลิงค์ฐานข้อมูลวารสารที่เผยแพร่
                                     </h4>
@@ -127,7 +128,8 @@
                                         วันที่ได้รับการอนุมัติ
                                     </h4>
                                     <p class="list-group-item-text">
-                                        {{ $journal->journal->rj_accept_date or ' - ' }}
+                                        {{ \Carbon\Carbon::createFromFormat('Y-m-d',$journal->journal->rj_accept_date)->addYears(543)->toFormattedDateString() }}
+
                                     </p>
                                 </a>
 
@@ -136,7 +138,7 @@
                                         วันที่เผยแพร่
                                     </h4>
                                     <p class="list-group-item-text">
-                                        {{ $journal->journal->rj_publish_date or ' - ' }}
+                                        {{ \Carbon\Carbon::createFromFormat('Y-m-d',$journal->journal->rj_publish_date)->addYears(543)->toFormattedDateString() }}
                                     </p>
                                 </a>
 
@@ -185,7 +187,7 @@
                                         วันที่อัพเดตข้อมูลล่าสุด
                                     </h4>
                                     <p class="list-group-item-text">
-                                        {{ $journal->journal->updated_at or ' - '}}
+                                        {{ $journal->journal->updated_at }}
                                     </p>
                                 </a>
 
@@ -194,7 +196,7 @@
                     </div>
 
                     {{--  <div class="bs-callout bs-callout-danger">
-                          <h4>Language and Platform Skills</h4>
+                          <h4>Language and Platform Skills</h4>เ
                           <ul class="list-group">
                               <a class="list-group-item inactive-link" href="#">
                                   <div class="progress">

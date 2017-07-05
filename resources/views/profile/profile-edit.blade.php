@@ -12,7 +12,6 @@
 @section('content')
 
     <script src="{{ mix('js/date-picker-th.js') }}"></script>
-
     <script type="text/javascript">
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -189,17 +188,17 @@
                                         </div>
 
                                         <!-- Text input-->
-                                        <div class="form-group{{ $errors->has('u_identity') ? ' has-error' : '' }}">
-                                            <label class="col-sm-2 control-label"
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" {{ $errors->has('u_identity') ? ' has-error' : '' }}
                                                    for="textinput">รหัสบัตรประชาชน</label>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-4 {{ $errors->has('u_identity') ? ' has-error' : '' }}" >
                                                 <input type="text" maxlength="13" placeholder="ระบุรหัสบัตรประชาชน"
                                                        name="u_identity" class="form-control"
                                                        oninput="this.value=this.value.replace(/[^0-9]/g,''); "
                                                        value="{{ old('u_identity', $user->u_identity ) }}">
                                                 @if ($errors->has('u_identity'))
                                                     <span class="help-block">
-                                                        <strong>{{ $errors->first('u_email') }}</strong>
+                                                        <strong>กรุณาระบุเลขบัตรประชาชนให้ครบ 13 หลัก</strong>
                                                     </span>
                                                 @endif
                                             </div>
@@ -239,14 +238,15 @@
 
 
                                                 <div class="col-sm-4">
-                                                    <div class='input-group date' id='birthdate-picker'>
-                                                        <input type="text" id="u_birthdate" class="form-control"
-                                                               name="u_birthdate"
+                                                    <div class='input-group date' id=''>
+                                                        <input type="text" class="form-control"
+                                                               name="u_birthdate" id="birthdate-picker"
                                                                placeholder="เลือกวันเดือนปีเกิด"
                                                                value="{{ old('u_birthdate',$user->u_birthdate ) }}"
-                                                               readonly/>
+                                                               />
+                                                        <input type="hidden" id="u_birthdate">
                                                         <span class="input-group-addon" data-toggle="tooltip"
-                                                              title="คลิกเพื่อเลือกวันที่">
+                                                              title="คลิกชื่องด้านซ้ายเพื่อเลือกวันที่">
                                                                 <i class="glyphicon glyphicon-calendar"></i>
                                                         </span>
                                                     </div>
@@ -376,7 +376,7 @@
                                                                   style="background-color: #3b5998"><i
                                                                         class="fa fa-facebook" style="color:white"></i></span>
                                                     <input class="form-control left-border-none"
-                                                           placeholder="url เฟสบุ้คของท่าน" type="text"
+                                                           placeholder="url เฟสบุ้คของท่าน เช่น https://www.facebook.com/yourfacebookid type="text"
                                                            name="u_facebook"
                                                            value="{{  old('u_facebook',$user->u_facebook )}}">
                                                 </div>
@@ -472,7 +472,7 @@
                                             เพิ่มบทความ ( Conference )
                                         </a>
 
-                                        <a href="{{ route('research.create',['type' => 'book']) }}"
+                                        <a href="{{ route('research.create',['type' => 'patent']) }}"
                                            class="btn btn-default">
                                             <i class="fa fa-plus-circle"></i>
                                             เพิ่มสิทธิบัตร
@@ -486,15 +486,24 @@
                                     <h2 class="boxHeadline"><i class="fa fa-file" aria-hidden="true"></i>
                                         ด้านวารสารวิชาการ ( Journal ) </h2>
 
-                                    @include('research.journal.journal-profile-list',['journals' => $journals,'task' => 'edit'])
+                                    @includeIf('research.journal.journal-profile-list',['journals' => $journals,'task' => 'edit'])
                                 </div>
                                 <br>
                                 <div class="well">
                                     <h2 class="boxHeadline"><i class="fa fa-building-o" aria-hidden="true"></i>
+                                        สิทธิบัตร ( Patent ) </h2>
+                                    @includeIf('research.patent.patent-profile-list',['patents' => $patents,'task' => 'edit'])
+
+                                </div>
+                                    <br>
+                                <div class="well">
+                                    <h2 class="boxHeadline"><i class="fa fa-building-o" aria-hidden="true"></i>
                                         ด้านบทความประชุมวิชาการ ( Conference ) </h2>
 
-                                    @include('research.conference.conference-profile-list',['conferences' => $conferences,'task' => 'edit'])
+                                    @includeIf('research.conference.conference-profile-list',['conferences' => $conferences,'task' => 'edit'])
+
                                 </div>
+
 
                             </div>
                         </div>
@@ -1001,11 +1010,17 @@
 
     <script>
         $(function () {
-            $('#birthdate-picker').datepicker({
-                format: 'yyyy-mm-dd',
-                autoclose: true,
-                language: 'th',             //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
-                thaiyear: true              //Set เป็นปี พ.ศ.
+            $('#birthdate-picker').pickadate({
+                today: '',
+                labelMonthNext: 'กดเพื่อไปยังเดือนถัดไป',
+                labelMonthPrev: 'กดเพื่อย้อนไปยังเดือนก่อนหน้านี้',
+                labelMonthSelect: 'กดเพื่อเลือกเดือน',
+                labelYearSelect: 'กดเพื่อเลือกปี',
+                selectMonths: true,
+                selectYears: 120,
+                format: ' dddd, dd mmm, yyyy',
+                formatSubmit: 'yyyy-mm-dd',
+                hiddenPrefix: 'date_',
             })
 
             $('[data-toggle="tooltip"]').tooltip();
