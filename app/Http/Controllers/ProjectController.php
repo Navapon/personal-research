@@ -198,7 +198,7 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProjectRequest $reque]st, $id)
+    public function update(ProjectRequest $request, $id)
     {
         //
         $project =  ProjectModel::find($id);
