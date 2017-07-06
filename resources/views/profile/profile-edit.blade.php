@@ -189,9 +189,10 @@
 
                                         <!-- Text input-->
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label" {{ $errors->has('u_identity') ? ' has-error' : '' }}
+                                            <label class="col-sm-2 control-label"
+                                                   {{ $errors->has('u_identity') ? ' has-error' : '' }}
                                                    for="textinput">รหัสบัตรประชาชน</label>
-                                            <div class="col-sm-4 {{ $errors->has('u_identity') ? ' has-error' : '' }}" >
+                                            <div class="col-sm-4 {{ $errors->has('u_identity') ? ' has-error' : '' }}">
                                                 <input type="text" maxlength="13" placeholder="ระบุรหัสบัตรประชาชน"
                                                        name="u_identity" class="form-control"
                                                        oninput="this.value=this.value.replace(/[^0-9]/g,''); "
@@ -221,7 +222,7 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label"
                                                    for="textinput">ตำแหน่งทางวิชาการ</label>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-10">
                                                 <select name="u_academic_id" id="" class="form-control">
                                                     <option value="">ไม่มีตำแหน่งวิชาการ</option>
                                                     @foreach($academics as $academic)
@@ -232,18 +233,20 @@
                                                     @endforeach
                                                 </select>
                                             </div>
+                                        </div>
+                                        <div class="form-group">
                                             <div class="{{ $errors->has('u_birthdate') ? ' has-error' : '' }}">
                                                 <label class="col-sm-2 control-label"
                                                        for="textinput">วันเดือนปีเกิด</label>
 
 
-                                                <div class="col-sm-4">
+                                                <div class="col-sm-10">
                                                     <div class='input-group date' id=''>
                                                         <input type="text" class="form-control"
                                                                name="u_birthdate" id="birthdate-picker"
                                                                placeholder="เลือกวันเดือนปีเกิด"
                                                                value="{{ old('u_birthdate',$user->u_birthdate ) }}"
-                                                               />
+                                                        />
                                                         <input type="hidden" id="u_birthdate">
                                                         <span class="input-group-addon" data-toggle="tooltip"
                                                               title="คลิกชื่องด้านซ้ายเพื่อเลือกวันที่">
@@ -259,8 +262,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
                                         <!-- Text input-->
                                         <div class="form-group">
                                             <div class="{{ $errors->has('u_name_th') ? ' has-error' : '' }}">
@@ -376,9 +377,10 @@
                                                                   style="background-color: #3b5998"><i
                                                                         class="fa fa-facebook" style="color:white"></i></span>
                                                     <input class="form-control left-border-none"
-                                                           placeholder="url เฟสบุ้คของท่าน เช่น https://www.facebook.com/yourfacebookid type="text"
-                                                           name="u_facebook"
-                                                           value="{{  old('u_facebook',$user->u_facebook )}}">
+                                                           placeholder="url เฟสบุ้คของท่าน เช่น https://www.facebook.com/yourfacebookid type="
+                                                           text"
+                                                    name="u_facebook"
+                                                    value="{{  old('u_facebook',$user->u_facebook )}}">
                                                 </div>
                                             </div>
 
@@ -495,7 +497,7 @@
                                     @includeIf('research.patent.patent-profile-list',['patents' => $patents,'task' => 'edit'])
 
                                 </div>
-                                    <br>
+                                <br>
                                 <div class="well">
                                     <h2 class="boxHeadline"><i class="fa fa-building-o" aria-hidden="true"></i>
                                         ด้านบทความประชุมวิชาการ ( Conference ) </h2>
