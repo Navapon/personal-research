@@ -271,9 +271,12 @@
                             <div class="input-group image-preview-input">
                                 <input type="text" class="form-control image-preview-filename"
                                        value="{{ old('rc_file',isset($conference->rc_file) ? $conference->rc_file : '') }}"
-                                       readonly>
+                                       readonly
+                                >
+
+                                <!-- don't give a name === doesn't send on POST/GET -->
                                 <span class="input-group-btn">
-                                             <!-- image-preview-clear button -->
+                                        <!-- image-preview-clear button -->
                                             <button type="button" class="btn btn-danger image-preview-clear"
                                                     style="display:none;">
                                                 <span class="glyphicon glyphicon-remove"></span> Clear

@@ -2,10 +2,19 @@
 
 namespace App\Exceptions;
 
+use Adldap\Models\ModelDoesNotExistException;
 use Exception;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Foundation\Testing\HttpException;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\ValidationException;
+use Psy\Exception\ErrorException;
+use Symfony\Component\Debug\Exception\FatalThrowableError;
+use Symfony\Component\HttpKernel\Exception\FatalErrorException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -47,31 +56,81 @@ class Handler extends ExceptionHandler
     {
 
         if ($this->isHttpException($exception)) {
+
             switch ($exception->getStatusCode()) {
                 // not found
                 case 404:
-                    alert()->info('','ไม่พบหน้าดังกล่าว');
+                    alert()->info('', 'ไม่พบหน้าดังกล่าว');
                     return redirect()->guest('home');
                     break;
 
                 // internal error
                 case '500':
-                    alert()->info('','เกิดข้อผิดพลาดในการแสดงผล');
+                    alert()->info('', 'เกิดข้อผิดพลาดในการแสดงผล');
                     return redirect()->guest('home');
                     break;
 
                 default:
+
                     return redirect()->guest('home');
                     break;
             }
-        } else {
-
-//            return parent::render($request, $exception);
-            alert()->info('','ไม่พบข้อมูล');
-            return redirect()->guest('home');
         }
 
+        if ($exception instanceof ValidationException) {
+            return parent::render($request, $exception);
+        }
+
+        if ($exception instanceof FatalThrowableError) {
+            return response()->view('errors.fatal', [], 404);
+        }
+
+        if ($exception instanceof ErrorException){
+            return response()->view('errors.fatal', [], 404);
+        }
+
+        return parent::render($request, $exception);
     }
+
+//    public function render($request, Exception $e)
+//    {
+//        if ($e instanceof HttpResponseException) {
+//            return $e->getResponse();
+//        } elseif ($e instanceof ModelDoesNotExistException) {
+//            $e = new NotFoundHttpException($e->getMessage(), $e);
+//        } elseif ($e instanceof AuthenticationException) {
+//            return $this->unauthenticated($request, $e);
+//        } elseif ($e instanceof AuthorizationException) {
+//            $e = new HttpException(403, $e->getMessage());
+//        } elseif ($e instanceof ValidationException && $e->getResponse()) {
+//            return $e->getResponse();
+//        }
+//
+//        if ($this->isHttpException($e)) {
+//            return $this->toIlluminateResponse($this->renderHttpException($e), $e);
+//        } else {
+//            return $this->toIlluminateResponse($this->convertExceptionToResponse($e), $e);
+//        }
+//    }
+
+
+//    public function render ($request, Exception $e)
+//    {
+//        if ($this->isHttpException($e)) {
+//
+//            if ($e instanceof NotFoundHttpException) {
+//                return response()->view('errors.404', [], 404);
+//            } elseif ($e instanceof HttpResponseException) {
+//                return response()->view('errors.404', [], 404);
+//            } elseif ($e instanceof ValidationException ) {
+//                return response()->view('errors.404', [], 404);
+//            }
+//
+//
+//        }
+//
+//
+//    }
 
     /**
      * Convert an authentication exception into an unauthenticated response.

@@ -21,21 +21,21 @@
                                 <div class="or-line"></div>
                                 <div class="or">Login</div>
                             </div>
-                            <div class="{{ $errors->has('u_username') ? ' has-error' : '' }}">
+                            <div class="{{!empty($errors) && $errors->has('u_username') ? ' has-error' : '' }}">
                                 <div class="loginbox-textbox">
                                     <input name="u_username" type="text" class="form-control"
                                            placeholder="Your Username">
-                                    @if ($errors->has('u_username'))
+                                    @if (!empty($errors) && $errors->has('u_username'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('u_username') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                             </div>
-                            <div class="{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <div class="{{ !empty($errors) && $errors->has('password') ? ' has-error' : '' }}">
                                 <div class="loginbox-textbox">
                                     <input name="password" type="password" class="form-control" placeholder="Password">
-                                    @if ($errors->has('password'))
+                                    @if (!empty($errors) && $errors->has('password'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>

@@ -68,10 +68,7 @@ class JournalController extends Controller
                 // path does not exist
                 File::makeDirectory($path, 0775, true, true);
             }
-            //check file exist
-//            if (File::exists($path. $request->rj_file)) {
-//                File::delete($path. $request->rj_file);
-//            }
+
             $journal_filename = time() . '.' . $request->rj_file->getClientOriginalExtension();
             $request->rj_file->move(public_path($path), $journal_filename);
             $journal->rj_file = $journal_filename;

@@ -371,7 +371,7 @@
                             <div class="input-group image-preview-input">
                                 <input type="text" class="form-control image-preview-filename"
                                        value="{{ old('rj_file',isset($journal->rj_file) ? $journal->rj_file : '') }}"
-                                       readonlyr
+                                       readonly
                                 >
 
                                 <!-- don't give a name === doesn't send on POST/GET -->

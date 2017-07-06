@@ -16,6 +16,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Http\UploadedFile;
 
 class ConferenceController extends Controller
 {
@@ -82,12 +84,14 @@ class ConferenceController extends Controller
             // check directory exist
             if (!File::exists($path)) {
                 // path does not exist
-                File::makeDirectory($path, 0775, true,true);
+                File::makeDirectory($path, 0775, true, true);
             }
 
-            $file_name = time() . $request->file('rc_file')->getClientOriginalExtension();
-            $request->file('rc_file')->move(public_path($path), $file_name);
-            $project->rc_file = $file_name;
+            $project_filename = time() . '.' . $request->rc_file->getClientOriginalExtension();
+            $request->rc_file->move(public_path($path), $project_filename);
+            $project->rc_file = $project_filename;
+
+
         }
 
         $project->rc_article_name = $request->rc_article_name;
@@ -102,7 +106,6 @@ class ConferenceController extends Controller
         $project->rc_issue = $request->rc_issue;
         $project->rc_page = $request->rc_page;
         $project->rc_award = $request->rc_award;
-        $project->rc_file = $request->rc_file;
         $project->rc_meeting_name = $request->rc_meeting_name;
         $project->rc_meeting_owner = $request->rc_meeting_owner;
         $project->rc_meeting_place = $request->rc_meeting_place;
@@ -223,12 +226,15 @@ class ConferenceController extends Controller
             // check directory exist
             if (!File::exists($path)) {
                 // path does not exist
-                File::makeDirectory($path, 0775, true);
+                File::makeDirectory($path, 0775, true, true);
             }
-            $file_name = time() . $request->file('rc_file')->getClientOriginalExtension();
-            $request->file('rc_file')->move(public_path($path), $file_name);
-            $project->rc_file = $file_name;
+
+            $project_filename = time() . '.' . $request->rc_file->getClientOriginalExtension();
+            $request->rc_file->move(public_path($path), $project_filename);
+            $project->rc_file = $project_filename;
+
         }
+
 
         $project->rc_article_name = $request->rc_article_name;
         $project->rc_abstract = $request->rc_abstract;
@@ -242,7 +248,6 @@ class ConferenceController extends Controller
         $project->rc_issue = $request->rc_issue;
         $project->rc_page = $request->rc_page;
         $project->rc_award = $request->rc_award;
-        $project->rc_file = $request->rc_file;
         $project->rc_meeting_name = $request->rc_meeting_name;
         $project->rc_meeting_owner = $request->rc_meeting_owner;
         $project->rc_meeting_place = $request->rc_meeting_place;
@@ -250,6 +255,7 @@ class ConferenceController extends Controller
         $project->rc_meeting_start = $request->date_rc_meeting_start_submit;
         $project->rc_meeting_end = $request->date_rc_meeting_end_submit;
 
+        $project->save();
 
         try {
 

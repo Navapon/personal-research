@@ -12,18 +12,18 @@ class FundtypeSeeder extends Seeder
     public function run ()
     {
         DB::table('fund_type')->insert(
+
             array(
                 array( 'fund_name' => 'เงินงบประมาณแผ่นดิน' ),
                 array( 'fund_name' => 'เงินรายได้มหาวิทยาลัย' ),
                 array( 'fund_name' => 'เงินรายได้คณะ สถาบัน สำนัก' ),
-                array( 'fund_name' => 'เงินจากแหล่งทุนภายนอก' ),
-                array( 'fund_name' => 'เงินอื่น ๆ' ),
-                array( 'fund_name' => 'วช.' ),
-                array( 'fund_name' => 'สกว.' ),
-                array( 'fund_name' => 'สวทช.' ),
-                array( 'fund_name' => 'สวรส.' ),
-                array( 'fund_name' => 'สกอ.' ),
-                array( 'fund_name' => 'สสวท.' ),
+                array( 'fund_name' => '( งบมุ่งเป้า )สำนักงานคณะกรรมการวิจัยแห่งชาติ' ),
+                array( 'fund_name' => '( งบแผ่นดิน ) สำนักงานคณะกรรมการวิจัยแห่งชาติ' ),
+                array( 'fund_name' => 'สำนักงานกองทุนสนับสนุนการวิจัย' ),
+                array( 'fund_name' => 'สำนักงานพัฒนาวิทยาศาสตร์และเทคโนโลยีแห่งชาติ' ),
+                array( 'fund_name' => 'สำนักงานคณะกรรมการการอุดมศึกษา' ),
+                array( 'fund_name' => 'สำนักงานคณะกรรมการนโยบายวิทยาศาสตร์ เทคโนโลยีและนวัฒตกรรมแห่งชาติ' ),
+                array( 'fund_name' => 'สำนักงานพัฒนาการวิจัยการเกษตร' ),
             )
         );
     }
