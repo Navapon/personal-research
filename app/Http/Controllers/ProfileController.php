@@ -60,7 +60,7 @@ class ProfileController extends Controller
         if (!empty($user))
             return view('profile.profile-show')->with($data);
         else
-            return redirect('homepage');asdasd
+            return redirect('homepage');
     }
 
     public function edit ($id = "")
