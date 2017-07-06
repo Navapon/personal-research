@@ -24,13 +24,19 @@ Route::resource('project', 'ProjectController');
 
 Route::resource('patent', 'PatentController');
 
-//Route::resource('patent', 'PatentController');
-
-
-
 Route::post('profile/uploadProfileImage', 'ProfileController@uploadProfileImage');
 Route::post('authen', 'Auth\LoginController@authenticate')->name('authen');
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('report','ReportController@index')->name('report');
+
+Route::get('report-journal','ReportJournalController@index')->name('report-journal');
+Route::get('report-project','ReportProjectController@index')->name('report-project');
+
+Route::get('profile.myprofilecv','ProfileController@myprofilecv')->name('profile.myprofilecv');
+
+
 

@@ -23,6 +23,7 @@
 @section('menu')
 
     @include('sweet::alert')
+
     @include('components.menu')
 
 @endsection

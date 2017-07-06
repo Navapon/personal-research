@@ -58,7 +58,8 @@
         }
     </script>
 
-    @include('sweet::alert')
+
+
 
     <div class="container">
         <div class="row">
@@ -249,7 +250,7 @@
                                                         />
                                                         <input type="hidden" id="u_birthdate">
                                                         <span class="input-group-addon" data-toggle="tooltip"
-                                                              title="คลิกชื่องด้านซ้ายเพื่อเลือกวันที่">
+                                                              title="คลิกช่องด้านซ้ายเพื่อเลือกวันที่">
                                                                 <i class="glyphicon glyphicon-calendar"></i>
                                                         </span>
                                                     </div>
@@ -377,8 +378,8 @@
                                                                   style="background-color: #3b5998"><i
                                                                         class="fa fa-facebook" style="color:white"></i></span>
                                                     <input class="form-control left-border-none"
-                                                           placeholder="url เฟสบุ้คของท่าน เช่น https://www.facebook.com/yourfacebookid type="
-                                                           text"
+                                                           placeholder="url เฟสบุ้คของท่าน เช่น https://www.facebook.com/yourfacebookid "
+                                                           type="text"
                                                     name="u_facebook"
                                                     value="{{  old('u_facebook',$user->u_facebook )}}">
                                                 </div>

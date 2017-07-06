@@ -53,7 +53,7 @@
                             <h4>เอกสารโครงการ( Paper )</h4>
                             <p>
                                 @if(!empty($project->project->rp_file))
-                                    <a href="{{ asset('files').'/users/'. $project->user->u_id . '/project/'.$project->project->rp_file}}"
+                                    <a href="{{ asset('files').'/users/'. $project->user->u_id . '/project/'.$project->project->rp_file}}" target="_blank"
                                        class="btn btn-success">คลิกเพื่อดาวโหลด</a>
                                 @else
                                     ไม่มีเอกสารอัพโหลด

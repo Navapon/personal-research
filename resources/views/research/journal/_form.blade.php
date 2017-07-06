@@ -99,7 +99,7 @@
                     </div>
 
                     <!-- Text input-->
-                    <div class="form-group">
+                 {{--   <div class="form-group">
                         <label class="col-md-offset-1 col-md-2 control-label" for="rj_standard">ชื่อมาตรฐานของวารสาร
                         </label>
                         <div class="col-md-8">
@@ -110,7 +110,7 @@
                             >
                             <span class="help-block">ชื่อมาตรฐานของวารสาร</span>
                         </div>
-                    </div>
+                    </div>--}}
 
                     <!-- Text input-->
                     <div class="form-group">

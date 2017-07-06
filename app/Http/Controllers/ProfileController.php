@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\AcademicModel;
 use App\MajorModel;
-use Alert;
 use App\UserresearchModel;
 use UxWeb\SweetAlert\SweetAlert;
 use Session;
@@ -137,7 +136,7 @@ class ProfileController extends Controller
 
         alert()->success(' ', 'อัพเดตข้อมูลเรียบร้อย');
 
-        return redirect()->route('profile.edit', $id);
+        return redirect()->route('profile.show', $id);
     }
 
     public function uploadProfileImage (Request $request)
@@ -160,6 +159,10 @@ class ProfileController extends Controller
         } else {
             echo 'ไม่สามารถอัพโหลดรูปภาพได้';
         }
+
+    }
+
+    public function myprofilecv(){
 
     }
 

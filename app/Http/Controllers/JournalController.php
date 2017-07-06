@@ -77,7 +77,7 @@ class JournalController extends Controller
 
         $journal->rj_article_name = $request->rj_article_name;
         $journal->rj_name = $request->rj_name;
-        $journal->rj_standard = $request->rj_standard;
+//        $journal->rj_standard = $request->rj_standard;
         $journal->rj_owner = $request->rj_owner;
         $journal->rj_isbn = $request->rj_isbn;
         $journal->rj_accept_date = $request->date_rj_accept_date_submit;
@@ -196,7 +196,7 @@ class JournalController extends Controller
 
         $journal->rj_article_name = $request->rj_article_name;
         $journal->rj_name = $request->rj_name;
-        $journal->rj_standard = $request->rj_standard;
+//        $journal->rj_standard = $request->rj_standard;
         $journal->rj_owner = $request->rj_owner;
         $journal->rj_isbn = $request->rj_isbn;
         $journal->rj_accept_date = $request->date_rj_accept_date_submit;

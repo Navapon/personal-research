@@ -53,8 +53,8 @@
                         <div class="bs-callout bs-callout-danger">
                             <h4>เอกสารวิจัย ( Paper )</h4>
                             <p>
-                                <a href="{{ asset('files').'/users/'. $journal->user->u_id . '/journal/'.$journal->journal->rj_file}}"
-                                   class="btn btn-success">คลิกเพื่อดาวโหลด</a>
+                                <a href="{{ asset('files').'/users/'. $journal->user->u_id . '/journal/'.$journal->journal->rj_file}}" target="_blank"
+                                   class="btn btn-success"> <i class=" fa fa-search-plus"></i> VIEW </a>
 
                             </p>
 
@@ -88,14 +88,6 @@
                                 </a>
                                 <a class="list-group-item inactive-link" href="#">
                                     <h4 class="list-group-item-heading">
-                                        มาตรฐานของวารสาร
-                                    </h4>
-                                    <p class="list-group-item-text">
-                                        {{ $journal->journal->rj_standard or ' - ' }}
-                                    </p>
-                                </a>
-                                <a class="list-group-item inactive-link" href="#">
-                                    <h4 class="list-group-item-heading">
                                         หน่วยงานเจ้าของวารสาร
                                     </h4>
                                     <p class="list-group-item-text">
@@ -110,8 +102,6 @@
                                     <p class="list-group-item-text" style="color:#3498db">
                                         {{ $journal->journal->rj_source_url }}
                                     </p>
-
-
                                 </a>
 
                                 <a class="list-group-item inactive-link" href="#">

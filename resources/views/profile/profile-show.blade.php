@@ -8,6 +8,8 @@
 
 @endsection
 
+
+
 @section('meta_tag')
 
     <meta name="description"
@@ -16,6 +18,8 @@
 @endsection
 
 @section('content')
+
+    @include('sweet::alert')
 
     <div class="container">
 
@@ -112,10 +116,18 @@
 
                 <div class="box">
                     @if(Auth::id() == $user->u_id)
-                        <a href="{{ route('profile.edit',$user->u_id) }}">
+                        <a href="{{ route('profile.edit',$user->u_id) }}" >
                             <button class="btn btn-primary pull-right"><i class="fa fa-cog"></i> แก้ไขข้อมูลส่วนตัว
                             </button>
                         </a>
+
+                        {{--<a href="{{ route('profile.myprofilecv',$user->u_id) }}">--}}
+                        <a href="{{ asset('files').'/mycv.pdf'}}" target="_blank">
+                            <button class="btn btn-warning pull-right"><i class="fa fa-file-pdf-o"></i> ประวัติผลงานวิชาการ
+                            </button>
+                        </a>
+
+
                     @endif
                     <h1 class="boxTitle">ข้อมูลส่วนตัว</h1>
                     <!-- Tabs -->

@@ -29,7 +29,7 @@
             <div class="panel-body">
                 <h4>ข้อมูลงานวิจัย</h4>
                 <p>โครงการงานวิจัยของบุคลากรภายในคณะวิทยาศาสตร์และเทคโนโลยี</p>
-                <a href="/research" class="btn btn-primary">Learn More</a>
+                <a href="{{ route('research.index') }}" class="btn btn-primary">Learn More</a>
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@
             <div class="panel-body">
                 <h4>สถิติงานวิจัย</h4>
                 <p>สถิติการทำงานวิจัยแต่ละปีของคณะวิทยาศาสตร์และเทคโนโลยี </p>
-                <a href="#" class="btn btn-primary">Learn More</a>
+                <a href="{{ route('report') }}" class="btn btn-primary">Learn More</a>
             </div>
         </div>
     </div>
