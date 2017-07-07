@@ -58,8 +58,7 @@
         }
     </script>
 
-
-
+    @include('sweet::alert')
 
     <div class="container">
         <div class="row">
