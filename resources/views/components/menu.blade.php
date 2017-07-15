@@ -59,7 +59,7 @@
             <div class="panel-body">
                 <h4>เครื่องมือสำหรับวิจัย</h4>
                 <p>รายละเอียดและข้อมูลครุภัณฑ์ สำหรับทำงานวิจัย</p>
-                <a href="#" class="btn btn-primary">Learn More</a>
+                <a href="{{ route('equipment.index') }}" class="btn btn-primary">Learn More</a>
             </div>
         </div>
     </div>

@@ -30,7 +30,7 @@
                             @foreach($users as $user)
                             <tr>
                                 <td>
-                                    <img src="{{ $user->u_image ? asset('images').'/'.$user->u_image: '/images/user-img.png' }}" alt="{{ $user->u_name_th . ' ' . $user->u_surname_th }}" >
+                                    <img src="{{ $user->u_image ? asset('images/user-image/').'/' .$user->u_image: '/images/user-img.png' }}" alt="{{ $user->u_name_th . ' ' . $user->u_surname_th }}" >
                                     <a href="{{ route('profile.show',['id'=> $user->u_id ]) }}" class="user-link">{{ $user->u_name_th . ' ' . $user->u_surname_th }}</a>
                                     <span class="user-subhead">นักวิจัย</span>
                                 </td>

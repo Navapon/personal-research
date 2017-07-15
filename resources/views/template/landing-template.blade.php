@@ -115,11 +115,12 @@
                             <a href="{{ route('research.index') }}">ข้อมูลงานวิจัย</a>
                         </li>
                         <li>
-                            <a href="blog-post.html">ครุภัณฑ์สำหรับงานวิจัย</a>
+                            <a href="{{ route('report') }}">สถิติงานวิจัย</a>
                         </li>
                         <li>
-                            <a href="blog-post.html">สถิติงานวิจัย</a>
+                            <a href="{{ route('equipment.index') }}">เครื่องมือสำหรับงานวิจัย</a>
                         </li>
+                     
                     </ul>
                 </li>
 

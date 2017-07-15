@@ -24,6 +24,8 @@ Route::resource('project', 'ProjectController');
 
 Route::resource('patent', 'PatentController');
 
+Route::resource('equipment', 'ResearchEquipmentController');
+
 Route::post('profile/uploadProfileImage', 'ProfileController@uploadProfileImage');
 Route::post('authen', 'Auth\LoginController@authenticate')->name('authen');
 

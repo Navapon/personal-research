@@ -128,7 +128,6 @@ class JournalController extends Controller
         }
 
         alert()->success('', 'ทำการเพิ่มข้อมูล Journal สำเร็จ');
-
         return redirect()->route('profile.edit', Auth::id());
 
 
