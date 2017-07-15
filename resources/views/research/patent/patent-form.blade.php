@@ -173,7 +173,7 @@
             <div class="col-md-6 ">
                 <ul class="list-inline">
                     <li>
-                        <button type="submit" class="btn btn-success next-step"> Save <i
+                        <button type="submit" class="btn btn-success next-step" id="submit-btn"> Save <i
                                     class="fa fa-save"></i></button>
                     </li>
                 </ul>
@@ -276,6 +276,9 @@
             hiddenPrefix: 'date_',
         })
 
+        $('#patent-form').one('submit', function() {
+            $(this).find('#submit-btn').attr('disabled','disabled');
+        });
 
     });
 </script>

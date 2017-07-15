@@ -16,6 +16,7 @@
             'action' => 'PatentController@store' ,
             'class' => 'form-horizontal',
             'enctype' => "multipart/form-data",
+             'id' => 'patent-form',
             'files' => true
         ]) !!}
 

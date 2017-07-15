@@ -16,6 +16,7 @@
             'action' => 'ConferenceController@store' ,
             'class' => 'form-horizontal',
             'enctype' => "multipart/form-data",
+            'id' => 'conference-form',
              'files' => true
         ]) !!}
 

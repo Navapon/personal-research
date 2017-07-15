@@ -480,7 +480,7 @@
                                     </button>
                                 </li>
                                 <li>
-                                    <button type="submit" class="btn btn-success next-step"> Save <i
+                                    <button type="submit" class="btn btn-success next-step" id="submit-btn"> Save <i
                                                 class="fa fa-save"></i></button>
                                 </li>
 
@@ -787,6 +787,11 @@
             formatSubmit: 'yyyy-mm-dd',
             hiddenPrefix: 'date_',
         })
+
+        $('#conference-form').one('submit', function() {
+            $(this).find('#submit-btn').attr('disabled','disabled');
+        });
+
 
 
 

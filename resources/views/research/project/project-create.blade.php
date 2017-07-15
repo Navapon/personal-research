@@ -16,10 +16,11 @@
             'action' => 'ProjectController@store' ,
             'class' => 'form-horizontal',
             'enctype' => "multipart/form-data",
+            'id' => 'project-form',
             'files' => true
         ]) !!}
 
-        @include('research.project.project-form',['type' => 'create'])
+    @include('research.project.project-form',['type' => 'create'])
 
     {!! Form::close() !!}
 

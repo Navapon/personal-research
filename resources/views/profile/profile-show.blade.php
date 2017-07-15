@@ -28,7 +28,7 @@
                 <div class="userProfileInfo">
                     <div class="image text-center">
                         <img id="user_image"
-                             src="{{ $user->u_image ? asset('images').'/' .$user->u_image: '/images/user-img.png' }}"
+                             src="{{ $user->u_image ? asset('images/user-image/').'/' .$user->u_image: '/images/user-img.png' }}"
                              style=""
                              alt="{{ $user->u_name_th . ' ' . $user->u_surname_th }}" class="img-responsive"
                         >

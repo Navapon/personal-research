@@ -83,7 +83,7 @@
                     <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-offset-1 col-md-2 control-label" for="rp_meta_tag">คำสำคัญ
-                        <span                     style="color:red"> * </span></label>
+                            <span style="color:red"> * </span></label>
                         <div class="col-md-8">
 
                             <input id="rp_meta_tag" name="rp_meta_tag" type="text"
@@ -173,7 +173,7 @@
                     <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-offset-1 col-md-2 control-label" for="rp_status">สภานะโครงการ
-                            <span                     style="color:red"> * </span></label>
+                            <span style="color:red"> * </span></label>
                         <div class="col-md-8">
                             <select name="rp_status" id="rp_status" class="form-control">
                                 <option value="">กรุณาระบุสถานะของโครงการ</option>
@@ -204,7 +204,8 @@
                                 <input type="text" id="start-picker" class="form-control"
                                        name="rp_start"
                                        value="{{ old('rp_start',isset($project->rp_start) ? \Carbon\Carbon::createFromFormat('Y-m-d',$project->rp_start)->toDateString(): '') }}"
-                                       placeholder="คลิกเพื่อเลือกวันที่เริ่มต้นโครงการ" onkeydown="return false" readonly/>
+                                       placeholder="คลิกเพื่อเลือกวันที่เริ่มต้นโครงการ" onkeydown="return false"
+                                       readonly/>
                                 <span class="input-group-addon" data-toggle="tooltip" title="คลิกเพื่อเลือกวันที่">
                                     <span class="glyphicon glyphicon-calendar"> </span>
                                 </span>
@@ -318,7 +319,7 @@
                                     </button>
                                 </li>
                                 <li>
-                                    <button type="submit" class="btn btn-success next-step"> Save <i
+                                    <button type="submit" class="btn btn-success next-step" id="submit-btn"> Save <i
                                                 class="fa fa-save"></i></button>
                                 </li>
 
@@ -618,6 +619,9 @@
             hiddenPrefix: 'date_',
         })
 
+        $('#project-form').one('submit', function () {
+            $(this).find('#submit-btn').attr('disabled', 'disabled');
+        });
 
     });
 </script>

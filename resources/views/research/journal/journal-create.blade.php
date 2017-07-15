@@ -16,6 +16,7 @@
             'action' => 'JournalController@store' ,
             'class' => 'form-horizontal',
             'enctype' => "multipart/form-data",
+            'id' => "journal-form",
              'files' => true
         ]) !!}
 
