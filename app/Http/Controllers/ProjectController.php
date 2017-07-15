@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 
-
 use App\FundtypeModel;
 use App\Http\Requests\ProjectRequest;
 use App\ProfileModel;
@@ -34,7 +33,7 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index ()
     {
         //
     }
@@ -44,7 +43,7 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create ()
     {
         //
         $user = Auth::user();
@@ -66,10 +65,10 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\ProjectRequest  $request
+     * @param  \Illuminate\Http\ProjectRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProjectRequest $request)
+    public function store (ProjectRequest $request)
     {
         //
         $project = new ProjectModel();
@@ -80,10 +79,10 @@ class ProjectController extends Controller
             // check directory exist
             if (!File::exists($path)) {
                 // path does not exist
-                File::makeDirectory($path, 0775, true,true);
+                File::makeDirectory($path, 0775, true, true);
             }
 
-            $file_name = time().'.' . $request->file('rp_file')->getClientOriginalExtension();
+            $file_name = time() . '.' . $request->file('rp_file')->getClientOriginalExtension();
             $request->file('rp_file')->move(public_path($path), $file_name);
             $project->rp_file = $file_name;
         }
@@ -113,11 +112,12 @@ class ProjectController extends Controller
 
             // Save team of this research
             foreach ($request->rt_name as $key => $item) {
-
-                $user_team = new  ResearhteamModel();
-                $user_team->rt_name = $item;
-                $user_team->rp_id = $project->rp_id;
-                $user_team->save();
+                if (!empty($item)) {
+                    $user_team = new  ResearhteamModel();
+                    $user_team->rt_name = $item;
+                    $user_team->rp_id = $project->rp_id;
+                    $user_team->save();
+                }
 
             }
 
@@ -139,13 +139,13 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show ($id)
     {
         //
-        $project = UserresearchModel::with(['project','user','teamProject'])->where('users_research.rp_id',$id)->first();
+        $project = UserresearchModel::with([ 'project', 'user', 'teamProject' ])->where('users_research.rp_id', $id)->first();
 
 
         $data = array(
@@ -158,10 +158,10 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit ($id)
     {
         //
         $user_research = UserresearchModel::where('rp_id', $id)->get([ 'ur_id', 'u_id' ]);
@@ -194,15 +194,15 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProjectRequest $request, $id)
+    public function update (ProjectRequest $request, $id)
     {
         //
 
-        $project =  ProjectModel::find($id);
+        $project = ProjectModel::find($id);
 
         if ($request->file('rp_file')) {
 
@@ -213,7 +213,7 @@ class ProjectController extends Controller
                 File::makeDirectory($path, 0775, true);
             }
 
-            $file_name = time().'.' . $request->file('rp_file')->getClientOriginalExtension();
+            $file_name = time() . '.' . $request->file('rp_file')->getClientOriginalExtension();
             $request->file('rp_file')->move(public_path($path), $file_name);
             $project->rp_file = $file_name;
         }
@@ -263,10 +263,10 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy ($id)
     {
         //
         $user_research = UserresearchModel::where('rp_id', $id)->get([ 'u_id' ]);

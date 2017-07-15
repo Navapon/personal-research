@@ -371,7 +371,7 @@
                             <div class="input-group image-preview-input">
                                 <input type="text" class="form-control image-preview-filename"
                                        value="{{ old('rj_file',isset($journal->rj_file) ? $journal->rj_file : '') }}"
-                                       readonly
+                                       readonly placeholder="สามารถอัพโหลดประเภทไฟล์ PDF เท่านั้น"
                                 >
 
                                 <!-- don't give a name === doesn't send on POST/GET -->
@@ -385,14 +385,14 @@
                                             <div class="btn btn-success image-preview-input">
                                                 <span class="glyphicon glyphicon-folder-open"></span>
                                                 <span class="image-preview-input-title">Choose File</span>
-                                                <input type="file" accept=".docx,.doc,.pdf" name="rj_file"
+                                                <input type="file" accept=".pdf" name="rj_file"
                                                        placeholder=""/>
                                                 <!-- rename it -->
                                             </div>
                                 </span>
 
                             </div>
-                            <span class="help-block">หมายเหตุ เมื่อทำการอัพโหลดไฟล์เข้าระบบ ระบบจะทำการเปลี่ยนชื่อของไฟล์</span>
+                            <span class="help-block">หมายเหตุ สามารถอัพโหลดประเภทไฟล์ PDF เท่านั้นและขนาดไฟล์ไม่เกิน 50MB</span>
 
 
                             @if( $type == 'edit')

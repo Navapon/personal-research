@@ -271,7 +271,7 @@
                             <div class="input-group image-preview-input">
                                 <input type="text" class="form-control image-preview-filename"
                                        value="{{ old('rc_file',isset($conference->rc_file) ? $conference->rc_file : '') }}"
-                                       readonly
+                                       readonly placeholder="สามารถอัพโหลดประเภทไฟล์ PDF เท่านั้น"
                                 >
 
                                 <!-- don't give a name === doesn't send on POST/GET -->
@@ -292,7 +292,7 @@
                                 </span>
 
                             </div>
-                            <span class="help-block">หมายเหตุ เมื่อทำการอัพโหลดไฟล์เข้าระบบ ระบบจะทำการเปลี่ยนชื่อของไฟล์</span>
+                            <span class="help-block">หมายเหตุ สามารถอัพโหลดประเภทไฟล์ PDF เท่านั้นและขนาดไฟล์ไม่เกิน 50MB</span>
 
 
                             @if( $type == 'edit')

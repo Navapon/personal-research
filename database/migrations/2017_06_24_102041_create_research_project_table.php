@@ -26,6 +26,10 @@ class CreateResearchProjectTable extends Migration
             $table->date('rp_start');
             $table->date('rp_end');
             $table->string('rp_file',350)->nullable();
+
+            $table->unsignedInteger('status')->default(1);
+            $table->unsignedInteger('approver')->nullable();
+
             $table->softDeletes();
             $table->timestamps();
         });

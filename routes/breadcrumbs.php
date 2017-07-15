@@ -110,10 +110,15 @@ Breadcrumbs::register('conference.edit', function($breadcrumbs,$id)
 
 Breadcrumbs::register('conference.show', function($breadcrumbs,$id)
 {
-    $conference = \App\UserresearchModel::with(['conference','user'])->where('rc_id',$id)->first();
+    try {
+        $conference = \App\UserresearchModel::with([ 'conference', 'user' ])->where('rc_id', $id)->first();
+        $breadcrumbs->parent('profile.show',$conference->user->u_id);
+        $breadcrumbs->push('ข้อมูลวารสารวิชาการ', route('conference.show',$conference->conference->rc_id ));
+    }catch (exception $e){
 
-    $breadcrumbs->parent('profile.show',$conference->user->u_id);
-    $breadcrumbs->push('ข้อมูลวารสารวิชาการ', route('conference.show',$conference->conference->rc_id ));
+    }
+
+
 });
 
 /*

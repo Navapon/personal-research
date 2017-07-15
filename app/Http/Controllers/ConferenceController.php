@@ -265,11 +265,13 @@ class ConferenceController extends Controller
             ResearhteamModel::where('rc_id', $project->rc_id)->delete();
             // Save team of this research
             foreach ($request->rt_name as $key => $item) {
+                if (!empty($item)) {
+                    $user_team = new ResearhteamModel();
 
-                $user_team = new ResearhteamModel();
-                $user_team->rt_name = $item;
-                $user_team->rc_id = $project->rc_id;
-                $user_team->save();
+                    $user_team->rt_name = $item;
+                    $user_team->rc_id = $project->rc_id;
+                    $user_team->save();
+                }
             }
 
             DB::commit();

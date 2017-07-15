@@ -4,17 +4,13 @@ namespace App\Exceptions;
 
 use Adldap\Models\ModelDoesNotExistException;
 use Exception;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Foundation\Testing\HttpException;
-use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
-use Psy\Exception\ErrorException;
+use ErrorException;
 use Symfony\Component\Debug\Exception\FatalThrowableError;
-use Symfony\Component\HttpKernel\Exception\FatalErrorException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 
 class Handler extends ExceptionHandler
 {
@@ -65,14 +61,14 @@ class Handler extends ExceptionHandler
                     break;
 
                 // internal error
-                case '500':
-                    alert()->info('', 'เกิดข้อผิดพลาดในการแสดงผล');
-                    return redirect()->guest('home');
+                case 500:
+
+                    return response()->view('errors.fatal', [], 500);
                     break;
 
                 default:
+                    return response()->view('errors.fatal', [], 500);
 
-                    return redirect()->guest('home');
                     break;
             }
         }
@@ -89,8 +85,11 @@ class Handler extends ExceptionHandler
             return response()->view('errors.fatal', [], 404);
         }
 
-        return response()->view('errors.fatal', [], 404);
-//        return parent::render($request, $exception);
+        if($exception instanceof HttpException){
+            return response()->view('errors.fatal', [], 404);
+        }
+
+        return parent::render($request, $exception);
     }
 
 //    public function render($request, Exception $e)

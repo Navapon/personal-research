@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFundType extends Migration
+class CommitStatus extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateFundType extends Migration
      */
     public function up()
     {
-        Schema::create('fund_type', function (Blueprint $table) {
-            $table->increments('fund_id');
-            $table->string('fund_name');
-            $table->string('fund_type');
+        Schema::create('commit_status', function (Blueprint $table) {
+            $table->increments('status_id');
+            $table->string('status_name');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateFundType extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fund_type');
+        Schema::dropIfExists('commit_status');
     }
 }

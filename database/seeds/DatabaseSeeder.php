@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
          $this->call(ResearchStatusSeeder::class);
          $this->call(PatentTypeSeeder::class);
          $this->call(YearSeeder::class);
+         $this->call(CommitStatusSeeder::class);
+         $this->call(EquipmentStatusSeeder::class);
     }
 }

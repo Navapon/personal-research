@@ -28,13 +28,15 @@ class CreateResearchConferenceTable extends Migration
             $table->string('rc_page')->nullable();
             $table->string('rc_award')->nullable();
             $table->string('rc_file');
-
             $table->string('rc_meeting_name',400);
             $table->string('rc_meeting_owner');
             $table->string('rc_meeting_place');
             $table->string('rc_meeting_province');
             $table->date('rc_meeting_start');
             $table->date('rc_meeting_end');
+
+            $table->unsignedInteger('status')->default(1);
+            $table->unsignedInteger('approver')->nullable();
 
             $table->softDeletes();
             $table->timestamps();

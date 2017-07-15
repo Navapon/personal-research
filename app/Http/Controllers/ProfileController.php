@@ -146,12 +146,12 @@ class ProfileController extends Controller
 
         if ($request->file('u_img')) {
 
-            if (File::exists('images' . '/' . $profile->u_image)) {
-                File::delete('images' . '/' . $profile->u_image);
+            if (File::exists('images' . '/user-image/' . $profile->u_image)) {
+                File::delete('images' . '/user-image/' . $profile->u_image);
             }
 
             $photoName = time() . '.' . $request->u_img->getClientOriginalExtension();
-            $request->u_img->move(public_path('images'), $photoName);
+            $request->u_img->move(public_path('images/user-image/'), $photoName);
             $profile->u_image = $photoName;
             $profile->save();
 

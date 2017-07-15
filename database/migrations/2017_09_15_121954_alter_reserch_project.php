@@ -22,6 +22,10 @@ class AlterReserchProject extends Migration
             $table->foreign('fund_id')->references('fund_id')->on('fund_type');
             $table->foreign('rp_status')->references('rst_id')->on('research_status');
             $table->foreign('rp_year')->references('year_id')->on('year');
+
+            $table->foreign('status')->references('status_id')->on('commit_status');
+            $table->foreign('approver')->references('u_id')->on('users');
+
         });
     }
 

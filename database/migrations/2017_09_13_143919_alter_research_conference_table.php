@@ -22,7 +22,8 @@ class AlterResearchConferenceTable extends Migration
             $table->foreign('rc_publish_level')->references('rl_id')->on('research_level');
             $table->foreign('rc_proceeding_type')->references('rpt_id')->on('research_proceeding_type');
             $table->foreign('rc_present_type')->references('rsp_id')->on('research_present_type');
-
+            $table->foreign('status')->references('status_id')->on('commit_status');
+            $table->foreign('approver')->references('u_id')->on('users');
         });
     }
 

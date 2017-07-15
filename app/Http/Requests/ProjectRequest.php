@@ -33,6 +33,7 @@ class ProjectRequest extends FormRequest
             'rp_status' => 'required',
             'rp_start' => 'required',
             'rp_end' => 'required',
+            'rp_file' => 'mimes:pdf'
         ];
     }
 
@@ -48,6 +49,7 @@ class ProjectRequest extends FormRequest
             'rp_status.required' => 'กรุณาระบุ สถานะของโครงการ',
             'rp_start.required' => 'กรุณาระบุ ระยะเวลาเริ่ม',
             'rp_end.required' => 'กรุณาระบุ ระยะเวลาสิ้นสุด',
+            'rp_file.mimes' =>  'กรุณาแนบไฟล์ประเภท PDF เท่านั้น'
         ];
     }
 }

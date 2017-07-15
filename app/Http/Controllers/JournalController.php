@@ -109,10 +109,11 @@ class JournalController extends Controller
             foreach ($request->rt_name as $key => $item) {
 
                 $user_team = new ResearhteamModel();
-                $user_team->rt_name = $item;
-                $user_team->rj_id = $journal->rj_id;
-                $user_team->save();
-
+                if (!empty($item)) {
+                    $user_team->rt_name = $item;
+                    $user_team->rj_id = $journal->rj_id;
+                    $user_team->save();
+                }
             }
 
             DB::commit();
@@ -125,7 +126,6 @@ class JournalController extends Controller
             return redirect()->route('profile.edit', Auth::id());
             /* Transaction failed. */
         }
-
 
         alert()->success('', 'ทำการเพิ่มข้อมูล Journal สำเร็จ');
 

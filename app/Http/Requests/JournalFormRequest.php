@@ -38,7 +38,7 @@ class JournalFormRequest extends FormRequest
             'rj_page' => 'required',
             'rj_meta_tag' => 'required',
             'rj_abstract' => 'required',
-            'rj_file' => 'required',
+            'rj_file' => 'required|mimes:pdf',
         ];
     }
 
@@ -61,7 +61,8 @@ class JournalFormRequest extends FormRequest
             'rj_page.required' => 'กรุณาระบุ หน้าที่ของวารสาร',
             'rj_meta_tag.required' => 'กรุณาระบุ คำสำคัญเพื่อไว้ใช้สำหรับการค้นหา',
             'rj_abstract.required'  => 'กรุณาระบุ บทคัดย่อ ของงานวิจัยของท่าน',
-            'rj_file.required'  => 'กรุณาแนบไฟล์ เพื่อใช้สำหรับอ้างอิงงานวิจัยท่าน'
+            'rj_file.required'  => 'กรุณาแนบไฟล์ เพื่อใช้สำหรับอ้างอิงงานวิจัยท่าน',
+            'rj_file.mimes'  => 'กรุณาแนบไฟล์ประเภท PDF เท่านั้น'
         ];
     }
 }

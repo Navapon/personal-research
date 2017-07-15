@@ -66,7 +66,7 @@
                 <div class="userProfileInfo">
                     <div class="image text-center">
                         <img id="user_image"
-                             src="{{ $user->u_image ? asset('images').'/' .$user->u_image: '/images/user-img.png' }}"
+                             src="{{ $user->u_image ? asset('images/user-image/').'/' .$user->u_image: '/images/user-img.png' }}"
                              style=""
                              alt="" class="img-responsive"
                         >
@@ -174,7 +174,7 @@
 
                                         <!-- Text input-->
                                         <div class="form-group{{ $errors->has('u_email') ? ' has-error' : '' }}">
-                                            <label class="col-sm-2 control-label" for="textinput">อีเมล</label>
+                                            <label class="col-sm-2 control-label" for="textinput">อีเมล  <span style="color:red"> * </span></label>
                                             <div class="col-sm-10">
                                                 <input type="email" placeholder="กรุณาระบุอีเมลของท่าน"
                                                        name="u_email" class="form-control"
@@ -237,7 +237,7 @@
                                         <div class="form-group">
                                             <div class="{{ $errors->has('u_birthdate') ? ' has-error' : '' }}">
                                                 <label class="col-sm-2 control-label"
-                                                       for="textinput">วันเดือนปีเกิด</label>
+                                                       for="textinput">วันเดือนปีเกิด   <span style="color:red"> * </span> </label>
 
 
                                                 <div class="col-sm-10">
@@ -265,7 +265,7 @@
                                         <!-- Text input-->
                                         <div class="form-group">
                                             <div class="{{ $errors->has('u_name_th') ? ' has-error' : '' }}">
-                                                <label class="col-sm-2 control-label" for="textinput">ชื่อ (ไทย)</label>
+                                                <label class="col-sm-2 control-label" for="textinput">ชื่อ (ไทย)  <span style="color:red"> * </span></label>
                                                 <div class="col-sm-4">
                                                     <input type="text" placeholder="ชื่อของท่าน"
                                                            class="form-control" name="u_name_th"
@@ -280,7 +280,7 @@
                                             </div>
                                             <div class="{{ $errors->has('u_surname_th') ? ' has-error' : '' }}">
                                                 <label class="col-sm-2 control-label"
-                                                       for="textinput">นามสกุล (ไทย)</label>
+                                                       for="textinput">นามสกุล (ไทย)   <span style="color:red"> * </span></label>
                                                 <div class="col-sm-4">
                                                     <input type="text" placeholder="นามสกุลของท่าน"
                                                            class="form-control" name="u_surname_th"
@@ -332,7 +332,7 @@
                                         <!-- Text input-->
                                         <div class="form-group">
                                             <div class="{{ $errors->has('u_major_id') ? ' has-error' : '' }}">
-                                                <label class="col-sm-2 control-label" for="textinput">สาขา</label>
+                                                <label class="col-sm-2 control-label" for="textinput">สาขา   <span style="color:red"> * </span></label>
                                                 <div class="col-sm-4">
                                                     <select name="u_major_id" id="" class="form-control">
 

@@ -85,7 +85,6 @@
         display: inline-block;
         width: 35px;
         height: 35px;
-
         border-radius: 2px;
 
         font-size: 20px;
@@ -121,9 +120,9 @@
     }
 
 
-    @media (max-height:800px){
+    /*@media (max-height:800px){*/
         footer { position: static; }
         /*header { padding-top:40px; }*/
-    }
+    /*}*/
 
 </style>

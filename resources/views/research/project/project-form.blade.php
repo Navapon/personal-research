@@ -75,7 +75,7 @@
                         <div class="col-md-8">
                                     <textarea class="form-control" name="rp_abstract" id="rp_abstract" cols="30"
                                               rows="10" maxlength="1500"
-                                              placeholder="บาคัดย่อโครงการวิจัย">{{ old('rp_abstract',isset($project->rp_abstract) ? $project->rp_abstract : '') }}</textarea>
+                                              placeholder="บาคัดย่อโครงการวิจัย หากไม่มีบทคัดย่อกรุณา ใส่เครื่องหมาย - ">{{ old('rp_abstract',isset($project->rp_abstract) ? $project->rp_abstract : '') }}</textarea>
                             <span class="help-block">ระบุบทคัดย่อของงานของท่าน</span>
                         </div>
                     </div>
@@ -244,7 +244,7 @@
                             <div class="input-group image-preview-input">
                                 <input type="text" class="form-control image-preview-filename"
                                        value="{{ old('rp_file',isset($project->rp_file) ? $project->rp_file : '') }}"
-                                       readonly>
+                                       readonly placeholder="สามารถอัพโหลดประเภทไฟล์ PDF เท่านั้น">
                                 <span class="input-group-btn">
                                              <!-- image-preview-clear button -->
                                             <button type="button" class="btn btn-danger image-preview-clear"
@@ -262,7 +262,7 @@
                                 </span>
 
                             </div>
-                            <span class="help-block">หมายเหตุ กรุณาอัพโหลดไฟล์</span>
+                            <span class="help-block">หมายเหตุ สามารถอัพโหลดประเภทไฟล์ PDF เท่านั้นและขนาดไฟล์ไม่เกิน 50MB</span>
 
 
                             @if( $type == 'edit' && (isset($project) && !empty($project->rp_file)))

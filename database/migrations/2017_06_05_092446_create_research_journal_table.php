@@ -18,7 +18,6 @@ class CreateResearchJournalTable extends Migration
             $table->increments('rj_id');
             $table->string('rj_article_name','600');
             $table->string('rj_name','400');
-            $table->string('rj_standard','250')->nullable();
             $table->string('rj_owner','400');
             $table->string('rj_source_url','250');
             $table->date('rj_accept_date');
@@ -33,6 +32,10 @@ class CreateResearchJournalTable extends Migration
             $table->string('rj_evaluate_article')->nullable();
             $table->integer('rj_publish_level');
             $table->string('rj_file');
+
+            $table->unsignedInteger('status')->default(1);
+            $table->unsignedInteger('approver')->nullable();
+
             $table->softDeletes();
             $table->timestamps();
 

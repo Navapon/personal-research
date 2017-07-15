@@ -20,6 +20,9 @@ class AlterResearchPatent extends Migration
 
             $table->foreign('pt_publish_level')->references('rl_id')->on('research_level');
             $table->foreign('pt_type')->references('ptt_id')->on('patent_type');
+            $table->foreign('status')->references('status_id')->on('commit_status');
+            $table->foreign('approver')->references('u_id')->on('users');
+
         });
     }
 

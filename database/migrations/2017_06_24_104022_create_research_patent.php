@@ -23,6 +23,10 @@ class CreateResearchPatent extends Migration
             $table->integer('pt_publish_level');
             $table->date('pt_accept');
             $table->date('pt_expire');
+
+            $table->unsignedInteger('status')->default(1);
+            $table->unsignedInteger('approver')->nullable();
+
             $table->softDeletes();
             $table->timestamps();
         });
