@@ -3,7 +3,7 @@
 /public/storage
 /public/files
 /app/Exceptions/Handler.php
-
+public/images/user-image/
 /storage/*.key
 /vendor
 /.idea
