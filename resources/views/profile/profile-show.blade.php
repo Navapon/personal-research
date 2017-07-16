@@ -45,10 +45,10 @@
                         </div>
 
                         <div class="info">
-                            <span><i class="fa fa-fw fa-phone"></i> <a href="tel:+4210555888777"
+                            <span><i class="fa fa-fw fa-phone"></i> <a href="tel:{{ $user->u_phone }}"
                                                                        title="#">{{ $user->u_phone }}</a></span>
-                            <span><i class="fa fa-fw fa-list-alt"></i> <a href="#"
-                                                                          title="#">{{ $user->u_email }}</a></span>
+                            <span><i class="fa fa-fw fa-list-alt"></i> <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to={{$user->u_email}}&tf=1" target="_blank" title="send email">
+                                                                         {{ $user->u_email }}</a></span>
                         </div>
 
 
@@ -116,16 +116,23 @@
 
                 <div class="box">
                     @if(Auth::id() == $user->u_id)
-                        <a href="{{ route('profile.edit',$user->u_id) }}" >
-                            <button class="btn btn-primary pull-right"><i class="fa fa-cog"></i> แก้ไขข้อมูลส่วนตัว
-                            </button>
-                        </a>
+                        <div class="btn-group form-group pull-right">
 
-                        {{--<a href="{{ route('profile.myprofilecv',$user->u_id) }}">--}}
-                        <a href="{{ asset('files').'/mycv.pdf'}}" target="_blank">
-                            <button class="btn btn-warning pull-right"><i class="fa fa-file-pdf-o"></i> ประวัติผลงานวิชาการ
-                            </button>
-                        </a>
+
+                            <a href="#" onclick="swal('Export your CV to PDF ','Coming Soon ...','info')"
+                               class="btn btn-warning ">
+                                <i class="fa fa-file-pdf-o"></i>
+                                Export ประวัติส่วนตัว
+                            </a>
+                            <a href="{{ route('profile.edit',$user->u_id) }}"
+                               class="btn btn-primary">
+                                <i class="fa fa-cog"></i> แก้ไขข้อมูลส่วนตัว
+                            </a>
+
+
+                        </div>
+
+
 
 
                     @endif

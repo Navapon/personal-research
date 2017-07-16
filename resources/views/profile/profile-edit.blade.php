@@ -84,10 +84,10 @@
                         </div>
 
                         <div class="info">
-                            <span><i class="fa fa-fw fa-phone"></i> <a href="tel:+4210555888777"
+                            <span><i class="fa fa-fw fa-phone"></i> <a href="tel:{{ $user->u_phone }}"
                                                                        title="#">{{ $user->u_phone }}</a></span>
-                            <span><i class="fa fa-fw fa-list-alt"></i> <a href="#"
-                                                                          title="#">{{ $user->u_email }}</a></span>
+                            <span><i class="fa fa-fw fa-list-alt"></i>  <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to={{$user->u_email}}&tf=1" target="_blank" title="send email">
+                                    {{ $user->u_email }}</a></span>
                         </div>
 
 

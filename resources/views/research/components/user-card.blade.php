@@ -58,10 +58,15 @@
             @endif
             <li class="list-group-item">
                 สาขา {{ $obj->user->major->major_name or ' - ' }}</li>
-            <li class="list-group-item"><i
-                        class="fa fa-phone"></i> {{ $obj->user->u_phone or ' - '}}</li>
-            <li class="list-group-item"><i
-                        class="fa fa-envelope"></i> {{ $obj->user->u_email or ' - ' }}
+            <li class="list-group-item">
+                <a href="tel:{{$obj->user->u_phone or ''}}">
+                    <i  class="fa fa-phone"></i> {{ $obj->user->u_phone or ' - '}}
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to={{$obj->user->u_email or '-' }}&tf=1" target="_blank" title="send email">
+                <i  class="fa fa-envelope"></i> {{ $obj->user->u_email or ' - ' }}
+                </a>
             </li>
         </ul>
     </div>

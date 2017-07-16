@@ -36,11 +36,13 @@
                                 </td>
 
                                 <td>
-                                    <a href="#">{{ $user->u_email or ' - '}}</a>
+                                    <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to={{$user->u_email}}&tf=1" target="_blank">
+                                        {{ $user->u_email or ' - '}}
+                                    </a>
                                 </td>
 
                                 <td>
-                                    <a href="#">{{ $user->major->major_name or 'ไม่ระบุ' }}</a>
+                                    {{ $user->major->major_name or ' - ' }}
                                 </td>
 
                                 <td style="width: 20%;">
