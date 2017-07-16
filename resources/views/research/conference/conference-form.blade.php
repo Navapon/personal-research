@@ -91,9 +91,10 @@
 
                     <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-offset-1 col-md-2 control-label" for="rc_meta_tag">คำสำคัญ </label>
+                        <label class="col-md-offset-1 col-md-2 control-label" for="rc_meta_tag">คำสำคัญ
                         <span
-                                style="color:red"> * </span></label>
+                                style="color:red"> * </span>
+                        </label>
                         <div class="col-md-8">
 
                             <input id="rc_meta_tag" name="rc_meta_tag" type="text"

@@ -173,4 +173,33 @@ Breadcrumbs::register('patent.show', function($breadcrumbs,$id)
     $breadcrumbs->push('ข้อมูลสิทธิบัตร', route('patent.show',$patent->patent->pt_id ));
 });
 
+/*
+ * Equipment
+ * */
+
+Breadcrumbs::register('equipment.index', function($breadcrumbs)
+{
+
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('รายการเครื่องมือสำหรับงานวิจัย', route('equipment.index'));
+});
+
+Breadcrumbs::register('equipment.create', function($breadcrumbs)
+{
+    $breadcrumbs->parent('equipment.index');
+    $breadcrumbs->push('เพิ่มเครื่องมือวิจัย', route('equipment.create'));
+});
+
+Breadcrumbs::register('equipment.edit', function($breadcrumbs,$id)
+{
+    $breadcrumbs->parent('equipment.index');
+    $breadcrumbs->push('แก้ไขเครื่องมือวิจัย',route('equipment.edit',$id));
+});
+
+Breadcrumbs::register('equipment.show', function($breadcrumbs,$id)
+{;
+
+    $breadcrumbs->parent('equipment.index');
+    $breadcrumbs->push('ข้อมูลเครื่องมือ', route('equipment.show',$id));
+});
 

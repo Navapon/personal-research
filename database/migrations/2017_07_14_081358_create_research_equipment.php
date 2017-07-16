@@ -23,14 +23,14 @@ class CreateResearchEquipment extends Migration
             $table->string('re_serial_number');
             $table->unsignedInteger('re_major');
             $table->string('re_phone');
-            $table->string('re_description');
+            $table->string('re_description',1500);
             $table->unsignedInteger('re_year');
             $table->integer('re_number');
             $table->string('re_namenumber');
             $table->string('re_image');
             $table->unsignedInteger('re_status');
 
-            $table->decimal('re_amount',12,2);
+            $table->decimal('re_amount',12,2)->nullable();
 
             $table->softDeletes();
             $table->timestamps();
