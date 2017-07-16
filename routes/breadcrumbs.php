@@ -203,3 +203,27 @@ Breadcrumbs::register('equipment.show', function($breadcrumbs,$id)
     $breadcrumbs->push('ข้อมูลเครื่องมือ', route('equipment.show',$id));
 });
 
+/*
+ * Report
+ * */
+Breadcrumbs::register('report', function($breadcrumbs)
+{
+
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('ประเภทรายงาน', route('report'));
+});
+
+Breadcrumbs::register('report-project', function($breadcrumbs)
+{
+
+    $breadcrumbs->parent('report');
+    $breadcrumbs->push('รายงานด้านโครงการวิจัย', route('report-project'));
+});
+
+Breadcrumbs::register('report-journal', function($breadcrumbs)
+{
+
+    $breadcrumbs->parent('report');
+    $breadcrumbs->push('รายงานด้านวารสารวิชาการ', route('report-journal'));
+});
+

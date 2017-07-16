@@ -18,8 +18,6 @@
         <div id="project-chart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
         <table id="project-table" class="table table-border">
             <thead>
-
-
             <tr>
                 <th>สาขา</th>
                 <th>จำนวนเงิน</th>
