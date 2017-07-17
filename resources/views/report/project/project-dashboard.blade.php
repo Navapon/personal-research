@@ -14,7 +14,7 @@
     <script src="https://code.highcharts.com/modules/data.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>
-    
+
     <div class="col-sm-12 col-xs-12 col-md-12">
         <form action="{{ route('report-project') }}" method="get">
         <div class="row well">

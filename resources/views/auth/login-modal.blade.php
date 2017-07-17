@@ -48,9 +48,9 @@
                             <div class="loginbox-submit">
                                 <input type="submit" class="btn btn-primary btn-block" value="Login">
                             </div>
-                            <div class="loginbox-signup">
-                                <a href="{{ route('register') }}">If you don't have one Sign Up Here</a>
-                            </div>
+                            {{--<div class="loginbox-signup">--}}
+                                {{--<a href="{{ route('register') }}">If you don't have one Sign Up Here</a>--}}
+                            {{--</div>--}}
                         </div>
                         <div class="logobox">
                         </div>

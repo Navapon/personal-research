@@ -58,7 +58,8 @@ class LoginController extends Controller
 
             } else {
 
-                return redirect()->intended('register');
+                alert()->info('กรุณาติดต่อเจ้าหน้าที่','ไม่มีข้อมูลผู้ใช้งาน');
+                return redirect()->intended('home');
 
             }
 
@@ -68,7 +69,8 @@ class LoginController extends Controller
 
         }
 
-        return redirect()->intended('register');
+        alert()->info('กรุณาติดต่อเจ้าหน้าที่','ไม่มีข้อมูลผู้ใช้งาน');
+        return redirect()->intended('home');
     }
 
     /**

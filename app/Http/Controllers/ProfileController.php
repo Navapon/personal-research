@@ -81,7 +81,7 @@ class ProfileController extends Controller
         $projects = UserresearchModel::with('project')->has('project')->where('u_id', $id)->get();
         $patents = UserresearchModel::with('patent')->has('patent')->where('u_id', $id)->get();
 
-        if ($current_user->u_id == $id) {
+        if ($current_user->u_id == $id || Auth::user()->u_role_id == 1 ) {
             $user = ProfileModel::find($id);
 
             $data = array(

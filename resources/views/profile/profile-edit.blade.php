@@ -86,7 +86,9 @@
                         <div class="info">
                             <span><i class="fa fa-fw fa-phone"></i> <a href="tel:{{ $user->u_phone }}"
                                                                        title="#">{{ $user->u_phone }}</a></span>
-                            <span><i class="fa fa-fw fa-list-alt"></i>  <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to={{$user->u_email}}&tf=1" target="_blank" title="send email">
+                            <span><i class="fa fa-fw fa-list-alt"></i>  <a
+                                        href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to={{$user->u_email}}&tf=1"
+                                        target="_blank" title="send email">
                                     {{ $user->u_email }}</a></span>
                         </div>
 
@@ -129,13 +131,16 @@
             <div class="col-xs-12 col-md-8 col-lg-9">
 
                 <div class="box">
-                    @if(Auth::id() == $user->u_id)
-                        <a href="{{ route('profile.show',$user->u_id) }}">
-                            <button class="btn btn-primary pull-right"><i class="fa fa-arrow-left"></i>
-                                กลับไปยังหน้าแสดงผล
-                            </button>
-                        </a>
-                    @endif
+
+                        @if(  Auth::id())
+
+                            <a href="{{ route('profile.show',$user->u_id) }}">
+                                <button class="btn btn-primary pull-right"><i class="fa fa-arrow-left"></i>
+                                    กลับไปยังหน้าแสดงผล
+                                </button>
+                            </a>
+                        @endif
+
                     <h1 class="boxTitle">ข้อมูลส่วนตัว</h1>
                     <!-- Tabs -->
                     <ul class="nav nav-tabs userProfileTabs" role="tablist">
@@ -174,7 +179,8 @@
 
                                         <!-- Text input-->
                                         <div class="form-group{{ $errors->has('u_email') ? ' has-error' : '' }}">
-                                            <label class="col-sm-2 control-label" for="textinput">อีเมล  <span style="color:red"> * </span></label>
+                                            <label class="col-sm-2 control-label" for="textinput">อีเมล <span
+                                                        style="color:red"> * </span></label>
                                             <div class="col-sm-10">
                                                 <input type="email" placeholder="กรุณาระบุอีเมลของท่าน"
                                                        name="u_email" class="form-control"
@@ -237,7 +243,8 @@
                                         <div class="form-group">
                                             <div class="{{ $errors->has('u_birthdate') ? ' has-error' : '' }}">
                                                 <label class="col-sm-2 control-label"
-                                                       for="textinput">วันเดือนปีเกิด   <span style="color:red"> * </span> </label>
+                                                       for="textinput">วันเดือนปีเกิด <span style="color:red"> * </span>
+                                                </label>
 
 
                                                 <div class="col-sm-10">
@@ -265,7 +272,8 @@
                                         <!-- Text input-->
                                         <div class="form-group">
                                             <div class="{{ $errors->has('u_name_th') ? ' has-error' : '' }}">
-                                                <label class="col-sm-2 control-label" for="textinput">ชื่อ (ไทย)  <span style="color:red"> * </span></label>
+                                                <label class="col-sm-2 control-label" for="textinput">ชื่อ (ไทย) <span
+                                                            style="color:red"> * </span></label>
                                                 <div class="col-sm-4">
                                                     <input type="text" placeholder="ชื่อของท่าน"
                                                            class="form-control" name="u_name_th"
@@ -280,7 +288,7 @@
                                             </div>
                                             <div class="{{ $errors->has('u_surname_th') ? ' has-error' : '' }}">
                                                 <label class="col-sm-2 control-label"
-                                                       for="textinput">นามสกุล (ไทย)   <span style="color:red"> * </span></label>
+                                                       for="textinput">นามสกุล (ไทย) <span style="color:red"> * </span></label>
                                                 <div class="col-sm-4">
                                                     <input type="text" placeholder="นามสกุลของท่าน"
                                                            class="form-control" name="u_surname_th"
@@ -332,7 +340,8 @@
                                         <!-- Text input-->
                                         <div class="form-group">
                                             <div class="{{ $errors->has('u_major_id') ? ' has-error' : '' }}">
-                                                <label class="col-sm-2 control-label" for="textinput">สาขา   <span style="color:red"> * </span></label>
+                                                <label class="col-sm-2 control-label" for="textinput">สาขา <span
+                                                            style="color:red"> * </span></label>
                                                 <div class="col-sm-4">
                                                     <select name="u_major_id" id="" class="form-control">
 
@@ -379,8 +388,8 @@
                                                     <input class="form-control left-border-none"
                                                            placeholder="url เฟสบุ้คของท่าน เช่น https://www.facebook.com/yourfacebookid "
                                                            type="text"
-                                                    name="u_facebook"
-                                                    value="{{  old('u_facebook',$user->u_facebook )}}">
+                                                           name="u_facebook"
+                                                           value="{{  old('u_facebook',$user->u_facebook )}}">
                                                 </div>
                                             </div>
 

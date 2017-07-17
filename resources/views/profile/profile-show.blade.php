@@ -47,7 +47,9 @@
                         <div class="info">
                             <span><i class="fa fa-fw fa-phone"></i> <a href="tel:{{ $user->u_phone }}"
                                                                        title="#">{{ $user->u_phone }}</a></span>
-                            <span><i class="fa fa-fw fa-list-alt"></i> <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to={{$user->u_email}}&tf=1" target="_blank" title="send email">
+                            <span><i class="fa fa-fw fa-list-alt"></i> <a
+                                        href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to={{$user->u_email}}&tf=1"
+                                        target="_blank" title="send email">
                                                                          {{ $user->u_email }}</a></span>
                         </div>
 
@@ -115,26 +117,26 @@
             <div class="col-xs-12 col-md-8 col-lg-9">
 
                 <div class="box">
-                    @if(Auth::id() == $user->u_id)
-                        <div class="btn-group form-group pull-right">
+                    @if( !empty(Auth::id()) )
+                        @if( Auth::user()->u_role_id == 1 || Auth::id() == $user->u_id)
+
+                            <div class="btn-group form-group pull-right">
 
 
-                            <a href="#" onclick="swal('Export your CV to PDF ','Coming Soon ...','info')"
-                               class="btn btn-warning ">
-                                <i class="fa fa-file-pdf-o"></i>
-                                Export ประวัติส่วนตัว
-                            </a>
-                            <a href="{{ route('profile.edit',$user->u_id) }}"
-                               class="btn btn-primary">
-                                <i class="fa fa-cog"></i> แก้ไขข้อมูลส่วนตัว
-                            </a>
+                                <a href="#" onclick="swal('Export your CV to PDF ','Coming Soon ...','info')"
+                                   class="btn btn-warning ">
+                                    <i class="fa fa-file-pdf-o"></i>
+                                    Export ประวัติส่วนตัว
+                                </a>
+                                <a href="{{ route('profile.edit',$user->u_id) }}"
+                                   class="btn btn-primary">
+                                    <i class="fa fa-cog"></i> แก้ไขข้อมูลส่วนตัว
+                                </a>
 
 
-                        </div>
+                            </div>
 
-
-
-
+                        @endif
                     @endif
                     <h1 class="boxTitle">ข้อมูลส่วนตัว</h1>
                     <!-- Tabs -->

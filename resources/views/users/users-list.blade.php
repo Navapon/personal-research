@@ -28,44 +28,58 @@
                             </thead>
                             <tbody>
                             @foreach($users as $user)
-                            <tr>
-                                <td>
-                                    <img src="{{ $user->u_image ? asset('images/user-image/').'/' .$user->u_image: '/images/user-img.png' }}" alt="{{ $user->u_name_th . ' ' . $user->u_surname_th }}" >
-                                    <a href="{{ route('profile.show',['id'=> $user->u_id ]) }}" class="user-link">{{ $user->u_name_th . ' ' . $user->u_surname_th }}</a>
-                                    <span class="user-subhead">นักวิจัย</span>
-                                </td>
+                                <tr>
+                                    <td>
+                                        <img src="{{ $user->u_image ? asset('images/user-image/').'/' .$user->u_image: '/images/user-img.png' }}"
+                                             alt="{{ $user->u_name_th . ' ' . $user->u_surname_th }}">
+                                        <a href="{{ route('profile.show',['id'=> $user->u_id ]) }}"
+                                           class="user-link">{{ $user->u_name_th . ' ' . $user->u_surname_th }}</a>
+                                        <span class="user-subhead">นักวิจัย</span>
+                                    </td>
 
-                                <td>
-                                    <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to={{$user->u_email}}&tf=1" target="_blank">
-                                        {{ $user->u_email or ' - '}}
-                                    </a>
-                                </td>
+                                    <td>
+                                        <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to={{$user->u_email}}&tf=1"
+                                           target="_blank">
+                                            {{ $user->u_email or ' - '}}
+                                        </a>
+                                    </td>
 
-                                <td>
-                                    {{ $user->major->major_name or ' - ' }}
-                                </td>
+                                    <td>
+                                        {{ $user->major->major_name or ' - ' }}
+                                    </td>
 
-                                <td style="width: 20%;">
-                                    <a href="{{ route('profile.show',['id'=> $user->u_id ]) }}" class="table-link">
+                                    <td style="width: 20%;">
+                                        <a href="{{ route('profile.show',['id'=> $user->u_id ]) }}" class="table-link">
                                             <span class="fa-stack">
                                                 <i class="fa fa-square fa-stack-2x"></i>
                                                 <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
                                             </span>
-                                    </a>
-                           {{--         <a href="#" class="table-link">
-                                            <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
-                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                            </span>
-                                    </a>
-                                    <a href="#" class="table-link danger">
-                                            <span class="fa-stack">
-                                                <i class="fa fa-square fa-stack-2x"></i>
-                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                            </span>
-                                    </a>--}}
-                                </td>
-                            </tr>
+                                        </a>
+                                        @if( !empty(Auth::id()) )
+                                            @if( Auth::user()->u_role_id == 1 )
+                                                <a href="{{ route('profile.edit',['id'=> $user->u_id ]) }}"
+                                                   class="table-link" style="color: green">
+                                                    <span class="fa-stack">
+                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                        <i class="fa fa-edit fa-stack-1x fa-inverse"></i>
+                                                    </span>
+                                                </a>
+                                            @endif
+                                        @endif
+                                        {{--         <a href="#" class="table-link">
+                                                         <span class="fa-stack">
+                                                             <i class="fa fa-square fa-stack-2x"></i>
+                                                             <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                         </span>
+                                                 </a>
+                                                 <a href="#" class="table-link danger">
+                                                         <span class="fa-stack">
+                                                             <i class="fa fa-square fa-stack-2x"></i>
+                                                             <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                         </span>
+                                                 </a>--}}
+                                    </td>
+                                </tr>
                             @endforeach
 
 
