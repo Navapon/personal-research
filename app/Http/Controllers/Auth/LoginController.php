@@ -58,7 +58,7 @@ class LoginController extends Controller
 
             } else {
 
-                alert()->info('กรุณาติดต่อเจ้าหน้าที่','ไม่มีข้อมูลผู้ใช้งาน');
+                alert()->info('กรุณาลองใหม่ หากไม่ได้กรุณาติดต่อเจ้าหน้าที่','รหัสผ่านผิดพลาด หรือ ไม่มีข้อมูลผู้ใช้งาน');
                 return redirect()->intended('home');
 
             }
@@ -69,7 +69,7 @@ class LoginController extends Controller
 
         }
 
-        alert()->info('กรุณาติดต่อเจ้าหน้าที่','ไม่มีข้อมูลผู้ใช้งาน');
+        alert()->info('กรุณาลองใหม่ หากไม่ได้กรุณาติดต่อเจ้าหน้าที่','รหัสผ่านผิดพลาด หรือ ไม่มีข้อมูลผู้ใช้งาน');
         return redirect()->intended('home');
     }
 
