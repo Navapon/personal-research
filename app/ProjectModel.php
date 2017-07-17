@@ -13,6 +13,7 @@ class ProjectModel extends Model
     protected $table = 'research_project';
     protected $primaryKey = 'rp_id';
 
+
     /**
      * The attributes that should be mutated to dates.
      *
@@ -32,7 +33,7 @@ class ProjectModel extends Model
 
     }
 
-    public function status (){
+    public function statusRp (){
 
         return $this->belongsTo(ResearchstatusModel::class,'rp_status','rst_id');
 

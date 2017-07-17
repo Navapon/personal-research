@@ -17,17 +17,15 @@
             </tr>
             </thead>
             <tbody>
-
             @if(!empty($projects))
                 @foreach($projects as $project)
 
                     <tr>
                         <td>{{ $loop->iteration  }}</td>
                         <td>{{ $project->project->rp_name }}</td>
-
                         <td>{{ $project->project->user->user->academic->academic_name or ''}} {{ $project->project->user->user->u_name_th }} {{ $project->project->user->user->u_surname_th }}</td>
-                        <td>{{ $project->project->status->rst_name or ''}}</td>
-                        <td>{{ $project->project->fund->fund_name}}</td>f
+                        <td>{{ $project->project->statusRp->rst_name }}</td>
+                        <td>{{ $project->project->fund->fund_name}}</td>
                         <td>{{ $project->project->rp_year}}</td>
                         <td><a href="{{ route('project.show',$project->project->rp_id) }}" title="ดูข้อมูลโครงการ"><i
                                         class="fa fa-search fa-2x "></i></a></td>
@@ -44,12 +42,9 @@
 
                                     <i id="del-btn" onclick="projectconfirm({{ $project->project->rp_id }})"
                                        class="fa fa-trash fa-2x bin" title="แก้ไขข้อมูลโครงการ"></i>
-
                                 </form>
                             </td>
                         @endif
-
-
                     </tr>
 
                 @endforeach

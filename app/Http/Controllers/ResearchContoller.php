@@ -27,7 +27,6 @@ class ResearchContoller extends Controller
         $conferences = UserresearchModel::with('conference')->has('conference')->get();
         $patents = UserresearchModel::with('patent')->has('patent')->get();
 
-
         $data = array(
             'journals' => $journals,
             'projects' => $projects,

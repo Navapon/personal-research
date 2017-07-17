@@ -124,7 +124,7 @@
                                         สถานะปัจจุบันของโครงการ
                                     </h4>
                                     <p class="list-group-item-text">
-                                        {{ $project->project->status->rst_name or ' - ' }}
+                                        {{ $project->project->statusRp->rst_name or ' - ' }}
                                     </p>
                                 </a>
 
