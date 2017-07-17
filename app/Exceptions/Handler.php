@@ -89,7 +89,8 @@ class Handler extends ExceptionHandler
             return response()->view('errors.fatal', [], 404);
         }
 
-        return parent::render($request, $exception);
+        return response()->view('errors.fatal', [], 404);
+//        return parent::render($request, $exception);
     }
 
 //    public function render($request, Exception $e)
