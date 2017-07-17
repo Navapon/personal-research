@@ -2,7 +2,7 @@
 /public/hot
 /public/storage
 /public/files
-/app/Exceptions/Handler.php
+/app/Exceptions/
 public/images/user-image/
 /storage/*.key
 /vendor
