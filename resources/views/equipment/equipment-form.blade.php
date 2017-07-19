@@ -134,6 +134,8 @@
                 <input id="textinput" name="re_amount" placeholder="ระบุราคาของเครื่องมือ หากไม่มีให้ปล่อยว่างไว้"
                        class="form-control input-md" type="number"
                        value="{{ old('re_amount',isset($equipment->re_amount) ? $equipment->re_amount : '') }}"
+
+                       step="any"
                 >
             </div>
         </div>
@@ -147,6 +149,7 @@
                 <input id="textinput" name="re_number" placeholder="ระบุจำนวน"
                        class="form-control input-md" type="number"
                        value="{{ old('re_number',isset($equipment->re_number) ? $equipment->re_number : '') }}"
+                       oninput="this.value=this.value.replace(/[^0-9\.]/g,'','');"
                 >
             </div>
 
@@ -165,13 +168,13 @@
         <!-- Text input-->
         <div class="form-group">
             <label class="col-md-3 control-label" for="textinput">สถาที่ตั้ง ห้อง</label>
-            <div class="col-md-1">
+            <div class="col-md-2">
                 <input id="textinput" name="re_room" placeholder="เลขห้อง"
                        class="form-control input-md" type="text"
                        value="{{ old('re_room',isset($equipment->re_room) ? $equipment->re_room : '') }}"
                 >
             </div>
-            <label class="col-md-2 control-label" for="textinput">ชั้น</label>
+            <label class="col-md-1 control-label" for="textinput">ชั้น</label>
             <div class="col-md-2">
                 <input id="textinput" name="re_floor" placeholder="ชั้นที่"
                        class="form-control input-md" type="text"
@@ -182,7 +185,7 @@
                 <span style="color:red"> * </span>
             </label>
             <div class="col-md-2">
-                <input id="textinput" name="re_building" placeholder="ชื่อหรือหมายเลขตึกเเก็บเครื่องมือวิจัย"
+                <input id="textinput" name="re_building" placeholder="ชื่อหรือหมายเลขตึกเก็บเครื่องมือวิจัย"
                        class="form-control input-md" type="text"
                        value="{{ old('re_building',isset($equipment->re_building) ? $equipment->re_building : '') }}"
                 >

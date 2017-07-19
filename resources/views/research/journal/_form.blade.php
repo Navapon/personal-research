@@ -295,6 +295,7 @@
                                    placeholder="เลขที่ของฉบับที่ได้รับ"
                                    class="form-control input-md"
                                    value="{{ old('rj_no',isset($journal->rj_no) ? $journal->rj_no : '') }}"
+                                   oninput="this.value=this.value.replace(/[^0-9]/g,''); "
                             >
                             <span class="help-block">หมายเลขฉบับ </span>
                         </div>

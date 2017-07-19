@@ -156,6 +156,7 @@ class ProfileController extends Controller
             $profile->save();
 
             echo 'อัพโหลดรูปภาพเรียบร้อย';
+
         } else {
             echo 'ไม่สามารถอัพโหลดรูปภาพได้';
         }

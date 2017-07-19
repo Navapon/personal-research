@@ -164,6 +164,7 @@
                                    placeholder="กรุณาระบุจำนวนเงิน"
                                    class="form-control input-md"
                                    value="{{ old('rp_amount',isset($project->rp_amount) ? $project->rp_amount : '') }}"
+                                   oninput="this.value=this.value.replace(/[^0-9]/g,'');"
                             >
                             <span class="help-block">กรุณาระบุจำนวนเงิน</span>
                         </div>

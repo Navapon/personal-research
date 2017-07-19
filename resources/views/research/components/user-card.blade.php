@@ -2,7 +2,7 @@
     <div class="col-xs-12 col-sm-2">
         <figure>
             <img class="img-circle img-responsive" alt=""
-                 src="{{ $obj->user->u_image ? asset('images').'/' .$obj->user->u_image: '/images/user-img.png' }}"
+                 src="{{ $obj->user->u_image ? asset('images/user-image/').'/' .$obj->user->u_image: '/images/user-img.png' }}"
             >
         </figure>
         <div class="row">

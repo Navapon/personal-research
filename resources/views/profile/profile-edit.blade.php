@@ -197,7 +197,9 @@
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label"
                                                    {{ $errors->has('u_identity') ? ' has-error' : '' }}
-                                                   for="textinput">รหัสบัตรประชาชน</label>
+                                                   for="textinput">รหัสบัตรประชาชน
+                                                <span
+                                                        style="color:red"> * </span></label>
                                             <div class="col-sm-4 {{ $errors->has('u_identity') ? ' has-error' : '' }}">
                                                 <input type="text" maxlength="13" placeholder="ระบุรหัสบัตรประชาชน"
                                                        name="u_identity" class="form-control"

@@ -24,7 +24,7 @@ class CreateResearchJournalTable extends Migration
             $table->date('rj_publish_date');
             $table->integer('fund_id');
             $table->string('rj_isbn','150')->nullable();
-            $table->integer('rj_volume');
+            $table->string('rj_volume');
             $table->integer('rj_no');
             $table->string('rj_page');
             $table->string('rj_abstract','1500');
