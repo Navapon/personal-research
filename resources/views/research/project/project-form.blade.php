@@ -70,8 +70,7 @@
                     <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-offset-1 col-md-2 control-label" for="rp_abstract">บทคัดย่อ ( Abstract )
-                            <span
-                                    style="color:red"> * </span></label>
+                        </label>
                         <div class="col-md-8">
                                     <textarea class="form-control" name="rp_abstract" id="rp_abstract" cols="30"
                                               rows="10" maxlength="1500"

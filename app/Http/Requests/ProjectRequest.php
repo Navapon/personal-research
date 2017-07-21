@@ -25,7 +25,6 @@ class ProjectRequest extends FormRequest
     {
         return [
             'rp_name' => 'required',
-            'rp_abstract' => 'required',
             'rp_meta_tag' => 'required',
             'fund_id' => 'required',
             'rp_year' => 'required',
@@ -41,7 +40,6 @@ class ProjectRequest extends FormRequest
     {
         return [
             'rp_name.required' => 'กรุณาระบุ ชื่อโครงการของท่าน',
-            'rp_abstract.required' => 'กรุณาระบุ บทคัดย่อ',
             'rp_meta_tag.required' => 'กรุณาระบุ คำค้น',
             'fund_id.required' => 'กรุณาระบุ แหล่งทุน',
             'rp_year.required' => 'กรุณาระบุ ปีที่ได้รับทุน',
