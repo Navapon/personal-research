@@ -357,9 +357,9 @@
                                     style="color:red"> * </span></label>
                         <div class="col-md-8">
                                     <textarea class="form-control" name="rj_abstract" id="rj_abstract" cols="30"
-                                              rows="13" maxlength="1500"
+                                              rows="13" maxlength="3000"
                                               placeholder="บทคัดย่อของวารสาร">{{ old('rj_abstract',isset($journal->rj_abstract) ? $journal->rj_abstract : '') }}</textarea>
-                            <span class="help-block">ระบุบทคัดย่อของงานของท่าน</span>
+                            <span class="help-block">ระบุบทคัดย่อของงานของท่านจำกัด 3000 คำ</span>
                         </div>
                     </div>
 
