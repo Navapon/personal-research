@@ -26,7 +26,7 @@ class ProfileController extends Controller
     public function index ()
     {
 
-        $users = ProfileModel::all();
+        $users = ProfileModel::where('u_position',1)->get();
 
         return view('users.users-list')->with('users', $users);
     }
