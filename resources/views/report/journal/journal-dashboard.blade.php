@@ -13,101 +13,79 @@
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/data.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>
 
-    <div class="col-xs-12 col-md-12">
-        <div id="journal-chart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+    <div class="col-sm-12 col-xs-12 col-md-12">
+        <form action="{{ route('report-journal')}}" method="get">
+            <div class="row well">
+                <div class="col-md-offset-2 col-md-4">
+                    <label for="">แหล่งทุน</label>
+                    <select name="fund" id="fund" class="form-control">
+                        <option value="" selected>แหล่งทุนทั้งหมด</option>
+                        <option value="in" {{ app('request')->input('fund') == 'in' ? 'selected':'' }}>แหล่งทุนภายใน
+                        </option>
+                        <option value="out" {{ app('request')->input('fund') == 'out' ? 'selected':'' }}>
+                            แหล่งทุนภายนอก
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="">ปี</label>
+                    <select name="year" id="year" class="form-control">
+                        <option value="" selected>ทุกปี</option>
+                        @foreach($year as $item)
+                            <option value="{{$item->year}} "
+                                    {{ app('request')->input('year') == $item->year ? 'selected':'' }}
+                            >
+                                {{ $item->year + 543}}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-1 col-sm-12 col-xs-12">
+                    <label for="">ค้นหา</label>
+                    <button class="btn btn-primary" style="width : 100%" type="submit"><i class="fa fa-search-plus"></i></button>
+                </div>
+            </div>
+        </form>
+        <div id="journal-chart" style=" margin: 0 auto"></div>
         <table id="journal-table" class="table table-border">
             <thead>
-            <tr>
+            <tr class="info">
                 <th>สาขา</th>
+                <th>จำนวนวารสาร</th>
+            </tr>
+            </thead>
+            <tbody>
+            @if(!empty($journals))
+                @foreach($journals as $journal)
+                    <tr>
+                        <td>{{ $journal->major_name }}</td>
+                        <td>{{ $journal->journal_number }}</td>
+                    </tr>
+                @endforeach
+            @endIf
+            </tbody>
+        </table>
 
+        <div id="compare-chart" style="margin: 0 auto"></div>
+        <table id="compare-table" class="table table-border">
+            <thead>
+            <tr class="info">
+                <th>ปีงบประมาณ</th>
                 <th>จำนวนโครงการ</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th>เคมี</th>
-
-                <td>1</td>
-            </tr>
-            <tr>
-                <th>วิทยาการคอมพิวเเตอร์</th>
-
-                <td>3</td>
-            </tr>
-            <tr>
-                <th>เทคโนโลยีและการจัดการความปลอดภัยของอาหาร</th>
-
-                <td>5</td>
-            </tr>
-            <tr>
-                <th>ออกแบบผลิตภัณฑ์อุตสาหกรรม</th>
-
-                <td>6</td>
-            </tr>
-            <tr>
-                <th>เทคโนโลยีการถ่ายภาพและภาพยนตร์</th>
-
-                <td>5</td>
-            </tr>
-            <tr>
-                <th>เทคโนโลยีการพิมพ์</th>
-
-                <td>1</td>
-            </tr>
-            <tr>
-                <th>เทคโนโลยีการโทรทัศน์และวิทยุกระจายเสียง</th>
-
-                <td>1</td>
-            </tr>
-            <tr>
-                <th>เทคโนโลยีเครื่องเรือนและการออกแบบ</th>
-
-                <td>1</td>
-            </tr>
-            <tr>
-                <th>ชีววิทยา</th>
-
-                <td>1</td>
-            </tr>
-            <tr>
-                <th>ฟิสิกส์</th>
-
-                <td>1</td>
-            </tr>
-            <tr>
-                <th>คณิตศาสตร์</th>
-
-                <td>1</td>
-            </tr>
-            </tbody>
-        </table>
-
-        <div id="compare-chart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-        <table id="compare-table" class="table table-border">
-            <thead>
-            <tr>
-                <th>ปีงบประมาณ</th>
-                <th>จำนวนเงิน</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>2558</td>
-                <td>5</td>
-            </tr>
-            <tr>
-                <td>2559</td>
-                <td>8</td>
-            </tr>
-            <tr>
-                <td>2560</td>
-                <td>10</td>
-            </tr>
-            <tr>
-                <td>2561</td>
-                <td>9</td>
-            </tr>
+            @if(!empty($static))
+                @foreach($static as $item)
+                    <tr>
+                        <td>{{ $item->year  + 543 }}</td>
+                        <td>{{ $item->journal_number }}</td>
+                    </tr>
+                @endforeach
+            @endif
             </tbody>
         </table>
     </div>
@@ -122,12 +100,12 @@
                     type: 'column'
                 },
                 title: {
-                    text: 'ข้อมูลวารสารประจำปี 2560'
+                    text: 'ข้อมูลจำนวนวารสารวิชาการ'
                 },
                 yAxis: {
-                    allowDecimals: false,
+                    allowDecimals: true,
                     title: {
-                        text: 'จำนวนที่ตีพิมพ์'
+                        text: 'จำนวนเงิน'
                     }
                 },
                 tooltip: {
@@ -146,12 +124,12 @@
                     type: 'column'
                 },
                 title: {
-                    text: 'จำนวนวารสารตามรายปี'
+                    text: 'เปรียบเทียบจำนวนวารสารทั้งหมดภายในแต่ละปี'
                 },
                 yAxis: {
-                    allowDecimals: false,
+                    allowDecimals: true,
                     title: {
-                        text: 'Units'
+                        text: 'จำนวนเงิน'
                     }
                 },
                 tooltip: {
@@ -165,5 +143,4 @@
 
         })
     </script>
-
 @endsection

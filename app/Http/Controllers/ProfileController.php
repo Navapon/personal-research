@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\AcademicModel;
 use App\MajorModel;
 use App\UserresearchModel;
-use UxWeb\SweetAlert\SweetAlert;
-use Session;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use App\ProfileModel;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
@@ -70,7 +70,7 @@ class ProfileController extends Controller
         }
 
         // that's mean to edit my profile
-        if($id == "my"){
+        if ($id == "my") {
             $id = Auth::id();
         }
         $current_user = Auth::user();
@@ -81,7 +81,7 @@ class ProfileController extends Controller
         $projects = UserresearchModel::with('project')->has('project')->where('u_id', $id)->get();
         $patents = UserresearchModel::with('patent')->has('patent')->where('u_id', $id)->get();
 
-        if ($current_user->u_id == $id || Auth::user()->u_role_id == 1 ) {
+        if ($current_user->u_id == $id || Auth::user()->u_role_id == 1) {
             $user = ProfileModel::find($id);
 
             $data = array(
@@ -163,7 +163,23 @@ class ProfileController extends Controller
 
     }
 
-    public function myprofilecv(){
+    public function myprofilecv (Request $request)
+    {
+
+        $profile = ProfileModel::find(Auth::id());
+
+        $data = array(
+            'profile' => $profile
+        );
+
+        view()->share('profile',$profile);
+
+//        if($request->has('download')){
+            $pdf = PDF::loadView('profile.profile-cv');
+            return $pdf->stream();
+//        }
+
+        return view('profile.profile-cv');
 
     }
 

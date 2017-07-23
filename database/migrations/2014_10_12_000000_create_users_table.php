@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->mediumInteger('u_major_id');
             $table->tinyInteger('u_role_id');
+            $table->unsignedInteger('u_position');
             $table->string('u_description',1000)->nullable();
             $table->string('u_birthdate')->nullable();
             $table->string('u_image')->nullable();

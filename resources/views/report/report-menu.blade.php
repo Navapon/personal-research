@@ -37,8 +37,8 @@
                 <div class="panel-body">
                     <h4>รายงานวารสารตีพิมพ์</h4>
                     <p>แสดงข้อมูลรายงานวารสารที่ถูกตีพิมพ์ ตามสาขาและภาพรวมรายปี</p>
-                    {{--<a href="{{ route('report-journal') }}" class="btn btn-success">View</a>--}}
-                    <a href="#" onclick="swal('Coming Soon ...','','info')" class="btn btn-success">View</a>
+                    <a href="{{ route('report-journal') }}" class="btn btn-success">View</a>
+
                 </div>
             </div>
         </div>

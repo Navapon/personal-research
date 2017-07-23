@@ -71,8 +71,7 @@
         <div class="form-group">
             <label class="col-md-offset-1 col-md-2 control-label" for="pt_number">เลขที่คำขอรับสิทธิบัตร /
                 อนุสิทธิบัตร
-            <span
-                    style="color:red"> * </span></label>
+          </label>
             <div class="col-md-8">
 
                 <input id="pt_number" name="pt_number" type="number"
@@ -87,8 +86,7 @@
         <!-- Text input-->
         <div class="form-group">
             <label class="col-md-offset-1 col-md-2 control-label" for="pt_publish_level">เผยแพร่ในระดับ
-                <span
-                        style="color:red"> * </span>
+
             </label>
             <div class="col-md-3">
                 <select name="pt_publish_level" id="pt_publish_level" class="form-control">
@@ -106,8 +104,7 @@
                 <span class="help-block">ระดับของสิทธิบัตร</span>
             </div>
 
-            <label class="col-md-2 control-label" for="pt_type">ประเภทสิทธิบัตร <span
-                        style="color:red"> * </span>
+            <label class="col-md-2 control-label" for="pt_type">ประเภทสิทธิบัตร
             </label>
             <div class="col-md-3">
 
@@ -130,8 +127,7 @@
         <div class="form-group">
             {{-- ACCEPT DATE--}}
             <label class="col-md-offset-1 col-md-2 control-label" for="pt_accept">วันที่ออก
-                <span
-                        style="color:red"> * </span>
+
             </label>
             <div class="col-md-3">
                 <div class='input-group date' >

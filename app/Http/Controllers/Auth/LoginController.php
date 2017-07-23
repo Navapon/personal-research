@@ -47,23 +47,24 @@ class LoginController extends Controller
         $username = $request->u_username;
         $password = $request->password;
 
-        if (Adldap::auth()->attempt($username, $password)) {
-
-            // Authentication passed from Ldap ...
-            $user = User::where('u_username', $request->input('u_username'))->first();
-
-            if (!empty($user) && Auth::loginUsingId($user->u_id)) {
-
-                return redirect()->route('profile.edit', $user->u_id);
-
-            } else {
-
-                alert()->info('กรุณาลองใหม่ หากไม่ได้กรุณาติดต่อเจ้าหน้าที่','รหัสผ่านผิดพลาด หรือ ไม่มีข้อมูลผู้ใช้งาน');
-                return redirect()->intended('home');
-
-            }
-
-        } else if (Auth::attempt([ 'u_username' => $username, 'password' => $password ])) {
+//        if (Adldap::auth()->attempt($username, $password)) {
+//
+//            // Authentication passed from Ldap ...
+//            $user = User::where('u_username', $request->input('u_username'))->first();
+//
+//            if (!empty($user) && Auth::loginUsingId($user->u_id)) {
+//
+//                return redirect()->route('profile.edit', $user->u_id);
+//
+//            } else {
+//
+//                alert()->info('กรุณาลองใหม่ หากไม่ได้กรุณาติดต่อเจ้าหน้าที่','รหัสผ่านผิดพลาด หรือ ไม่มีข้อมูลผู้ใช้งาน');
+//                return redirect()->intended('home');
+//
+//            }
+//
+//        } else
+            if (Auth::attempt([ 'u_username' => $username, 'password' => $password ])) {
 
             return redirect()->route('profile.edit', Auth::id());
 

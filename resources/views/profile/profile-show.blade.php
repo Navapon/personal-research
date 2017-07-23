@@ -123,7 +123,8 @@
                             <div class="btn-group form-group pull-right">
 
 
-                                <a href="#" onclick="swal('Export your CV to PDF ','Coming Soon ...','info')"
+                                {{--<a href="{{ route('profile.myprofilecv') }}" --}}
+                                <a href="#" onclick="swal('Coming Soon ...','','info')"
                                    class="btn btn-warning ">
                                     <i class="fa fa-file-pdf-o"></i>
                                     Export ประวัติส่วนตัว

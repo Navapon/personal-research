@@ -3,11 +3,11 @@
     <div class="footer-right">
 
         <a href="#"><i class="fa fa-facebook"></i></a>
-{{--
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-linkedin"></i></a>
-        <a href="#"><i class="fa fa-github"></i></a>
---}}
+        {{--
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-github"></i></a>
+        --}}
 
     </div>
 
@@ -25,20 +25,23 @@
             <a href="#">ติดต่อเรา</a>
         </p>
 
-        <b><p> &copy; 2017, <i>Copy Rights สำนักวิทยบริการและเทคโนโลยีสารสนเทศ มหาวิทยาลัยราชมงคลกรุงเทพ . All Rights Reserved</i></p></b>
+        <b><p> &copy; 2017, <i>Copy Rights สำนักวิทยบริการและเทคโนโลยีสารสนเทศ มหาวิทยาลัยราชมงคลกรุงเทพ . All Rights
+                    Reserved</i></p></b>
     </div>
 
 </footer>
 
 <style>
 
-    .footer-distributed .footer-left .footer-links a:hover{
+    .footer-distributed .footer-left .footer-links a:hover {
         color: #00aced;
     }
+
     footer {
         margin-bottom: 0px !important;
     }
-    .footer-distributed{
+
+    .footer-distributed {
         background-color: #ffff5a;
         box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
         box-sizing: border-box;
@@ -50,38 +53,38 @@
         margin-top: 80px;
     }
 
-    .footer-distributed .footer-left p{
-        color:  #8f9296;
+    .footer-distributed .footer-left p {
+        color: #8f9296;
         font-size: 14px;
 
     }
 
     /* Footer links */
 
-    .footer-distributed p.footer-links{
-        font-size:18px;
+    .footer-distributed p.footer-links {
+        font-size: 18px;
         font-weight: bold;
-        color:  black;
+        color: black;
         margin: 0 0 10px;
         padding: 0;
     }
 
-    .footer-distributed p.footer-links a{
-        display:inline-block;
+    .footer-distributed p.footer-links a {
+        display: inline-block;
         line-height: 1.8;
         text-decoration: none;
-        color:  inherit;
+        color: inherit;
     }
 
-    .footer-distributed .footer-right{
+    .footer-distributed .footer-right {
         float: right;
         margin-top: 6px;
         max-width: 180px;
     }
 
-    .footer-distributed .footer-right a .fa-facebook{
+    .footer-distributed .footer-right a .fa-facebook {
 
-        background-color:  #3b5998;
+        background-color: #3b5998;
         display: inline-block;
         width: 35px;
         height: 35px;
@@ -100,29 +103,29 @@
     @media (max-width: 600px) {
 
         .footer-distributed .footer-left,
-        .footer-distributed .footer-right{
+        .footer-distributed .footer-right {
             text-align: center;
         }
 
-        .footer-distributed .footer-right{
+        .footer-distributed .footer-right {
             float: none;
             /*margin: 0 auto 20px;*/
         }
 
-        .footer-distributed .footer-left p.footer-links{
+        .footer-distributed .footer-left p.footer-links {
             line-height: 1.8;
         }
     }
 
-    footer{
-        position: fixed;
+    footer {
+        position: absolute;
         bottom: 0;
+        width: 100%;
     }
 
+    footer {
+        position: static;
+    }
 
-    /*@media (max-height:800px){*/
-        footer { position: static; }
-        /*header { padding-top:40px; }*/
-    /*}*/
 
 </style>

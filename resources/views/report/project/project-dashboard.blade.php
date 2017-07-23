@@ -38,9 +38,9 @@
                     @endforeach
                 </select>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-1 col-sm-12 col-xs-12">
                 <label for="">ค้นหา</label>
-                <button class="btn btn-primary" type="submit"><i class="fa fa-search-plus"></i> ค้นหา</button>
+                <button class="btn btn-primary" style="width : 100%" type="submit"><i class="fa fa-search-plus"></i></button>
             </div>
         </div>
         </form>
