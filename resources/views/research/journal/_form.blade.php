@@ -261,7 +261,7 @@
 
                     <!-- Text input-->
                     <div class="form-group">
-                        <label class="col-md-offset-1 col-md-2 control-label" for="rj_isbn">หมายเลข ISBN/ISSN
+                        <label class="col-md-offset-1 col-md-2 control-label" for="rj_isbn">หมายเลข ISBN/ISSN/DOI
                         </label>
 
                         <div class="col-md-3">

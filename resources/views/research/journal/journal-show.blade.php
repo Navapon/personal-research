@@ -143,7 +143,7 @@
 
                                 <a class="list-group-item inactive-link" href="#">
                                     <h4 class="list-group-item-heading">
-                                        เลขที่ ISBN / ISSN
+                                        เลขที่ ISBN / ISSN / DOI
                                     </h4>
                                     <p class="list-group-item-text">
                                         {{ $journal->journal->rj_isbn or ' - ' }}
