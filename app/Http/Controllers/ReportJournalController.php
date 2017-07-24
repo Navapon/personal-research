@@ -21,6 +21,7 @@ class ReportJournalController extends Controller
             ->select(
                 DB::raw("CONCAT_WS('','',YEAR(rj.rj_publish_date)) as year")
             )
+            ->where('rj.deleted_at','=',null)
             ->orderBy('year','desc')
             ->groupby('year')
             ->get();
@@ -39,6 +40,7 @@ class ReportJournalController extends Controller
             ->when($year, function ($query) use ($year) {
                 return  $query->whereYear('rj.rj_publish_date', '=', $year);
             })
+            ->where('rj.deleted_at','=',null)
             ->orderBy('journal_number','desc')
             ->groupBy('m.major_id')
             ->get();

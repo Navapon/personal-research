@@ -35,6 +35,7 @@ class ReportProjectController extends Controller
             ->when($year, function ($query) use ($year) {
                 return $query->where('rp.rp_year', $year);
             })
+            ->where('rp.deleted_at','=',null)
             ->groupBy('m.major_id')
             ->orderBy('project_amount','desc')
             ->get();
@@ -43,7 +44,10 @@ class ReportProjectController extends Controller
             ->join('research_project as rp', 'rp.rp_year', '=', 'y.year_id')
             ->join('users_research as ur', 'ur.rp_id', '=', 'rp.rp_id')
             ->join('users as u', 'u.u_id', '=', 'ur.u_id')
-            ->select('rp.rp_year', DB::raw('COALESCE(sum(rp.rp_amount),0) as project_amount, count(rp.rp_id) as project_number'))
+            ->select('rp.rp_year',
+                DB::raw('COALESCE(sum(rp.rp_amount),0) as project_amount, count(rp.rp_id) as project_number')
+            )
+            ->where('rp.deleted_at','=',null)
             ->groupBy('rp.rp_year')
             ->get();
 
