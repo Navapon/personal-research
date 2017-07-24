@@ -32,7 +32,7 @@ class ResearchEquipmentController extends Controller
     public function index ()
     {
         //
-        $equipments = ResearchEquipmentModel::all();
+        $equipments = ResearchEquipmentModel::orderBy('re_year','desc')->get();
 
         return view('equipment.equipment-list')->with('equipments', $equipments);
 

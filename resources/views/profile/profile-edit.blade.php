@@ -132,14 +132,14 @@
 
                 <div class="box">
 
-                        @if(  Auth::id())
+                    @if(  Auth::id())
 
-                            <a href="{{ route('profile.show',$user->u_id) }}">
-                                <button class="btn btn-primary pull-right"><i class="fa fa-arrow-left"></i>
-                                    กลับไปยังหน้าแสดงผล
-                                </button>
-                            </a>
-                        @endif
+                        <a href="{{ route('profile.show',$user->u_id) }}">
+                            <button class="btn btn-primary pull-right"><i class="fa fa-arrow-left"></i>
+                                กลับไปยังหน้าแสดงผล
+                            </button>
+                        </a>
+                    @endif
 
                     <h1 class="boxTitle">ข้อมูลส่วนตัว</h1>
                     <!-- Tabs -->
@@ -501,13 +501,7 @@
 
                                     @includeIf('research.journal.journal-profile-list',['journals' => $journals,'task' => 'edit'])
                                 </div>
-                                <br>
-                                <div class="well">
-                                    <h2 class="boxHeadline"><i class="fa fa-building-o" aria-hidden="true"></i>
-                                        สิทธิบัตร ( Patent ) </h2>
-                                    @includeIf('research.patent.patent-profile-list',['patents' => $patents,'task' => 'edit'])
 
-                                </div>
                                 <br>
                                 <div class="well">
                                     <h2 class="boxHeadline"><i class="fa fa-building-o" aria-hidden="true"></i>
@@ -517,7 +511,13 @@
 
                                 </div>
 
+                                <br>
+                                <div class="well">
+                                    <h2 class="boxHeadline"><i class="fa fa-building-o" aria-hidden="true"></i>
+                                        สิทธิบัตร ( Patent ) </h2>
+                                    @includeIf('research.patent.patent-profile-list',['patents' => $patents,'task' => 'edit'])
 
+                                </div>
                             </div>
                         </div>
 

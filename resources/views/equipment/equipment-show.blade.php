@@ -73,9 +73,9 @@
                 </p>
 
                 <ul>
-                    <li>ที่ตั้งเครื่องมือ ตึก{{ $equipment->re_building or '-' }} ชั้น {{ $equipment->re_floor or ' ไม่ระบุ ' }} ห้อง {{ $equipment->re_room or ' ไม่ระบุ ' }}</li>
+                    <li>ที่ตั้งเครื่องมือ ตึก  {{ $equipment->re_building or '-' }} ชั้น  {{ $equipment->re_floor or ' ไม่ระบุ ' }} ห้อง  {{ $equipment->re_room or ' ไม่ระบุ ' }}</li>
                     <li>มีจำนวน {{ $equipment->re_number or ''}} {{ $equipment->re_namenumber or ''}}</li>
-                    <li>ราคาของเครื่องมือวิจัย {{ $equipment->re_amount or 'ไม่ระบุ'}} บาท </li>
+                    <li>ราคาของเครื่องมือวิจัย {{ number_format( $equipment->re_amount ,2,'.',',') }}   บาท </li>
                     <li>ข้อมูลล่าสุด ณ วันที่
                         {{ $equipment->updated_at }}  </li>
 

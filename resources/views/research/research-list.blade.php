@@ -1,5 +1,11 @@
 @extends('template.landing-template')
 
+@section('meta_tag')
+
+    <meta name="description" content="งานวิจัยคณะวิทยาศาสตร์ราชมงคลกรุงเทพ,นักวิจัย,ราชมงคลกรุงเทพ">
+
+@endsection
+
 @section('page-header')
 
     @include('components.page-header', [

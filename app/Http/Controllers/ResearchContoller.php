@@ -22,10 +22,26 @@ class ResearchContoller extends Controller
 
     public function index ()
     {
-        $journals = UserresearchModel::with('journal')->has('journal')->get();
-        $projects = UserresearchModel::with('project')->has('project')->get();
-        $conferences = UserresearchModel::with('conference')->has('conference')->get();
-        $patents = UserresearchModel::with('patent')->has('patent')->get();
+        $journals = UserresearchModel::
+        join('research_journal as rj', 'rj.rj_id', '=', 'users_research.rj_id')
+            ->orderBy('rj.rj_publish_date', 'desc')
+            ->with('journal')->has('journal')->get();
+
+        $projects = UserresearchModel::
+        join('research_project as rp', 'rp.rp_id', '=', 'users_research.rp_id')
+            ->orderBy('rp.rp_year', 'desc')
+            ->with('project')->has('project')->get();
+
+        $conferences = UserresearchModel::
+        join('research_conference as rc', 'rc.rc_id', '=', 'users_research.rc_id')
+            ->orderBy('rc.rc_publish_date', 'desc')
+            ->with('conference')->has('conference')->get();
+
+        $patents = UserresearchModel::
+        join('research_patent as pt', 'pt.pt_id', '=', 'users_research.pt_id')
+            ->orderBy('pt.pt_accept', 'desc')
+            ->with('patent')->has('patent')->get();
+
 
         $data = array(
             'journals' => $journals,
@@ -58,7 +74,7 @@ class ResearchContoller extends Controller
                 return redirect()->route('patent.create');
                 break;
             default:
-                alert()->warning('','ไม่พบประเภทผลงานวิชาการที่ระบุ');
+                alert()->warning('', 'ไม่พบประเภทผลงานวิชาการที่ระบุ');
                 return redirect()->route('home');
                 break;
         }

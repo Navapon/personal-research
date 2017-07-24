@@ -115,7 +115,7 @@
                                         จำนวนเงินที่ได้รับ
                                     </h4>
                                     <p class="list-group-item-text">
-                                        {{ $project->project->rp_amount or ' - ' }}
+                                        {{ number_format($project->project->rp_amount ,2,'.',',') }}
                                     </p>
                                 </a>
 

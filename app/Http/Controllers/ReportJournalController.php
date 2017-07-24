@@ -39,6 +39,7 @@ class ReportJournalController extends Controller
             ->when($year, function ($query) use ($year) {
                 return  $query->whereYear('rj.rj_publish_date', '=', $year);
             })
+            ->orderBy('journal_number','desc')
             ->groupBy('m.major_id')
             ->get();
 

@@ -49,12 +49,14 @@
                 </div>
             </div>
         </form>
+
         <div id="journal-chart" style=" margin: 0 auto"></div>
         <table id="journal-table" class="table table-border">
             <thead>
             <tr class="info">
                 <th>สาขา</th>
                 <th>จำนวนวารสาร</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -62,7 +64,8 @@
                 @foreach($journals as $journal)
                     <tr>
                         <td>{{ $journal->major_name }}</td>
-                        <td>{{ $journal->journal_number }}</td>
+                        <td style="text-align: center">{{ $journal->journal_number }}</td>
+                        <td style="text-align: center"><button class="btn btn-success" onclick="swal('Coming Soon ...','','info')"><i class="fa fa-file"></i> รายละเอียด</button></td>
                     </tr>
                 @endforeach
             @endIf
@@ -75,14 +78,16 @@
             <tr class="info">
                 <th>ปีงบประมาณ</th>
                 <th>จำนวนโครงการ</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             @if(!empty($static))
                 @foreach($static as $item)
                     <tr>
-                        <td>{{ $item->year  + 543 }}</td>
-                        <td>{{ $item->journal_number }}</td>
+                        <td  style="text-align: center">{{ $item->year  + 543 }}</td>
+                        <td  style="text-align: center">{{ $item->journal_number }}</td>
+                        <td style="text-align: center"><button class="btn btn-success" onclick="swal('Coming Soon ...','','info')"><i class="fa fa-file"></i> รายละเอียด</button></td>
                     </tr>
                 @endforeach
             @endif
@@ -90,11 +95,19 @@
         </table>
     </div>
 
+    <style>
+        th {
+            text-align: center;
+        }
+    </style>
+
     <script>
         $(function () {
             Highcharts.chart('journal-chart', {
                 data: {
-                    table: 'journal-table'
+                    table: 'journal-table',
+                    startColumn:0,
+                    endColumn: 1
                 },
                 chart: {
                     type: 'column'
@@ -118,7 +131,9 @@
 
             Highcharts.chart('compare-chart', {
                 data: {
-                    table: 'compare-table'
+                    table: 'compare-table',
+                    startColumn:0,
+                    endColumn: 1
                 },
                 chart: {
                     type: 'column'

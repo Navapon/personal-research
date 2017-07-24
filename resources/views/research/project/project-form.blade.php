@@ -73,7 +73,7 @@
                         </label>
                         <div class="col-md-8">
                                     <textarea class="form-control" name="rp_abstract" id="rp_abstract" cols="30"
-                                              rows="10" maxlength="1500"
+                                              rows="10" maxlength="3000"
                                               placeholder="บาคัดย่อโครงการวิจัย หากไม่มีบทคัดย่อกรุณา ใส่เครื่องหมาย - ">{{ old('rp_abstract',isset($project->rp_abstract) ? $project->rp_abstract : '') }}</textarea>
                             <span class="help-block">ระบุบทคัดย่อของงานของท่าน</span>
                         </div>

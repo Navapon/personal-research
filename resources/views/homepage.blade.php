@@ -2,7 +2,7 @@
 
 @section('meta_tag')
 
-    <meta name="description" content="utk,ราชมงคลกรุงเทพ,วิจัย,วิจัยคณะวิทย์,คณะวิท วิจัย,research science,คณะวิทยาศาสตร์และเทคโนโลยี,ฐานข้อมูลวิจัย">
+    <meta name="description" content="ฐานข้อมูลวิจัยคณะวิทยาศาสตร์ราชมงคลกรุงเทพ,วิจัยราชมงคลกรุงเทพ,วิจัย,วิจัยคณะวิทย์,คณะวิท วิจัย,research science,คณะวิทยาศาสตร์และเทคโนโลยี,ฐานข้อมูลวิจัย,research rmutk,rmutk,utk">
 
 @endsection
 

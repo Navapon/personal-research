@@ -124,13 +124,13 @@ class ProjectController extends Controller
             DB::commit();
             /* Transaction successful. */
         } catch (\Exception $e) {
-
+            
             DB::rollback();
             alert()->error('', 'เกิดข้อผิดพลาดในการบันทึกโครงการ');
             return redirect()->route('profile.edit', Auth::id());
             /* Transaction failed. */
         }
-
+//
         alert()->success('', 'ทำการเพิ่มข้อมูลโครงการสำเร็จ');
 
         return redirect()->route('profile.edit', Auth::id());

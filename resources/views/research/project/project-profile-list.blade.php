@@ -1,6 +1,6 @@
 <div class="table-responsive">
     <div class="col-md-12 col-lg-12 col-xs-12">
-        <table class="table table-border table-responsive" id="project-list" width="100%">
+        <table class="table table-bordered table-responsive" id="project-list" width="100%">
             <thead>
             <tr class="success">
                 <th>ลำดับ</th>

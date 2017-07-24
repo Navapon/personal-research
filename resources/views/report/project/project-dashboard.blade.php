@@ -51,14 +51,16 @@
                 <th>สาขา</th>
                 <th>จำนวนเงิน</th>
                 <th>จำนวนโครงการ</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             @foreach($projects as $project)
                 <tr>
                     <td>{{ $project->major_name }}</td>
-                    <td>{{ $project->project_amount }}</td>
-                    <td>{{ $project->project_number }}</td>
+                    <td style="text-align: right">{{ $project->project_amount }}</td>
+                    <td style="text-align: center;">{{ $project->project_number }}</td>
+                    <td style="text-align: center"><button class="btn btn-success" onclick="swal('Coming Soon ...','','info')"><i class="fa fa-file"></i> รายละเอียด</button></td>
                 </tr>
             @endforeach
             </tbody>
@@ -71,15 +73,17 @@
                 <th>ปีงบประมาณ</th>
                 <th>จำนวนเงิน</th>
                 <th>จำนวนโครงการ</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             @if(!empty($static))
                 @foreach($static as $item)
                     <tr>
-                        <td>{{ $item->rp_year }}</td>
-                        <td>{{ $item->project_amount }}</td>
-                        <td>{{ $item->project_number }}</td>
+                        <td style="text-align: center">{{ $item->rp_year }}</td>
+                        <td style="text-align: right">{{ $item->project_amount }}</td>
+                        <td style="text-align: center">{{ $item->project_number }}</td>
+                        <td style="text-align: center"><button class="btn btn-success" onclick="swal('Coming Soon ...','','info')"><i class="fa fa-file"></i> รายละเอียด</button></td>
                     </tr>
                 @endforeach
             @endif
@@ -87,17 +91,27 @@
         </table>
     </div>
 
+    <style>
+        th {
+            text-align: center;
+        }
+    </style>
     <script>
         $(function () {
             Highcharts.chart('project-chart', {
+                lang: {
+                    thousandsSep: ','
+                },
                 data: {
-                    table: 'project-table'
+                    table: 'project-table',
+                    startColumn:0,
+                    endColumn: 1
                 },
                 chart: {
                     type: 'column'
                 },
                 title: {
-                    text: 'ข้อมูลโครงการวิจัยประจำปี'
+                    text: 'ข้อมูลจำนวนเงินทุนโครงการวิจัย'
                 },
                 yAxis: {
                     allowDecimals: true,
@@ -108,20 +122,25 @@
                 tooltip: {
                     formatter: function () {
                         return '<b>' + this.series.name + '</b><br/>' +
-                            this.point.y + ' ' + this.point.name.toLowerCase();
+                            Highcharts.numberFormat(this.point.y ,2,'.',',') + ' ' + this.point.name.toLowerCase();
                     }
                 }
             });
 
             Highcharts.chart('compare-chart', {
+                lang: {
+                    thousandsSep: ','
+                },
                 data: {
-                    table: 'compare-table'
+                    table: 'compare-table',
+                    startColumn:0,
+                    endColumn: 1
                 },
                 chart: {
                     type: 'column'
                 },
                 title: {
-                    text: 'เปรียบเทียบเงินจากแหล่งทุนที่ได้รับ'
+                    text: 'เปรียบเทียบจำนวนเงินทุนแต่ละปี'
                 },
                 yAxis: {
                     allowDecimals: true,
@@ -132,7 +151,7 @@
                 tooltip: {
                     formatter: function () {
                         return '<b>' + this.series.name + '</b><br/>' +
-                            this.point.y + ' ' + this.point.name.toLowerCase();
+                            Highcharts.numberFormat(this.point.y ,2,'.',',') + ' ' + this.point.name.toLowerCase();
                     }
                 }
             });
