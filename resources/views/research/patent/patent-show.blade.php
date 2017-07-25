@@ -36,21 +36,21 @@
                         <div class="bs-callout bs-callout-danger">
                             <h4>ชื่อผลงาน</h4>
                             <p>
-                                {{ $patent->patent->pt_name }}
+                                {{ $patent->patent->pt_name or ' - '}}
                             </p>
 
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4>รายละเอียดเกี่ยวกับผลงาน</h4>
                             <p>
-                                {{ $patent->patent->pt_description}}
+                                {{ $patent->patent->pt_description or ' - '}}
                             </p>
 
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4>เลขที่คำขอรับสิทธิบัตร / อนุสิทธิบัตร</h4>
                             <p>
-                                {{ $patent->patent->pt_number}}
+                                {{ $patent->patent->pt_number or ' - '}}
 
                             </p>
 
@@ -78,7 +78,7 @@
                             <h4>วันที่ออก </h4>
 
                             <p class="list-group-item-text">
-                                {{ \Carbon\Carbon::createFromFormat('Y-m-d',$patent->patent->pt_accept)->addYears(543)->toFormattedDateString() }}
+                                {{ \Carbon\Carbon::createFromFormat('Y-m-d',$patent->patent->pt_accept)->addYears(543)->toFormattedDateString() or ' - '}}
                             </p>
 
                         </div>
@@ -87,7 +87,7 @@
                             <h4>วันที่หมดอายุ</h4>
 
                             <p class="list-group-item-text">
-                                {{ \Carbon\Carbon::createFromFormat('Y-m-d',$patent->patent->pt_expire)->addYears(543)->toFormattedDateString() }}
+                                {{ \Carbon\Carbon::createFromFormat('Y-m-d',$patent->patent->pt_expire)->addYears(543)->toFormattedDateString() or ' - ' }}
                             </p>
 
                         </div>
