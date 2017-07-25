@@ -5,14 +5,14 @@
         @foreach($patents as $patent)
             <li>
                 <a href="{{ route('patent.show',$patent->patent->pt_id) }}">
-                    <div class="title">{{ $patent->patent->pt_name }}
+                    <div class="title">{{ $patent->patent->pt_name or ' - '}}
                     </div>
                 </a>
                 <div class="info">
-                    เลขที่ : {{ $patent->patent->pt_number }}<br>
-                    ประเภท :{{ $patent->patent->type->ptt_name }} <br>
-                    ระดับ :{{ $patent->patent->publishlevel->rl_name }} <br>
-                    วันที่ออก : {{ \Carbon\Carbon::createFromFormat('Y-m-d',$patent->patent->pt_accept)->addYears(543)->toFormattedDateString() }}
+                    เลขที่ : {{ $patent->patent->pt_number or ' - '}}<br>
+                    ประเภท :{{ $patent->patent->type->ptt_name or ' - '}} <br>
+                    ระดับ :{{ $patent->patent->publishlevel->rl_name or ' - '}} <br>
+                    วันที่ออก : {{ \Carbon\Carbon::createFromFormat('Y-m-d',$patent->patent->pt_accept)->addYears(543)->toFormattedDateString() or ' - '}}
 
 
                     <div class="row">

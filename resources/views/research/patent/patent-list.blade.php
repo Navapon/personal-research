@@ -15,10 +15,10 @@
         @foreach($patents as $key => $patent)
             <tr>
                 <td style="text-align: center">{{ $loop->iteration }}</td>
-                <td>{{ $patent->patent->pt_name }}</td>
-                <td>{{ $patent->patent->user->user->academic->academic_name or ''}} {{ $patent->patent->user->user->u_name_th }} {{ $patent->patent->user->user->u_surname_th }}</td>
-                <td>{{ $patent->patent->pt_number }}</td> }} )
-                <td>{{ $patent->patent->publishlevel->rl_name }} </td>
+                <td>{{ $patent->patent->pt_name or ' - '}}</td>
+                <td>{{ $patent->patent->user->user->academic->academic_name or ' - '}} {{ $patent->patent->user->user->u_name_th }} {{ $patent->patent->user->user->u_surname_th }}</td>
+                <td>{{ $patent->patent->pt_number or ' - '}}</td>
+                <td>{{ $patent->patent->publishlevel->rl_name or ' - '}} </td>
                 <td style="text-align: center"><a href="{{ route('patent.show',$patent->patent->pt_id) }}"><i
                                 class="fa fa-search fa-2x" title="ดูรายละเอียด"></i></a></td>
             </tr>
