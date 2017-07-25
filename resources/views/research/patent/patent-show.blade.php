@@ -78,7 +78,7 @@
                             <h4>วันที่ออก </h4>
 
                             <p class="list-group-item-text">
-                                {{ \Carbon\Carbon::createFromFormat('Y-m-d',$patent->patent->pt_accept)->addYears(543)->toFormattedDateString() or ' - '}}
+                                {{ $patent->patent->pt_accept ? \Carbon\Carbon::createFromFormat('Y-m-d',$patent->patent->pt_accept)->addYears(543)->toFormattedDateString() : ' - '}}
                             </p>
 
                         </div>
@@ -87,7 +87,7 @@
                             <h4>วันที่หมดอายุ</h4>
 
                             <p class="list-group-item-text">
-                                {{ \Carbon\Carbon::createFromFormat('Y-m-d',$patent->patent->pt_expire)->addYears(543)->toFormattedDateString() or ' - ' }}
+                                {{  $patent->patent->pt_expire ? \Carbon\Carbon::createFromFormat('Y-m-d',$patent->patent->pt_expire)->addYears(543)->toFormattedDateString() : ' - ' }}
                             </p>
 
                         </div>
