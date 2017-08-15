@@ -1,10 +1,9 @@
 <div class="row">
     <div class="col-lg-12">
         <h2 class="page-header">ประกาศข่าว</h2>
+
     </div>
-    <div class="col-md-12" style="margin-bottom: 10px">
-        <a href="{{ route('blog.index') }}" class="btn btn-primary" style="float: right">ดูข่าวทั้งหมด</a>
-    </div>
+
 
     @if(!empty($blogs))
         @foreach($blogs as $blog)
@@ -37,7 +36,9 @@
 
         @endforeach
     @endIf
-
+    <div class="col-md-12 text-center" style="margin-bottom: 10px">
+        <a href="{{ route('blog.index') }}" class="btn btn-primary" style="">ดูข่าวทั้งหมด</a>
+    </div>
 </div>
 <script>
 

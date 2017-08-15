@@ -34,6 +34,10 @@ Route::post('authen', 'Auth\LoginController@authenticate')->name('authen');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/contact', function () {
+    return view('static.contact');
+})->name('contact');
+
 
 
 
@@ -44,6 +48,8 @@ Route::get('report-journal','ReportJournalController@index')->name('report-journ
 Route::get('report-project','ReportProjectController@index')->name('report-project');
 
 Route::get('profile.myprofilecv','ProfileController@myprofilecv')->name('profile.myprofilecv');
+
+
 
 
 

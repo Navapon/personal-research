@@ -95,13 +95,14 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">ข้อมูลคณะ <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="blog-home-1.html">โครงสร้างหน่วยงาน</a>
+                            <a href="blog-home-1.html">โครงสร้างการทำงานนักวิจัย</a>
                         </li>
                         <li>
-                            <a href="blog-home-2.html">นโยบายและภารกิจ</a>
+                            <a href="blog-home-1.html">ระบบกลไกการบริหารงานวิจัย</a>
                         </li>
+
                         <li>
-                            <a href="blog-post.html">ติดต่อเรา</a>
+                            <a href="/contact">ติดต่อเรา</a>
                         </li>
                     </ul>
                 </li>
@@ -121,21 +122,24 @@
                         <li>
                             <a href="{{ route('equipment.index') }}">เครื่องมือสำหรับงานวิจัย</a>
                         </li>
+                        <li>
+                            <a href="blog-home-1.html">ยุทธศาสตร์วิจัย</a>
+                        </li>
                      
                     </ul>
                 </li>
 
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">กฎระเบียบ <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="blog-home-1.html">จริยธรรมการวิจัย</a>
-                        </li>
-                        <li>
-                            <a href="blog-home-2.html">สิทธิบัตร</a>
-                        </li>
-                    </ul>
-                </li>
+                {{--<li class="dropdown">--}}
+                    {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">กฎระเบียบ <b class="caret"></b></a>--}}
+                    {{--<ul class="dropdown-menu">--}}
+                        {{--<li>--}}
+                            {{--<a href="blog-home-1.html"></a>--}}
+                        {{--</li>--}}
+                        {{--<li>--}}
+                            {{--<a href="blog-home-2.html">สิทธิบัตร</a>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</li>--}}
                 @if (Auth::guest())
                     <li>
 

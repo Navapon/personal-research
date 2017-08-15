@@ -5,6 +5,11 @@ Breadcrumbs::register('home', function($breadcrumbs) {
     $breadcrumbs->push('หน้าแรก', route('home'));
 });
 
+Breadcrumbs::register('contact', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('ติดต่อเรา', route('contact'));
+});
+
 
 /*
  * User and Profile
