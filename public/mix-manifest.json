@@ -3,5 +3,6 @@
   "/css/app.css": "/css/app.css",
   "/css/all.css": "/css/all.css",
   "/js/all.js": "/js/all.js",
-  "/js/date-picker-th.js": "/js/date-picker-th.js"
+  "/js/date-picker-th.js": "/js/date-picker-th.js",
+  "/js/ckeditor.js": "/js/ckeditor.js"
 }

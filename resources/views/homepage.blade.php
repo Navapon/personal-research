@@ -16,7 +16,7 @@
 
 @section('blog')
 
-    @include('components.blog.blog-component')
+    @include('components.blog.blog-component',$blogs)
 
 @endsection
 

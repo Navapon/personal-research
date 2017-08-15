@@ -204,6 +204,37 @@ Breadcrumbs::register('equipment.show', function($breadcrumbs,$id)
 });
 
 /*
+ * blog
+ * */
+
+Breadcrumbs::register('blog.index', function($breadcrumbs)
+{
+
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('รายการข่าว', route('blog.index'));
+});
+
+Breadcrumbs::register('blog.create', function($breadcrumbs)
+{
+    $breadcrumbs->parent('blog.index');
+    $breadcrumbs->push('เพิ่มข่าว', route('blog.create'));
+});
+
+Breadcrumbs::register('blog.edit', function($breadcrumbs,$id)
+{
+    $breadcrumbs->parent('blog.index');
+    $breadcrumbs->push('แก้ข่าว',route('blog.edit',$id));
+});
+
+Breadcrumbs::register('blog.show', function($breadcrumbs,$id)
+{;
+
+    $breadcrumbs->parent('blog.index');
+    $breadcrumbs->push('รายละเอียดข่าว', route('blog.show',$id));
+});
+
+
+/*
  * Report
  * */
 Breadcrumbs::register('report', function($breadcrumbs)

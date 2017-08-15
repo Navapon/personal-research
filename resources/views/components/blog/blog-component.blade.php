@@ -1,46 +1,50 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">
-            ประกาศข่าว
-        </h1>
+        <h2 class="page-header">ประกาศข่าว</h2>
     </div>
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4><i class="fa fa-fw fa-check"></i> ข่าวที่ 1</h4>
-            </div>
-            <div class="panel-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla
-                    aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus
-                    eveniet incidunt dicta nostrum quod?</p>
-                <a href="#" class="btn btn-default">อ่านรายละเอียด</a>
-            </div>
-        </div>
+    <div class="col-md-12" style="margin-bottom: 10px">
+        <a href="{{ route('blog.index') }}" class="btn btn-primary" style="float: right">ดูข่าวทั้งหมด</a>
     </div>
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4><i class="fa fa-fw fa-check"></i> ข่าวที่ 2</h4>
+
+    @if(!empty($blogs))
+        @foreach($blogs as $blog)
+
+            <div class="col-md-4 ">
+
+                <div class="thumbnail">
+                    <a href="{{ route('blog.show',$blog->blog_id) }}">
+                        <img class="img-responsive" style="width: 100%;height: 300px"
+                             src="{{ asset('files').'/blog/'.$blog->blog_id .'/'.$blog->blog_image  }}" alt="">
+                    </a>
+                    <div class="caption">
+                        <a href="{{ route('blog.show',$blog->blog_id) }}">
+                            <h4 class="text-center">{{ $blog->blog_title }}  </h4>
+                        </a>
+
+                        <h6>{{ $blog->blog_information }}</h6>
+                        <ul class="list-inline text-center">
+                            <li >
+                                <a >
+                                    <i style="cursor: pointer" class="fa fa-2x fa-facebook-square" onclick="share('{{ route('blog.show',$blog->blog_id) }}')"></i>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
             </div>
-            <div class="panel-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla
-                    aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus
-                    eveniet incidunt dicta nostrum quod?</p>
-                <a href="#" class="btn btn-default">อ่านรายละเอียด</a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4><i class="fa fa-fw fa-check"></i> ข่าวที่ 3</h4>
-            </div>
-            <div class="panel-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla
-                    aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus
-                    eveniet incidunt dicta nostrum quod?</p>
-                <a href="#" class="btn btn-default">อ่านรายละเอียด</a>
-            </div>
-        </div>
-    </div>
+
+        @endforeach
+    @endIf
+
 </div>
+<script>
+
+    function share(url){
+
+        var fbpopup = window.open("https://www.facebook.com/sharer/sharer.php?u="+url, "pop", "width=600, height=400, scrollbars=no");
+        return false;
+    }
+
+</script>

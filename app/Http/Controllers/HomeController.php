@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BlogModel;
 use Illuminate\Http\Request;
 use Alert;
 
@@ -12,7 +13,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct ()
     {
 //        $this->middleware('auth');
     }
@@ -22,8 +23,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index ()
     {
-        return view('homepage');
+
+        $blogs = BlogModel::where('blog_status','=','open')->orderBy('created_at', 'desc')->take(3)->get();
+
+        $data = array(
+            'blogs' => $blogs
+        );
+
+        return view('homepage')->with($data);
     }
 }

@@ -21,8 +21,6 @@ mix
             // 'resources/assets/date-picker-th/css/bootstrap-datepicker.min.css',
             'resources/assets/pickadate.js-master/lib/themes/classic.css',
             'resources/assets/pickadate.js-master/lib/themes/classic.date.css',
-
-
         ]
         , 'public/css/all.css');
 
@@ -42,6 +40,12 @@ mix
             'resources/assets/pickadate.js-master/lib/translations/th_TH.js',
         ]
         , 'public/js/date-picker-th.js');
+
+mix
+    .scripts([
+            'resources/assets/ckeditor/ckeditor.js',
+        ]
+        , 'public/js/ckeditor.js');
 
 
 // .copy('node_modules/semantic-ui/dist/semantic.js', 'public/js/semantic.js')
