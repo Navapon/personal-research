@@ -92,17 +92,16 @@
                     <a href="/home">หน้าแรก</a>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">ข้อมูลคณะ <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">ข้อมูลคณะและกลไก <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="blog-home-1.html">โครงสร้างการทำงานนักวิจัย</a>
+                            <a href="/structure">โครงสร้างของทีมนักวิจัย</a>
                         </li>
                         <li>
-                            <a href="blog-home-1.html">ระบบกลไกการบริหารงานวิจัย</a>
+                            <a href="/flow">ระบบกลไกการบริหารงานวิจัย</a>
                         </li>
-
                         <li>
-                            <a href="/contact">ติดต่อเรา</a>
+                            <a href="{{ route('strategy') }}">ยุทธศาสตร์วิจัย</a>
                         </li>
                     </ul>
                 </li>
@@ -122,11 +121,18 @@
                         <li>
                             <a href="{{ route('equipment.index') }}">เครื่องมือสำหรับงานวิจัย</a>
                         </li>
+
                         <li>
-                            <a href="blog-home-1.html">ยุทธศาสตร์วิจัย</a>
+                            <a href="http://www.rdi.rmutk.ac.th/" target="_blank">วิจัยของมหาวิทยาลัย</a>
                         </li>
                      
                     </ul>
+                </li>
+                <li>
+                    <a href="{{ route('download') }}" >ดาวโหลด</a>
+                </li>
+                <li>
+                    <a href="/contact"> ติดต่อเรา</a>
                 </li>
 
                 {{--<li class="dropdown">--}}

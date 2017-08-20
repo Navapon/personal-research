@@ -73,24 +73,24 @@ class Handler extends ExceptionHandler
             }
         }
 
-        if ($exception instanceof ValidationException) {
-            return parent::render($request, $exception);
-        }
-
-        if ($exception instanceof FatalThrowableError) {
-            return response()->view('errors.fatal', [], 404);
-        }
-
-        if ($exception instanceof ErrorException){
-            return response()->view('errors.fatal', [], 404);
-        }
-
-        if($exception instanceof HttpException){
-            return response()->view('errors.fatal', [], 404);
-        }
-
-        return response()->view('errors.fatal', [], 404);
-//        return parent::render($request, $exception);
+//        if ($exception instanceof ValidationException) {
+//            return parent::render($request, $exception);
+//        }
+//
+//        if ($exception instanceof FatalThrowableError) {
+//            return response()->view('errors.fatal', [], 404);
+//        }
+//
+//        if ($exception instanceof ErrorException){
+//            return response()->view('errors.fatal', [], 404);
+//        }
+//
+//        if($exception instanceof HttpException){
+//            return response()->view('errors.fatal', [], 404);
+//        }
+//
+//        return response()->view('errors.fatal', [], 404);
+        return parent::render($request, $exception);
     }
 
 //    public function render($request, Exception $e)

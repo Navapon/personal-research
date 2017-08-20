@@ -38,6 +38,40 @@ Route::get('/contact', function () {
     return view('static.contact');
 })->name('contact');
 
+Route::get('/flow', function () {
+    return view('static.flow');
+})->name('flow');
+
+Route::get('/strategy', function () {
+    return view('static.strategy');
+})->name('strategy');
+
+Route::get('/download', function () {
+    return view('static.download');
+})->name('download');
+
+
+
+Route::get('/structure', function () {
+
+    $users1 = \App\ProfileModel::where('committee','=','1')->get();
+    $users2 = \App\ProfileModel::where('committee','=','2')->get();
+    $users3 = \App\ProfileModel::where('committee','=','3')->get();
+    $users4 = \App\ProfileModel::where('committee','=','4')->get();
+    $users5 = \App\ProfileModel::where('committee','=','5')->get();
+
+    $data = array(
+        'users1' => $users1,
+        'users2' => $users2,
+        'users3' => $users3,
+        'users4' => $users4,
+        'users5' => $users5,
+    );
+
+//    dd($users1);
+
+    return view('static.structure')->with($data);
+})->name('structure');
 
 
 

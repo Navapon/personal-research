@@ -9,18 +9,18 @@
 @section('page-header')
 
     @include('components.page-header',[
-        'header' =>   'ระบบกลไลบริหารงานวิจัย'
+        'header' =>   'ยุทธศาสตร์ด้านวิจัย'
     ])
 
 @endsection
 
 @section('content')
-        
+
     <div class="row">
-        <div class="col-md-offset-2 col-md-8 col-md-offset-2">
-            <img src="{{ asset('images/flow1.png') }}" alt="" class="">
-            <img src="{{ asset('images/flow2.png') }}" alt="" class="">
-            <img src="{{ asset('images/flow3.png') }}" alt="" class="">
+
+        <div class="col-md-12">
+            <h2><a href="{{ asset('document/stragy.pdf') }}" TARGET="_blank" download>คลิก เพื่อดาวโหลด</a></h2>
+            <iframe src="{{ asset('document/stragy.pdf') }}" frameborder="0" width="100%" height="800px"></iframe>
         </div>
     </div>
 

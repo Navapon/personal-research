@@ -10,6 +10,21 @@ Breadcrumbs::register('contact', function($breadcrumbs) {
     $breadcrumbs->push('ติดต่อเรา', route('contact'));
 });
 
+Breadcrumbs::register('structure', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('โครงสร้างนักวิจัย', route('structure'));
+});
+
+Breadcrumbs::register('flow', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('กลไกการทำงาน', route('flow'));
+});
+
+Breadcrumbs::register('download', function($breadcrumbs) {
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push('ดาวโหลดเอกสาร', route('download'));
+});
+
 
 /*
  * User and Profile
