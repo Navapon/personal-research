@@ -21,7 +21,7 @@
 
         <div class="thumbnail">
             <a href="#">
-                <img class="img-responsive" style="width: 100%" height="450px"
+                <img class="img-responsive"  style="width: 100%;height: 350px"
                      src="{{ $users1[0]->u_image ? asset('images/user-image/').'/' .$users1[0]->u_image: '/images/user-img.png' }}" alt="">
             </a>
             <div class="caption text-center">
@@ -53,7 +53,7 @@
 
         <div class="thumbnail">
             <a href="#">
-                <img class="img-responsive" style="width: 100%;" height="450px"
+                <img class="img-responsive"  style="width: 100%;height: 350px"
                      src="{{ $users2[0]->u_image ? asset('images/user-image/').'/' .$users2[0]->u_image: '/images/user-img.png' }}" alt="">
             </a>
             <div class="caption text-center">
@@ -82,7 +82,7 @@
 
         <div class="thumbnail">
             <a href="#">
-                <img class="img-responsive" style="width: 100%;" height="450px"
+                <img class="img-responsive"  style="width: 100%;height: 350px"
                      src="{{ $users3[0]->u_image ? asset('images/user-image/').'/' .$users3[0]->u_image: '/images/user-img.png' }}" alt="">
             </a>
             <div class="caption text-center">
@@ -118,7 +118,7 @@
 
         <div class="thumbnail">
             <a href="#">
-                <img class="img-responsive" style="width: 100%;"  height="450px"
+                <img class="img-responsive"  style="width: 100%;height: 350px"
                      src="{{ $row->u_image ? asset('images/user-image/').'/' .$row->u_image: '/images/user-img.png' }}" alt="">
             </a>
             <div class="caption text-center">
@@ -156,7 +156,7 @@
 
             <div class="thumbnail">
                 <a href="#">
-                    <img class="img-responsive" style="width: 100%;"  height="450px"
+                    <img class="img-responsive" style="width: 100%;height: 350px"
                          src="{{ $row->u_image ? asset('images/user-image/').'/' .$row->u_image: '/images/user-img.png' }}" alt="">
                 </a>
                 <div class="caption text-center">
