@@ -24,7 +24,7 @@
                         <i class="fa fa-download"></i> คู่มือนักวิจัย</a>
                 </li>
 
-                <li><a href="{{ asset('download/junyabun.pdf') }}" target="_blank">
+                <li><a href="{{ asset('document/junyabun.pdf') }}" target="_blank">
                         <i class="fa fa-download"></i> จรรยาบรรณนักวิจัย </a>
                 </li>
                 <li><a href="http://www.rdi.rmutk.ac.th/index.php/ระเบียบมหาวิทยาลัยเทคโนโลยีราชมงคลกรุงเทพ" target="_blank">
