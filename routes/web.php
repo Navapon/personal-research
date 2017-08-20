@@ -59,6 +59,7 @@ Route::get('/structure', function () {
     $users3 = \App\ProfileModel::where('committee','=','3')->get();
     $users4 = \App\ProfileModel::where('committee','=','4')->get();
     $users5 = \App\ProfileModel::where('committee','=','5')->get();
+    $users6 = \App\ProfileModel::where('committee','=','6')->get();
 
     $data = array(
         'users1' => $users1,
@@ -66,6 +67,7 @@ Route::get('/structure', function () {
         'users3' => $users3,
         'users4' => $users4,
         'users5' => $users5,
+        'users6' => $users6,
     );
 
 //    dd($users1);
