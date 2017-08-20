@@ -23,7 +23,7 @@
                     <tr>
                         <td>{{ $loop->iteration  }}</td>
                         <td>{{ $project->project->rp_name }}
-                            <i class="fa fa-eye"> {{ Counter::show('project',$project->project->pj_id) }}</i>
+                            <i class="fa fa-eye"> {{ Counter::show('project',$project->project->rp_id) }}</i>
                         </td>
                         <td>{{ $project->project->user->user->academic->academic_name or ''}} {{ $project->project->user->user->u_name_th }} {{ $project->project->user->user->u_surname_th }}</td>
                         <td>{{ $project->project->statusRp->rst_name }}</td>
