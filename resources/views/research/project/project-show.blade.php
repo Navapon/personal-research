@@ -36,7 +36,12 @@
 
 
                         <div class="bs-callout bs-callout-danger">
-                            <h4>ชื่อโครงการ </h4>
+                            <h4>ชื่อโครงการ
+                                <div class="div" style="float: right">
+                                    <i class="fa fa-eye"
+                                       aria-hidden="true"> {{ Counter::showAndCount('project',$project->project->pj_id ) }} </i>
+                                </div>
+                            </h4>
                             <p>
                                 {{ $project->project->rp_name }}
                             </p>

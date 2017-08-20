@@ -36,7 +36,11 @@
 
 
                         <div class="bs-callout bs-callout-danger">
-                            <h4>ชื่องานวิจัย ( Article Name )</h4>
+                            <h4>ชื่องานวิจัย ( Article Name )
+                                <div class="div" style="float: right">
+                                    <i class="fa fa-eye" aria-hidden="true"> {{ Counter::showAndCount('conference',$conference->conference->rc_id ) }} </i>
+                                </div>
+                            </h4>
                             <p>
                                 {{ $conference->conference->rc_article_name }}
                             </p>

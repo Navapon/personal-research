@@ -138,7 +138,12 @@
 
                         @endif
                     @endif
-                    <h1 class="boxTitle">ข้อมูลส่วนตัว</h1>
+                    <h1 class="boxTitle">ข้อมูลส่วนตัว
+                        <div class="div" style="float: right">
+                            <i class="fa fa-eye"
+                               aria-hidden="true"> {{ Counter::showAndCount('profile',$user->u_id ) }} </i>
+                        </div>
+                    </h1>
                     <!-- Tabs -->
                     <ul class="nav nav-tabs userProfileTabs" role="tablist">
                         <li role="presentation" class="active"><a href="#tab-item-1" aria-controls="tab-item-1"

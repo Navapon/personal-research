@@ -37,7 +37,11 @@
                     <div class="content">
 
                         <div class="bs-callout bs-callout-danger">
-                            <h4>ชื่องานวิจัย ( Article Name)</h4>
+                            <h4>ชื่องานวิจัย ( Article Name)
+                                <div class="div" style="float: right">
+                                    <i class="fa fa-eye" aria-hidden="true"> {{ Counter::showAndCount('journal',$journal->journal->rj_id ) }} </i>
+                                </div>
+                            </h4>
                             <p>
                                 {{ $journal->journal->rj_article_name }}
                             </p>
@@ -53,7 +57,8 @@
                         <div class="bs-callout bs-callout-danger">
                             <h4>เอกสารวิจัย ( Paper )</h4>
                             <p>
-                                <a href="{{ asset('files').'/users/'. $journal->user->u_id . '/journal/'.$journal->journal->rj_file}}" target="_blank"
+                                <a href="{{ asset('files').'/users/'. $journal->user->u_id . '/journal/'.$journal->journal->rj_file}}"
+                                   target="_blank"
                                    class="btn btn-success"> <i class=" fa fa-search-plus"></i> VIEW </a>
 
                             </p>
@@ -70,7 +75,7 @@
                                             {{ $team->rt_name }}
                                         </li>
                                     @endforeach
-                                    @endIf
+                                @endIf
                             </ul>
                             </p>
 

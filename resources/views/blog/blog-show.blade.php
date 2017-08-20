@@ -25,7 +25,9 @@
             <p>
                 <i class="fa fa-clock-o"></i>
                 Posted on  {{  \Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$blog->created_at )->addYears(543)->toFormattedDateString() }}
-
+            <div class="div" style="float: right">
+                <i class="fa fa-eye" aria-hidden="true"> {{ Counter::showAndCount('blog',$blog->blog_id) }} </i>
+            </div>
                 <a >
                     <i style="cursor: pointer" class="fa fa-2x fa-facebook-square" onclick="share('{{ route('blog.show',$blog->blog_id) }}')"></i>
                 </a>

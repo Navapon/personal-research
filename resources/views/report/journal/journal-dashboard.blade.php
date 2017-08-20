@@ -17,7 +17,11 @@
 
 
     <div class="col-sm-12 col-xs-12 col-md-12">
+        <div style="float: right">
+            <i class="fa fa-eye"> {{ Counter::showAndCount('report-journal') }}</i>
+        </div>
         <form action="{{ route('report-journal')}}" method="get">
+
             <div class="row well">
                 <div class="col-md-offset-2 col-md-4">
                     <label for="">แหล่งทุน</label>
@@ -65,7 +69,7 @@
                     <tr>
                         <td>{{ $journal->major_name }}</td>
                         <td style="text-align: center">{{ $journal->journal_number }}</td>
-                        <td style="text-align: center"><button class="btn btn-success" onclick="swal('Coming Soon ...','','info')"><i class="fa fa-file"></i> รายละเอียด</button></td>
+                        {{--<td style="text-align: center"><button class="btn btn-success" onclick="swal('Coming Soon ...','','info')"><i class="fa fa-file"></i> รายละเอียด</button></td>--}}
                     </tr>
                 @endforeach
             @endIf
@@ -87,7 +91,7 @@
                     <tr>
                         <td  style="text-align: center">{{ $item->year  + 543 }}</td>
                         <td  style="text-align: center">{{ $item->journal_number }}</td>
-                        <td style="text-align: center"><button class="btn btn-success" onclick="swal('Coming Soon ...','','info')"><i class="fa fa-file"></i> รายละเอียด</button></td>
+                        {{--<td style="text-align: center"><button class="btn btn-success" onclick="swal('Coming Soon ...','','info')"><i class="fa fa-file"></i> รายละเอียด</button></td>--}}
                     </tr>
                 @endforeach
             @endif

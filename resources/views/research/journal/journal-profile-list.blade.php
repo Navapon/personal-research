@@ -13,6 +13,8 @@
                     {{ $journal->journal->rj_name }}
                     <a href="{{ $journal->journal->rj_source_url }}" title="คลิกเพื่อไปยังฐานข้อมูล Journal" target="_blank"
                        class="text-orange">{{ $journal->journal->rj_name }}</a>
+                    <br>
+                    <i class="fa fa-eye"> {{ Counter::show('journal',$journal->journal->rj_id) }}</i>
 
 
                     <div class="row">

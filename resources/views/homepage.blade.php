@@ -15,6 +15,10 @@
 @endsection
 
 @section('blog')
+    <div class="div" style="float: right">
+        <i class="fa fa-eye" aria-hidden="true"> {{ Counter::showAndCount('home') }}</i>
+            <i class="fa fa-eye" aria-hidden="true">   All hits {{ Counter::allHits() }}</i>
+    </div>
 
     @include('components.blog.blog-component',$blogs)
 

@@ -34,7 +34,12 @@
 
 
                         <div class="bs-callout bs-callout-danger">
-                            <h4>ชื่อผลงาน</h4>
+                            <h4>ชื่อผลงาน
+                                <div class="div" style="float: right">
+                                    <i class="fa fa-eye"
+                                       aria-hidden="true"> {{ Counter::showAndCount('patent',$patent->patent->pt_id ) }} </i>
+                                </div>
+                            </h4>
                             <p>
                                 {{ $patent->patent->pt_name or ' - '}}
                             </p>

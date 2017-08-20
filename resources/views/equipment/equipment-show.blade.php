@@ -25,7 +25,9 @@
         </div>
         <div class="col-md-8" style="border:0px solid gray">
 
-            <h3>{{ $equipment->re_name }}</h3>
+            <h3>{{ $equipment->re_name }}
+                <i class="fa fa-eye"> {{ Counter::showAndCount('equipment',$equipment->re_id) }}</i>
+            </h3>
             <h5 style="color:#337ab7">
                 รหัสครุภัณฑ์ {{ $equipment->re_serial_number or ' - ' }}
 

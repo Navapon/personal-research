@@ -17,7 +17,7 @@
                     ผู้จัด : {{ $conference->conference->rc_meeting_name }} <br>
                     วันที่ : {{ \Carbon\Carbon::createFromFormat('Y-m-d',$conference->conference->rc_meeting_start)->addYears(543)->toFormattedDateString() }}
                     ถึง {{ \Carbon\Carbon::createFromFormat('Y-m-d',$conference->conference->rc_meeting_end)->addYears(543)->toFormattedDateString() }}<br>
-
+                    <i class="fa fa-eye"> {{ Counter::show('conference',$conference->conference->rc_id) }}</i>
                     <div class="row">
                         @if($task == 'edit')
                             <div class="pull-right ">

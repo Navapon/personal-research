@@ -16,33 +16,42 @@
     <script src="https://code.highcharts.com/modules/no-data-to-display.js"></script>
 
     <div class="col-sm-12 col-xs-12 col-md-12">
-        <form action="{{ route('report-project') }}" method="get">
-        <div class="row well">
-            <div class="col-md-offset-2 col-md-4">
-                <label for="">แหล่งทุน</label>
-                <select name="fund" id="fund" class="form-control">
-                    <option value="" selected>แหล่งทุนทั้งหมด</option>
-                    <option value="in" {{ app('request')->input('fund') == 'in' ? 'selected':'' }}>แหล่งทุนภายใน</option>
-                    <option value="out" {{ app('request')->input('fund') == 'out' ? 'selected':'' }}>แหล่งทุนภายนอก</option>
-                </select>
-            </div>
-            <div class="col-md-4">
-                <label for="">ปี</label>
-                <select name="year" id="year" class="form-control">
-                    <option value="" selected>ทุกปี</option>
-                    @foreach($year as $item)
-                        <option value="{{$item->rp_year }}"
-                                {{ app('request')->input('year') == $item->rp_year ? 'selected':'' }}
-                        >{{ $item->rp_year }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-1 col-sm-12 col-xs-12">
-                <label for="">ค้นหา</label>
-                <button class="btn btn-primary" style="width : 100%" type="submit"><i class="fa fa-search-plus"></i></button>
-            </div>
+        <div style="float: right">
+            <i class="fa fa-eye"> {{ Counter::showAndCount('report-project') }}</i>
         </div>
+
+        <form action="{{ route('report-project') }}" method="get">
+
+            <div class="row well">
+                <div class="col-md-offset-2 col-md-4">
+                    <label for="">แหล่งทุน</label>
+                    <select name="fund" id="fund" class="form-control">
+                        <option value="" selected>แหล่งทุนทั้งหมด</option>
+                        <option value="in" {{ app('request')->input('fund') == 'in' ? 'selected':'' }}>แหล่งทุนภายใน
+                        </option>
+                        <option value="out" {{ app('request')->input('fund') == 'out' ? 'selected':'' }}>
+                            แหล่งทุนภายนอก
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="">ปี</label>
+                    <select name="year" id="year" class="form-control">
+                        <option value="" selected>ทุกปี</option>
+                        @foreach($year as $item)
+                            <option value="{{$item->rp_year }}"
+                                    {{ app('request')->input('year') == $item->rp_year ? 'selected':'' }}
+                            >{{ $item->rp_year }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-1 col-sm-12 col-xs-12">
+                    <label for="">ค้นหา</label>
+                    <button class="btn btn-primary" style="width : 100%" type="submit"><i class="fa fa-search-plus"></i>
+                    </button>
+                </div>
+            </div>
         </form>
         <div id="project-chart" style=" margin: 0 auto"></div>
         <table id="project-table" class="table table-border">
@@ -60,7 +69,11 @@
                     <td>{{ $project->major_name }}</td>
                     <td style="text-align: right">{{ $project->project_amount }}</td>
                     <td style="text-align: center;">{{ $project->project_number }}</td>
-                    <td style="text-align: center"><button class="btn btn-success" onclick="swal('Coming Soon ...','','info')"><i class="fa fa-file"></i> รายละเอียด</button></td>
+                    {{--<td style="text-align: center">--}}
+                        {{--<button class="btn btn-success" onclick="swal('Coming Soon ...','','info')"><i--}}
+                                    {{--class="fa fa-file"></i> รายละเอียด--}}
+                        {{--</button>--}}
+                    {{--</td>--}}
                 </tr>
             @endforeach
             </tbody>
@@ -83,7 +96,11 @@
                         <td style="text-align: center">{{ $item->rp_year }}</td>
                         <td style="text-align: right">{{ $item->project_amount }}</td>
                         <td style="text-align: center">{{ $item->project_number }}</td>
-                        <td style="text-align: center"><button class="btn btn-success" onclick="swal('Coming Soon ...','','info')"><i class="fa fa-file"></i> รายละเอียด</button></td>
+                        {{--<td style="text-align: center">--}}
+                            {{--<button class="btn btn-success" onclick="swal('Coming Soon ...','','info')"><i--}}
+                                        {{--class="fa fa-file"></i> รายละเอียด--}}
+                            {{--</button>--}}
+                        {{--</td>--}}
                     </tr>
                 @endforeach
             @endif
@@ -104,7 +121,7 @@
                 },
                 data: {
                     table: 'project-table',
-                    startColumn:0,
+                    startColumn: 0,
                     endColumn: 1
                 },
                 chart: {
@@ -122,7 +139,7 @@
                 tooltip: {
                     formatter: function () {
                         return '<b>' + this.series.name + '</b><br/>' +
-                            Highcharts.numberFormat(this.point.y ,2,'.',',') + ' ' + this.point.name.toLowerCase();
+                            Highcharts.numberFormat(this.point.y, 2, '.', ',') + ' ' + this.point.name.toLowerCase();
                     }
                 }
             });
@@ -133,7 +150,7 @@
                 },
                 data: {
                     table: 'compare-table',
-                    startColumn:0,
+                    startColumn: 0,
                     endColumn: 1
                 },
                 chart: {
@@ -151,11 +168,10 @@
                 tooltip: {
                     formatter: function () {
                         return '<b>' + this.series.name + '</b><br/>' +
-                            Highcharts.numberFormat(this.point.y ,2,'.',',') + ' ' + this.point.name.toLowerCase();
+                            Highcharts.numberFormat(this.point.y, 2, '.', ',') + ' ' + this.point.name.toLowerCase();
                     }
                 }
             });
-
 
 
         })

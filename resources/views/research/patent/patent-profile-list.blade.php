@@ -13,7 +13,7 @@
                     ประเภท :{{ $patent->patent->type->ptt_name or ' - '}} <br>
                     ระดับ :{{ $patent->patent->publishlevel->rl_name or ' - '}} <br>
                     วันที่ออก : {{ $patent->patent->pt_accept ? \Carbon\Carbon::createFromFormat('Y-m-d',$patent->patent->pt_accept)->addYears(543)->toFormattedDateString() : ' - '}}
-
+                    <i class="fa fa-eye"> {{ Counter::show('patent',$patent->patent->pt_id) }}</i>
 
                     <div class="row">
                         @if($task == 'edit')
