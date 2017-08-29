@@ -59,6 +59,7 @@
                             </small>
                         </div>
                     </div>
+                {{ csrf_field() }}
                     <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-offset-1 col-md-2 control-label" for="rc_article_name">ชื่อบทความ <span

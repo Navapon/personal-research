@@ -70,6 +70,8 @@
                         </div>
                     </div>
                     <!-- Text input-->
+                    {{ csrf_field() }}
+
                     <div class="form-group">
                         <label class="col-md-offset-1 col-md-2 control-label" for="rj_article_name">ชื่อบทความ <span
                                     style="color:red"> * </span> </label>

@@ -47,9 +47,17 @@ Route::get('/strategy', function () {
 })->name('strategy');
 
 Route::get('/download', function () {
-    return view('static.download');
+    $download = \App\DownloaderModel::all();
+
+    $data = array(
+        'files' => $download
+    );
+
+    return view('static.download')->with($data);
 })->name('download');
 
+Route::post('/download/uploadFile', 'DownloaderController@uploadFile')->name('uploadDownload');
+Route::delete('/download/destroy/{id}', 'DownloaderController@deleteDownload')->name('deleteDownload');
 
 
 Route::get('/structure', function () {

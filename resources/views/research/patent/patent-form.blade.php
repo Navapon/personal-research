@@ -12,7 +12,7 @@
             </ul>
         </div>
     @endif
-
+    {{ csrf_field() }}
     <form role="form" class="form-horizontal">
         <!-- Form Name -->
         <legend>ข้อมูลสิทธิบัตร</legend>
@@ -55,7 +55,7 @@
         <!-- Text input-->
         <div class="form-group">
             <label class="col-md-offset-1 col-md-2 control-label" for="pt_meta_tag">คำสำคัญ
-            <span             style="color:red"> * </span></label>
+                <span style="color:red"> * </span></label>
             <div class="col-md-8">
 
                 <input id="pt_meta_tag" name="pt_meta_tag" type="text"
@@ -132,7 +132,7 @@
 
             </label>
             <div class="col-md-3">
-                <div class='input-group date' >
+                <div class='input-group date'>
                     <input type="text" id="publish-picker" class="form-control"
                            name="pt_accept"
                            value="{{ old('pt_accept',isset($patent->pt_accept) ? \Carbon\Carbon::createFromFormat('Y-m-d',$patent->pt_accept)->toDateString() : '') }}"
@@ -275,8 +275,8 @@
             hiddenPrefix: 'date_',
         })
 
-        $('#patent-form').one('submit', function() {
-            $(this).find('#submit-btn').attr('disabled','disabled');
+        $('#patent-form').one('submit', function () {
+            $(this).find('#submit-btn').attr('disabled', 'disabled');
         });
 
     });

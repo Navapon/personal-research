@@ -50,7 +50,10 @@
                             </small>
                         </div>
                     </div>
-                    <!-- Text input-->
+
+                {{ csrf_field() }}
+
+                <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-offset-1 col-md-2 control-label" for="rp_name">ชื่อโครงการวิจัย <span
                                     style="color:red"> * </span> </label>
@@ -560,6 +563,7 @@
     function nextTab(elem) {
         $(elem).next().find('a[data-toggle="tab"]').click();
     }
+
     function prevTab(elem) {
         $(elem).prev().find('a[data-toggle="tab"]').click();
     }

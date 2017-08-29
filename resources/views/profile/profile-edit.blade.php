@@ -176,6 +176,7 @@
                                         <!-- Form Name -->
                                         <input type="hidden" name="u_id" id="u_id" value="{{ $user->u_id }}">
                                         <legend>แก้ไขข้อมูลส่วนตัว</legend>
+                                        {{ csrf_field() }}
 
                                         <!-- Text input-->
                                         <div class="form-group{{ $errors->has('u_email') ? ' has-error' : '' }}">
