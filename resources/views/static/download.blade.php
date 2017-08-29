@@ -36,7 +36,8 @@
 
                         @if( !empty(Auth::id()) )
                             @if( Auth::user()->u_role_id == 1 )
-                                <form action="{{ route('deleteDownload', $row->download_id) }}" method="post" id="delete{{$row->download_id }}">
+                                <form action="{{ route('deleteDownload', $row->download_id) }}" method="post"
+                                      id="delete{{$row->download_id }}">
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
                                     <button class="btn btn-danger btn-sm">
@@ -46,14 +47,7 @@
                             @endif
                         @endif
                     </li>
-                    @endforeach
-                <li><a href="{{ asset('document/manual-research.pdf') }}" target="_blank">
-                        <i class="fa fa-download"></i> คู่มือนักวิจัย</a>
-                </li>
-
-                <li><a href="{{ asset('document/junyabun.pdf') }}" target="_blank">
-                        <i class="fa fa-download"></i> จรรยาบรรณนักวิจัย </a>
-                </li>
+                @endforeach
                 <li><a href="http://www.rdi.rmutk.ac.th/index.php/ระเบียบมหาวิทยาลัยเทคโนโลยีราชมงคลกรุงเทพ"
                        target="_blank">
                         <i class="fa fa-download"></i> ระเบียบมหาวิทยาลัยเทคโนโลยีราชมงคลกรุงเทพ</a>
@@ -94,11 +88,11 @@
                         <div class="form-group row">
                             <label for="" class="col-md-3">เลือกไฟล์ </label>
                             <div class="col-md-9">
-                                <input type="file" name="files" id="files" class="form-control" accept=".pdf,.docx" >
+                                <input type="file" name="files" id="files" class="form-control" accept=".pdf,.docx">
                             </div>
                         </div>
                         <div style="text-align: center">
-                        <button class="btn btn-success" type="submit">บันทึก</button>
+                            <button class="btn btn-success" type="submit">บันทึก</button>
                         </div>
                     </form>
 
